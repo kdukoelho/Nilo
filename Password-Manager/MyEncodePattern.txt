@@ -1,0 +1,33 @@
+a = r2t5e A = 9i3re 1 = 7u2q1 # = yt324
+b = gf32h B = ui34f 2 = m3i0t / = tw4pu
+c = h2y4g C = 2t434 3 = a52yu < = w2k03
+d = h1f2q D = y3h5h 4 = w2150 > = 420ja
+e = 1yf4r E = 8g4dj 5 = 23it4
+f = s1d2w F = 0k3l5 6 = s14dx
+g = tyr52 G = 6gp3f 7 = 20s76
+h = u1y3d H = 0jew4 8 = ds12g
+i = 1we2d I = oj326 9 = 28sçw
+j = n2jm3 J = 4y6f0 0 = 0ki8t
+k = 3tç3a K = jk39k ! = i14ds
+l = w21ny L = 9o2t3 @ = plk3s
+m = es2a3 M = 2ky2s $ = q2352
+n = d3fr6 N = li262 % = 38jsn
+o = gm40q O = u6d06 * = 54ft6
+p = g51to P = o2d8r ( = s01lj
+q = rf2d5 Q = 1e3td ) = 67shb
+r = 1cde3 R = 9ç2f2 & = 0k28n
+s = h41sl S = 2t8h5 - = 29mzs
+t = ç6w2f T = dr036 + = 08kçh
+u = 6y2um U = t5p37 = = 8kgcs
+v = 1a6er V = m2s18 : = pf8q4
+w = e1si8 W = 0d2i7 ; = jf824
+x = w2r3s X = 7sp2i , = 08652
+y = h3ed4 Y = 2h2o4 . = 18hw6
+z = lo2u4 Z = ts212 ? = 9k2ss
+
+Encode Alphabet String = r2t5egf32hh2y4gh1f2q1yf4rs1d2wtyr52u1y3d1we2dn2jm33tç3aw21nyes2a3d3fr6gm40qg51torf2d51cde3h41slç6w2f6y2um1a6ere1si8w2r3sh3ed4lo2u4
+Encode Upper Alphabet String = 9i3reui34f2t434y3h5h8g4dj0k3l56gp3f0jew4oj3264y6f0jk39k9o2t32ky2sli262u6d06o2d8r1e3td9ç2f22t8h5dr036t5p37m2s180d2i77sp2i2h2o4ts212
+Encode Numbers String = 7u2q1m3i0ta52yuw215023it4s14dx20s76ds12g28sçw0ki8t
+Encode Symbols String = i14dsplk3sq235238jsn54ft6s01lj67shb0k28n29mzs08kçh8kgcspf8q4jf8240865218hw69k2ssyt324tw4puw2k03420ja
+
+!@$%*()&-+=:;,.?#/<>
