@@ -2,6 +2,8 @@
 
 The intention of this project is to develop a password manager that creates an individual encrypted database for each account created in the program. It will have functions for adding existing passwords, as well as for creating random passwords.
 
+![Password Manager - Login.PNG](https://www.dropbox.com/s/e2xgb7eqmayt5d1/Password%20Manager%20-%20Login.PNG?dl=0&raw=1)
+
 ## Features
 
 - Script for generate random passwords.
