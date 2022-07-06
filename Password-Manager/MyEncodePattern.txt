@@ -29,5 +29,3 @@ Encode Alphabet String = r2t5egf32hh2y4gh1f2q1yf4rs1d2wtyr52u1y3d1we2dn2jm33tç3
 Encode Upper Alphabet String = 9i3reui34f2t434y3h5h8g4dj0k3l56gp3f0jew4oj3264y6f0jk39k9o2t32ky2sli262u6d06o2d8r1e3td9ç2f22t8h5dr036t5p37m2s180d2i77sp2i2h2o4ts212
 Encode Numbers String = 7u2q1m3i0ta52yuw215023it4s14dx20s76ds12g28sçw0ki8t
 Encode Symbols String = i14dsplk3sq235238jsn54ft6s01lj67shb0k28n29mzs08kçh8kgcspf8q4jf8240865218hw69k2ssyt324tw4puw2k03420ja
-
-!@$%*()&-+=:;,.?#/<>
