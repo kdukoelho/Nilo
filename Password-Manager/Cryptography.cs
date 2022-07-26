@@ -40,7 +40,7 @@ namespace Password_Manager
                 char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
                                    '!', '@', '$', '%', '*', '(', ')', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', '>', '1', '2', '3', '4', '5', '6',
-                                   '7', '8', '9', '0'};                
+                                   '7', '8', '9', '0'};
 
                 foreach (char letter in forDecrypt)
                 {
@@ -313,8 +313,7 @@ namespace Password_Manager
                         encryptedString += "29mzs";
                         break;
                     default:
-                        throw new InvalidDataException();
-                        break;
+                        throw new InvalidDataException();                        
                         
                 }                
             }
@@ -581,8 +580,7 @@ namespace Password_Manager
                         decryptedString += '@';
                         break;
                     default:
-                        throw new InvalidDataException();
-                        break;
+                        throw new InvalidDataException();                        
                 }                    
             }
             return decryptedString;

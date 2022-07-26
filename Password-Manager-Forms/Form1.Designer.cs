@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loginBT = new System.Windows.Forms.Button();
+            this.loginButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.forgetpasswordLK = new System.Windows.Forms.LinkLabel();
             this.username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
-            this.registerBT = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.searchBT = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // loginBT
+            // loginButton
             // 
-            this.loginBT.BackColor = System.Drawing.Color.Black;
-            this.loginBT.Location = new System.Drawing.Point(293, 218);
-            this.loginBT.Name = "loginBT";
-            this.loginBT.Size = new System.Drawing.Size(92, 28);
-            this.loginBT.TabIndex = 0;
-            this.loginBT.Text = "Login";
-            this.loginBT.UseVisualStyleBackColor = false;
+            this.loginButton.BackColor = System.Drawing.Color.Black;
+            this.loginButton.Location = new System.Drawing.Point(293, 218);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(92, 28);
+            this.loginButton.TabIndex = 0;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -81,6 +81,7 @@
             this.username.Location = new System.Drawing.Point(257, 131);
             this.username.MaxLength = 100;
             this.username.Name = "username";
+            this.username.PasswordChar = '●';
             this.username.Size = new System.Drawing.Size(124, 18);
             this.username.TabIndex = 3;
             // 
@@ -104,20 +105,21 @@
             this.password.Size = new System.Drawing.Size(124, 18);
             this.password.TabIndex = 5;
             // 
-            // registerBT
+            // registerButton
             // 
-            this.registerBT.BackColor = System.Drawing.Color.Black;
-            this.registerBT.Location = new System.Drawing.Point(155, 218);
-            this.registerBT.Name = "registerBT";
-            this.registerBT.Size = new System.Drawing.Size(132, 28);
-            this.registerBT.TabIndex = 6;
-            this.registerBT.Text = "Register database";
-            this.registerBT.UseVisualStyleBackColor = false;
+            this.registerButton.BackColor = System.Drawing.Color.Black;
+            this.registerButton.Location = new System.Drawing.Point(155, 218);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(132, 28);
+            this.registerButton.TabIndex = 6;
+            this.registerButton.Text = "Register database";
+            this.registerButton.UseVisualStyleBackColor = false;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // searchBT
             // 
             this.searchBT.BackColor = System.Drawing.Color.Black;
-            this.searchBT.Location = new System.Drawing.Point(63, 86);
+            this.searchBT.Location = new System.Drawing.Point(73, 85);
             this.searchBT.Name = "searchBT";
             this.searchBT.Size = new System.Drawing.Size(137, 28);
             this.searchBT.TabIndex = 7;
@@ -149,25 +151,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(535, 268);
+            this.ClientSize = new System.Drawing.Size(536, 269);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.searchBT);
-            this.Controls.Add(this.registerBT);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.password);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.username);
             this.Controls.Add(this.forgetpasswordLK);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.loginBT);
+            this.Controls.Add(this.loginButton);
             this.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LOGIN";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "LOGIN";            
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,13 +177,13 @@
 
         #endregion
 
-        private Button loginBT;
+        private Button loginButton;
         private Label label1;
         private LinkLabel forgetpasswordLK;
         private TextBox username;
         private Label label2;
         private TextBox password;
-        private Button registerBT;
+        private Button registerButton;
         private Button searchBT;
         private TextBox textBox1;
         private PictureBox pictureBox1;

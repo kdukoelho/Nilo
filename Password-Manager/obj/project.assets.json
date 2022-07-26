@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cadu\\Desktop\\My Projects\\Password-Maanager\\Password-Manager\\Password-Manager\\Password-Manager.csproj",
+      "projectUniqueName": "C:\\Users\\Cadu\\Documents\\My Projects\\Password-Manager\\Password-Manager\\Password-Manager.csproj",
       "projectName": "Password-Manager",
-      "projectPath": "C:\\Users\\Cadu\\Desktop\\My Projects\\Password-Maanager\\Password-Manager\\Password-Manager\\Password-Manager.csproj",
+      "projectPath": "C:\\Users\\Cadu\\Documents\\My Projects\\Password-Manager\\Password-Manager\\Password-Manager.csproj",
       "packagesPath": "C:\\Users\\Cadu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cadu\\Desktop\\My Projects\\Password-Maanager\\Password-Manager\\Password-Manager\\obj\\",
+      "outputPath": "C:\\Users\\Cadu\\Documents\\My Projects\\Password-Manager\\Password-Manager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Cadu\\AppData\\Roaming\\NuGet\\NuGet.Config",

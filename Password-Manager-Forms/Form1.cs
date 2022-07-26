@@ -2,14 +2,20 @@ namespace Password_Manager_Forms
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private Thread? nt;
+        public Form1() => InitializeComponent();
+
+        private void openRegisterWindow()
         {
-            InitializeComponent();
+            Application.Run(new Form2());
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void registerButton_Click(object sender, EventArgs e)
         {
-
-        }
+            this.Close();
+            nt = new Thread(openRegisterWindow);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }        
     }
 }
