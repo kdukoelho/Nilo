@@ -196,12 +196,51 @@
         // My decode pattern method tests.
 
         [Fact]
-        public void DecodeString_ShouldReturn_DecodeAlphabet()
+        public void DecodeString_ShouldReturn_DecodedAlphabet()
         {
-            string stringExpected = "a";
-            string generatedString = Cryptography.DecodeString("r2t5e");
+            string stringExpected = alphabet;
+            string generatedString = Cryptography.DecodeString(encodedAlphabet);
 
             Assert.Equal(stringExpected, generatedString);
+        }
+
+        [Fact]
+        public void DecodeString_ShouldReturn_DecodedUpperAlphabet()
+        {
+            string stringExpected = upperAlphabet;
+            string generatedString = Cryptography.DecodeString(encodedUpperAlphabet);
+
+            Assert.Equal(stringExpected, generatedString);
+        }
+
+        [Fact]
+        public void DecodeString_ShouldReturn_DecodedNumbers()
+        {
+            string stringExpected = numbers;
+            string generatedString = Cryptography.DecodeString(encodedNumbers);
+
+            Assert.Equal(stringExpected, generatedString);
+        }
+
+        [Fact]
+        public void DecodeString_ShouldReturn_DecodedSymbols()
+        {
+            string stringExpected = symbols;
+            string stringGenerated = Cryptography.DecodeString(encodedSymbols);
+
+            Assert.Equal(stringExpected, stringGenerated);
+        }
+
+        [Fact]
+        public void DecodeString_ShouldThrow_ArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => Cryptography.DecodeString("a"));
+        }
+
+        [Fact]
+        public void DecodeString_ShouldThrow_InvalidDataException()
+        {
+            Assert.Throws<InvalidDataException>(() => Cryptography.DecodeString("hd58e"));
         }
     }
 }

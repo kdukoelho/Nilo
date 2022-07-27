@@ -326,7 +326,7 @@ namespace Password_Manager
             int codesQtt = forDecrypt.Length / 5;
             string[] decryptedStringArray = new string[codesQtt];
             int arrayIteration = 0;
-            for (int i = 0; i < forDecrypt.Length; i += 6)
+            for (int i = 0; i < forDecrypt.Length; i += 5)
             {
                 decryptedStringArray[arrayIteration] = forDecrypt.Substring(i, 5);
                 arrayIteration++;
@@ -548,6 +548,9 @@ namespace Password_Manager
                         break;
                     case "08kçh":
                         decryptedString += '+';
+                        break;
+                    case "29mzs":
+                        decryptedString += '-';
                         break;
                     case "08652":
                         decryptedString += ',';
