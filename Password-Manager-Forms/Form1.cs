@@ -5,6 +5,14 @@ namespace Password_Manager_Forms
         private Thread? nt;
         public Form1() => InitializeComponent();
 
+        public void goToRegisterScreen()
+        {
+            this.Close();
+            nt = new Thread(openRegisterWindow);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
         private void openRegisterWindow()
         {
             Application.Run(new Form2());
@@ -12,10 +20,14 @@ namespace Password_Manager_Forms
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            nt = new Thread(openRegisterWindow);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
+            try
+            {
+                goToRegisterScreen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}");
+            }
         }        
     }
 }

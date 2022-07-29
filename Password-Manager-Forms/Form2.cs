@@ -18,17 +18,67 @@ namespace Password_Manager_Forms
             InitializeComponent();
         }
 
+        private void goToLoginScreen()
+        {
+            this.Close();
+            nt = new Thread(openLoginForm);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
         private void openLoginForm()
         {
             Application.Run(new Form1());
         }
         
         private void cancelButton_Click(object sender, EventArgs e)
+        { 
+            try
+            {
+                goToLoginScreen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}");
+            }
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            nt = new Thread(openLoginForm);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
+            try
+            {           
+                if (username.Text == String.Empty || email.Text == String.Empty || keyword.Text == String.Empty || password.Text == String.Empty || Rpassword.Text == String.Empty)
+                {
+                    MessageBox.Show("Please fill all fields.");
+                }
+                else if (password.Text != Rpassword.Text) 
+                { 
+                    MessageBox.Show("Passwords doesnt match."); 
+                }
+                else if (!email.Text.Contains("@") || !email.Text.Contains(".com")) 
+                {
+                    MessageBox.Show("Please write a valid email.");
+                }
+                else
+                {
+                    if (Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, "database") == "true")
+                    {
+                        MessageBox.Show("Database created");
+                        username.Text = String.Empty; email.Text = String.Empty; keyword.Text = String.Empty; password.Text = String.Empty; Rpassword.Text = String.Empty;
+                        this.Close();
+                        goToLoginScreen();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, "database"));
+                    }
+                }                           
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}");
+            }
         }
     }
 }

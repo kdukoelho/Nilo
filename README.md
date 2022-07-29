@@ -13,3 +13,4 @@ The intention of this project is to develop a password manager that creates an i
   - My encode pattern: It takes a letter and turn into in encrypted code created by me(you can check the codes In "Password-Manager/Encode pattern.txt").
 - Windows login form.
 - Windows register form.
+- Script to create a database.

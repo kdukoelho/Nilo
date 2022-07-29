@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "Password-Manager/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Password-Manager.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Password-Manager.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Password-Manager/1.0.0": {
+      "type": "project",
+      "path": "../Password-Manager/Password-Manager.csproj",
+      "msbuildProject": "../Password-Manager/Password-Manager.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "Password-Manager >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Cadu\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Cadu\\Documents\\My Projects\\1. Password Manager - Windows\\Password-Manager\\Password-Manager.csproj": {
+              "projectPath": "C:\\Users\\Cadu\\Documents\\My Projects\\1. Password Manager - Windows\\Password-Manager\\Password-Manager.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

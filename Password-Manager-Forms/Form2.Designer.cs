@@ -39,9 +39,9 @@
             this.Rpassword = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.register = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.keyWord = new System.Windows.Forms.TextBox();
+            this.keyword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label2
@@ -152,16 +152,17 @@
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // register
+            // registerButton
             // 
-            this.register.BackColor = System.Drawing.Color.Black;
-            this.register.ForeColor = System.Drawing.Color.White;
-            this.register.Location = new System.Drawing.Point(272, 214);
-            this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(98, 28);
-            this.register.TabIndex = 13;
-            this.register.Text = "Register";
-            this.register.UseVisualStyleBackColor = false;
+            this.registerButton.BackColor = System.Drawing.Color.Black;
+            this.registerButton.ForeColor = System.Drawing.Color.White;
+            this.registerButton.Location = new System.Drawing.Point(272, 214);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(98, 28);
+            this.registerButton.TabIndex = 13;
+            this.registerButton.Text = "Register";
+            this.registerButton.UseVisualStyleBackColor = false;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // label1
             // 
@@ -172,15 +173,15 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Key word >";
             // 
-            // keyWord
+            // keyword
             // 
-            this.keyWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.keyWord.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.keyWord.Location = new System.Drawing.Point(272, 120);
-            this.keyWord.MaxLength = 100;
-            this.keyWord.Name = "keyWord";
-            this.keyWord.Size = new System.Drawing.Size(121, 18);
-            this.keyWord.TabIndex = 15;
+            this.keyword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.keyword.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.keyword.Location = new System.Drawing.Point(272, 120);
+            this.keyword.MaxLength = 100;
+            this.keyword.Name = "keyword";
+            this.keyword.Size = new System.Drawing.Size(121, 18);
+            this.keyword.TabIndex = 15;
             // 
             // Form2
             // 
@@ -188,9 +189,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
-            this.Controls.Add(this.keyWord);
+            this.Controls.Add(this.keyword);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.register);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Rpassword);
@@ -226,8 +227,8 @@
         private TextBox Rpassword;
         private Button button1;
         private Button cancelButton;
-        private Button register;
+        private Button registerButton;
         private Label label1;
-        private TextBox keyWord;
+        private TextBox keyword;
     }
 }

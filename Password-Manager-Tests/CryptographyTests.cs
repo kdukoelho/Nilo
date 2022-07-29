@@ -191,7 +191,7 @@
         public void EncodeString_ShouldThrow_InvalidDataException()
         {
             Assert.Throws<InvalidDataException>(() => Cryptography.EncodeString("'"));
-        }
+        }        
 
         // My decode pattern method tests.
 
