@@ -32,12 +32,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.username = new System.Windows.Forms.TextBox();
             this.email = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
             this.Rpassword = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveDatabaseButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.registerButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,13 +80,13 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Repeat password >";
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(229, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(250, 25);
-            this.textBox1.TabIndex = 6;
+            this.textBox.Location = new System.Drawing.Point(229, 25);
+            this.textBox.Name = "textBox";
+            this.textBox.ReadOnly = true;
+            this.textBox.Size = new System.Drawing.Size(250, 25);
+            this.textBox.TabIndex = 6;
             // 
             // username
             // 
@@ -129,16 +129,17 @@
             this.Rpassword.Size = new System.Drawing.Size(121, 18);
             this.Rpassword.TabIndex = 10;
             // 
-            // button1
+            // saveDatabaseButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(65, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 25);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Save database in >";
-            this.button1.UseVisualStyleBackColor = false;
+            this.saveDatabaseButton.BackColor = System.Drawing.Color.Black;
+            this.saveDatabaseButton.ForeColor = System.Drawing.Color.White;
+            this.saveDatabaseButton.Location = new System.Drawing.Point(65, 25);
+            this.saveDatabaseButton.Name = "saveDatabaseButton";
+            this.saveDatabaseButton.Size = new System.Drawing.Size(147, 25);
+            this.saveDatabaseButton.TabIndex = 11;
+            this.saveDatabaseButton.Text = "Save database in >";
+            this.saveDatabaseButton.UseVisualStyleBackColor = false;
+            this.saveDatabaseButton.Click += new System.EventHandler(this.saveDatabaseButton_Click);
             // 
             // cancelButton
             // 
@@ -193,12 +194,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveDatabaseButton);
             this.Controls.Add(this.Rpassword);
             this.Controls.Add(this.password);
             this.Controls.Add(this.email);
             this.Controls.Add(this.username);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -220,12 +221,12 @@
         private Label label3;
         private Label label5;
         private Label label4;
-        private TextBox textBox1;
+        private TextBox textBox;
         private TextBox username;
         private TextBox email;
         private TextBox password;
         private TextBox Rpassword;
-        private Button button1;
+        private Button saveDatabaseButton;
         private Button cancelButton;
         private Button registerButton;
         private Label label1;

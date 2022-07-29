@@ -7,10 +7,10 @@ The intention of this project is to develop a password manager that creates an i
 
 ## Features
 
+- Windows login form.
+- Windows register form.
 - Script to generate random passwords.
 - Script to do the encryptation. In this script there are two different types of encryptation, they are:
   - Caesar Cipher: Basically, it takes the index of a desire letter on alphabet and by default adds 7  more to the index, and them, catch the letter that is in (index + 7). So if you want to encrypt "a" the return will be "h". 
   - My encode pattern: It takes a letter and turn into in encrypted code created by me(you can check the codes In "Password-Manager/Encode pattern.txt").
-- Windows login form.
-- Windows register form.
-- Script to create a database.
+- Script to create a database: Create a csv file with username, email, keyword and password encrypted in a desire folder.

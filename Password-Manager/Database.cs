@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Password_Manager
 {
     public static class Database
     {
-        public static string CreateDatabase(string username, string password, string email, string keyword, string DbName)
+        public static string CreateDatabase(string username, string password, string email, string keyword, string path)
         {
             try
-            {
-                string path = $@"C:\Users\Cadu\Documents\Test\{DbName}.csv";
+            {                
                 if (File.Exists(path))
                 {
-                    return $"File {DbName} already exist in the current directory {path}";
+                    return $"File database already exist in the current directory {path}";
                 }
             else
                 {
-
+                    username = Cryptography.EncodeString(Cryptography.CaesarCipherEncrypt(username));
+                    password = Cryptography.EncodeString(Cryptography.CaesarCipherEncrypt(password));
+                    email = Cryptography.EncodeString(Cryptography.CaesarCipherEncrypt(email));
+                    keyword = Cryptography.EncodeString(Cryptography.CaesarCipherEncrypt(keyword));
+                   
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.AppendLine($"{username},{password},{email},{keyword}");
                     File.WriteAllText(path, stringBuilder.ToString());

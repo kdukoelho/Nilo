@@ -13,6 +13,8 @@ namespace Password_Manager_Forms
     public partial class Form2 : Form
     {
         private Thread? nt;
+        private string path;
+        
         public Form2()
         {
             InitializeComponent();
@@ -30,7 +32,24 @@ namespace Password_Manager_Forms
         {
             Application.Run(new Form1());
         }
-        
+
+        private void saveDatabaseButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textBox.Text = folderBrowserDialog.SelectedPath;
+                    this.path = folderBrowserDialog.SelectedPath;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}");
+            }
+        }
+
         private void cancelButton_Click(object sender, EventArgs e)
         { 
             try
@@ -61,7 +80,7 @@ namespace Password_Manager_Forms
                 }
                 else
                 {
-                    if (Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, "database") == "true")
+                    if (Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, path) == "true")
                     {
                         MessageBox.Show("Database created");
                         username.Text = String.Empty; email.Text = String.Empty; keyword.Text = String.Empty; password.Text = String.Empty; Rpassword.Text = String.Empty;
@@ -70,7 +89,7 @@ namespace Password_Manager_Forms
                     }
                     else
                     {
-                        MessageBox.Show(Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, "database"));
+                        MessageBox.Show(Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, path));
                     }
                 }                           
 
@@ -80,5 +99,7 @@ namespace Password_Manager_Forms
                 MessageBox.Show($"Unexpected error: {ex.Message}");
             }
         }
+
+        
     }
 }
