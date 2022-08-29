@@ -42,7 +42,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(462, 28);
+            this.numericUpDown1.Location = new System.Drawing.Point(462, 46);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(42, 25);
             this.numericUpDown1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(319, 30);
+            this.label1.Location = new System.Drawing.Point(319, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 19);
             this.label1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // lettersCB
             // 
             this.lettersCB.AutoSize = true;
-            this.lettersCB.Location = new System.Drawing.Point(305, 73);
+            this.lettersCB.Location = new System.Drawing.Point(305, 91);
             this.lettersCB.Name = "lettersCB";
             this.lettersCB.Size = new System.Drawing.Size(71, 23);
             this.lettersCB.TabIndex = 2;
@@ -69,7 +69,7 @@
             // uLetterCB
             // 
             this.uLetterCB.AutoSize = true;
-            this.uLetterCB.Location = new System.Drawing.Point(305, 114);
+            this.uLetterCB.Location = new System.Drawing.Point(305, 132);
             this.uLetterCB.Name = "uLetterCB";
             this.uLetterCB.Size = new System.Drawing.Size(115, 23);
             this.uLetterCB.TabIndex = 3;
@@ -79,7 +79,7 @@
             // numbersCB
             // 
             this.numbersCB.AutoSize = true;
-            this.numbersCB.Location = new System.Drawing.Point(435, 73);
+            this.numbersCB.Location = new System.Drawing.Point(435, 91);
             this.numbersCB.Name = "numbersCB";
             this.numbersCB.Size = new System.Drawing.Size(89, 23);
             this.numbersCB.TabIndex = 4;
@@ -89,7 +89,7 @@
             // symbolsCB
             // 
             this.symbolsCB.AutoSize = true;
-            this.symbolsCB.Location = new System.Drawing.Point(435, 114);
+            this.symbolsCB.Location = new System.Drawing.Point(435, 132);
             this.symbolsCB.Name = "symbolsCB";
             this.symbolsCB.Size = new System.Drawing.Size(85, 23);
             this.symbolsCB.TabIndex = 5;
@@ -99,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(309, 195);
+            this.label2.Location = new System.Drawing.Point(309, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 19);
             this.label2.TabIndex = 6;
@@ -108,7 +108,7 @@
             // password
             // 
             this.password.AutoSize = true;
-            this.password.Location = new System.Drawing.Point(462, 195);
+            this.password.Location = new System.Drawing.Point(462, 213);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(0, 19);
             this.password.TabIndex = 7;
@@ -116,7 +116,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(309, 151);
+            this.button1.Location = new System.Drawing.Point(309, 169);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(215, 31);
             this.button1.TabIndex = 8;

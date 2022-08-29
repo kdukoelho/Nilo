@@ -1,6 +1,6 @@
 namespace Password_Manager_Tests
 {
-    public class PasswordTests
+    public class PasswordGeneratorTests
     {
         const int qttChars = 5;
 

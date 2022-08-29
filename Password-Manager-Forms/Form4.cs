@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace Password_Manager_Forms
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
-        
-        public Form3()
+        public Form4()
         {
             InitializeComponent();
-        }
-
-        private void addComponentsInListBox()
-        {
-
-        }
-
-        private void extractStringCsv(string path= @"C:\Users\Cadu\Documents\Test")
-        {
-            //File.ReadLines(); 
         }
     }
 }

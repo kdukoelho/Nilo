@@ -14,7 +14,8 @@ namespace Password_Manager_Forms
     {
         private Thread? nt;
         private string path;
-        
+
+
         public Form2()
         {
             InitializeComponent();
@@ -22,10 +23,17 @@ namespace Password_Manager_Forms
 
         private void goToLoginScreen()
         {
-            this.Close();
-            nt = new Thread(openLoginForm);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
+            try
+            {
+                this.Close();
+                nt = new Thread(openLoginForm);
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in goToLoginScreen: {ex.Message}");
+            }
         }
 
         private void openLoginForm()
@@ -41,12 +49,13 @@ namespace Password_Manager_Forms
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBox.Text = folderBrowserDialog.SelectedPath;
-                    this.path = folderBrowserDialog.SelectedPath;
+                    string path = folderBrowserDialog.SelectedPath;
+                    this.path = path + @"\safes.txt";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error: {ex.Message}");
+                MessageBox.Show($"Unexpected error in saveDatabaseButton_Click: {ex.Message}");
             }
         }
 
@@ -58,7 +67,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error: {ex.Message}");
+                MessageBox.Show($"Unexpected error in cancelButton_Click: {ex.Message}");
             }
         }
 
@@ -66,7 +75,7 @@ namespace Password_Manager_Forms
         {
             try
             {           
-                if (username.Text == String.Empty || email.Text == String.Empty || keyword.Text == String.Empty || password.Text == String.Empty || Rpassword.Text == String.Empty)
+                if (password.Text == String.Empty || Rpassword.Text == String.Empty)
                 {
                     MessageBox.Show("Please fill all fields.");
                 }
@@ -74,29 +83,25 @@ namespace Password_Manager_Forms
                 { 
                     MessageBox.Show("Passwords doesnt match."); 
                 }
-                else if (!email.Text.Contains("@") || !email.Text.Contains(".com")) 
-                {
-                    MessageBox.Show("Please write a valid email.");
-                }
                 else
                 {
-                    if (Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, path) == "true")
-                    {
-                        MessageBox.Show("Database created");
-                        username.Text = String.Empty; email.Text = String.Empty; keyword.Text = String.Empty; password.Text = String.Empty; Rpassword.Text = String.Empty;
+                    string createDb = Password_Manager.Database.CreateDatabase(password.Text, path);
+                    if (createDb == "true")
+                    {                        
+                        password.Text = String.Empty;
                         this.Close();
                         goToLoginScreen();
                     }
                     else
                     {
-                        MessageBox.Show(Password_Manager.Database.CreateDatabase(username.Text, email.Text, keyword.Text, password.Text, path));
+                        MessageBox.Show(createDb);
                     }
-                }                           
+                }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error: {ex.Message}");
+                MessageBox.Show($"Unexpected error in registerButton_Click: {ex.Message}");
             }
         }
 
