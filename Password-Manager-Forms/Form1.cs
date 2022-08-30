@@ -2,49 +2,120 @@ namespace Password_Manager_Forms
 {
     public partial class Form1 : Form
     {
-        private Thread? nt;   
+        private Thread? nt;
+        private string? path;
+        private int loginAttempts = 0;
         public Form1() => InitializeComponent();
 
-        public void goToRegisterScreen()
+        public void GoToRegisterScreen()
         {
             this.Close();
-            nt = new Thread(openRegisterWindow);
+            nt = new Thread(OpenRegisterWindow);
             nt.SetApartmentState(ApartmentState.STA);
             nt.Start();
         }
 
-        private void openRegisterWindow()
+        private void OpenRegisterWindow()
         {
             Application.Run(new Form2());
         }
 
-        private void readLine(string path)
+        public void GoToPasswordsScreen()
         {
-            //StreamReader streamReader= new StreamReader(path);
-            //var line = streamReader.ReadLine().Substring(0);
-            //MessageBox.Show(line);
+            this.Close();
+            nt = new Thread(OpenPasswordsWindow);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
+        private void OpenPasswordsWindow()
+        {
+            Application.Run(new Form3());
+        }
+
+        private string ReadPassword(string path)
+        {
+            try 
+            {
+                StreamReader streamReader = new StreamReader(path);
+                string? line = streamReader.ReadLine();
+                //int indexPassBegin = line.IndexOf(@"\");
+                string password = line.Substring(0);
+                return line;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in ReadPasswordLine: {ex.Message}");
+                return String.Empty;
+            }
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
             try
             {
-                goToRegisterScreen();
+                GoToRegisterScreen();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error: {ex.Message}");
+                MessageBox.Show($"Unexpected error in registerButton_Click: {ex.Message}");
             }
         }
 
         private void searchBT_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();           
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                textBox.Text = openFileDialog.FileName;
-                string path = openFileDialog.FileName;
-                readLine(path);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textBox.Text = openFileDialog.FileName;
+                    this.path = openFileDialog.FileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in searchBT_Click {ex.Message}");
+            }
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.path != null)
+                {
+                    string decodedPassword = Password_Manager.Database.DecodeData(ReadPassword(this.path));
+                    
+                    string userPassword = password.Text;
+                   
+                    if (userPassword == decodedPassword)
+                    {
+                        GoToPasswordsScreen();
+                    }
+                    else if (userPassword != decodedPassword) 
+                    {
+                        this.loginAttempts++;
+                        if (this.loginAttempts > 3)
+                        {
+                            this.Close();
+                        }
+                        MessageBox.Show($"Wrong Password {this.loginAttempts}/3");                       
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Select a file to continue.");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in loginButton_Click {ex.Message}");
             }
         }
     }

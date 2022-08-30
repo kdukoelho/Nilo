@@ -60,7 +60,7 @@ namespace Password_Manager
 
         static public string EncodeString(string forEncrypt)
         {
-            string encryptedString = "";
+            string encryptedString = String.Empty;
             
             foreach (char letter in forEncrypt)
             {
@@ -322,7 +322,7 @@ namespace Password_Manager
         
         static public string DecodeString(string forDecrypt)
         {
-            string decryptedString = "";
+            string decryptedString = String.Empty;
             int codesQtt = forDecrypt.Length / 5;
             string[] decryptedStringArray = new string[codesQtt];
             int arrayIteration = 0;

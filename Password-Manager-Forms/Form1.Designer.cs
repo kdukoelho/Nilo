@@ -48,11 +48,12 @@
             this.loginButton.TabIndex = 0;
             this.loginButton.Text = "Go!";
             this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 135);
+            this.label2.Location = new System.Drawing.Point(95, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 19);
             this.label2.TabIndex = 4;
@@ -63,7 +64,7 @@
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.password.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.password.Location = new System.Drawing.Point(182, 136);
+            this.password.Location = new System.Drawing.Point(182, 139);
             this.password.MaxLength = 100;
             this.password.Name = "password";
             this.password.PasswordChar = '●';

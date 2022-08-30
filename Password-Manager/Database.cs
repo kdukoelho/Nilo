@@ -23,6 +23,24 @@ namespace Password_Manager
             }
         }
 
+        public static string DecodeData(string password)
+        {
+            try
+            {
+                password = Cryptography.CaesarCipherDecrypt(Cryptography.DecodeString(password));
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine($"{password}");
+                string decodedData = stringBuilder.ToString();
+                decodedData = decodedData.Trim();
+
+                return decodedData;
+            }
+            catch (Exception ex)
+            {
+                return $"Unexpected error in DecodeData: {ex.Message}";
+            }
+        }
+
         public static string CreateDatabase(string password, string path)
         {
             try
@@ -41,23 +59,6 @@ namespace Password_Manager
             catch (Exception ex)
             {
                 return $"Unexpected error in CreateDatabase: {ex.Message}";
-            }
-        }       
-
-        private static string DecodeData(string password)
-        {
-            try
-            {
-                password = Cryptography.CaesarCipherDecrypt(Cryptography.DecodeString(password));
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"{password}");
-                string decodedData = stringBuilder.ToString();
-                
-                return decodedData;
-            }
-            catch (Exception ex)
-            {
-                return $"Unexpected error in DecodeData: {ex.Message}";
             }
         }       
     }

@@ -13,7 +13,7 @@ namespace Password_Manager_Forms
     public partial class Form2 : Form
     {
         private Thread? nt;
-        private string path;
+        private string? path;
 
 
         public Form2()
@@ -49,8 +49,7 @@ namespace Password_Manager_Forms
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBox.Text = folderBrowserDialog.SelectedPath;
-                    string path = folderBrowserDialog.SelectedPath;
-                    this.path = path + @"\safes.txt";
+                    this.path = folderBrowserDialog.SelectedPath + @"\safes.txt";
                 }
             }
             catch (Exception ex)
@@ -97,14 +96,11 @@ namespace Password_Manager_Forms
                         MessageBox.Show(createDb);
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Unexpected error in registerButton_Click: {ex.Message}");
             }
-        }
-
-        
+        }      
     }
 }
