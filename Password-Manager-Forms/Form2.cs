@@ -84,16 +84,23 @@ namespace Password_Manager_Forms
                 }
                 else
                 {
-                    string createDb = Password_Manager.Database.CreateDatabase(password.Text, path);
-                    if (createDb == "true")
-                    {                        
-                        password.Text = String.Empty;
-                        this.Close();
-                        goToLoginScreen();
+                    if (path != null)
+                    {
+                        string createDb = Password_Manager.Database.CreateDatabase(password.Text, path);
+                        if (createDb == "true")
+                        {
+                            password.Text = String.Empty;
+                            this.Close();
+                            goToLoginScreen();
+                        }
+                        else
+                        {
+                            MessageBox.Show(createDb);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(createDb);
+                        MessageBox.Show("Error in registerButton_Click: No file selected.");
                     }
                 }
             }

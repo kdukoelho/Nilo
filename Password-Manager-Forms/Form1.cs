@@ -38,10 +38,15 @@ namespace Password_Manager_Forms
             try 
             {
                 StreamReader streamReader = new StreamReader(path);
+                
                 string? line = streamReader.ReadLine();
-                //int indexPassBegin = line.IndexOf(@"\");
-                string password = line.Substring(0);
-                return line;
+                if (line != null) 
+                {
+                    //int indexPassBegin = line.IndexOf(@"\");
+                    string? password = line.Substring(0);
+                    return line;
+                }
+                return "Database not found.";
             }
             catch (Exception ex)
             {
@@ -85,26 +90,28 @@ namespace Password_Manager_Forms
             {
                 if (this.path != null)
                 {
-                    string decodedPassword = Password_Manager.Database.DecodeData(ReadPassword(this.path));
-                    
-                    string userPassword = password.Text;
-                   
-                    if (userPassword == decodedPassword)
+                    string passwordReader = ReadPassword(this.path);
+                    if (passwordReader != "Database not found.")
                     {
-                        GoToPasswordsScreen();
-                    }
-                    else if (userPassword != decodedPassword) 
-                    {
-                        this.loginAttempts++;
-                        if (this.loginAttempts > 3)
+                        string decodedPassword = Password_Manager.Database.DecodeData(passwordReader);
+                        string userPassword = password.Text;
+                        if (userPassword == decodedPassword)
                         {
-                            this.Close();
+                            GoToPasswordsScreen();
                         }
-                        MessageBox.Show($"Wrong Password {this.loginAttempts}/3");                       
-                    }
+                        else if (userPassword != decodedPassword)
+                        {
+                            this.loginAttempts++;
+                            if (this.loginAttempts > 3)
+                            {
+                                this.Close();
+                            }
+                            MessageBox.Show($"Wrong Password {this.loginAttempts}/3");
+                        }
+                    }                    
                     else
                     {
-                        
+                        MessageBox.Show(passwordReader);
                     }
                 }
                 else

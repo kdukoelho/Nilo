@@ -61,7 +61,6 @@
             // 
             this.textBox.BackColor = System.Drawing.Color.White;
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox.Location = new System.Drawing.Point(169, 69);
             this.textBox.Name = "textBox";
@@ -108,7 +107,7 @@
             // 
             this.cancelButton.BackColor = System.Drawing.Color.Black;
             this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(184, 175);
+            this.cancelButton.Location = new System.Drawing.Point(184, 180);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(78, 28);
             this.cancelButton.TabIndex = 12;
@@ -120,7 +119,7 @@
             // 
             this.CreateButton.BackColor = System.Drawing.Color.Black;
             this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(278, 175);
+            this.CreateButton.Location = new System.Drawing.Point(278, 180);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(98, 28);
             this.CreateButton.TabIndex = 13;

@@ -97,7 +97,6 @@
             // 
             this.textBox.BackColor = System.Drawing.Color.White;
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox.Location = new System.Drawing.Point(201, 94);
             this.textBox.Name = "textBox";
@@ -108,7 +107,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Password_Manager_Forms.Properties.Resources.cat_eyes;
-            this.pictureBox1.Location = new System.Drawing.Point(160, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(154, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(221, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
