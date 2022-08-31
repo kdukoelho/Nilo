@@ -1,9 +1,9 @@
-# Watchful Black Cat - Password Manager
-
 The intention of this project is to develop a password manager that creates an encrypted database to save your passes. It will have functions for adding existing passwords, as well as for creating random passwords.
 
 ![login form.png](https://www.dropbox.com/s/fr6wn0j6r3kqyim/login%20form.png?dl=0&raw=1)
 ![register form.png](https://www.dropbox.com/s/mlzqnp0nxngnlxl/register%20form.png?dl=0&raw=1)
+![passwords form.png](https://www.dropbox.com/s/bxakxc6jpqruu6f/passwords%20form.png?dl=0&raw=1)
+![password generator form.png](https://www.dropbox.com/s/izr00irgzayn6gb/password%20generator%20form.png?dl=0&raw=1)
 
 
 ## Features
