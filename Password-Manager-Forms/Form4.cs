@@ -71,7 +71,7 @@ namespace Password_Manager_Forms
                     string symbols = Password_Manager.Password.SymbolsGen(TurnFalseOnZero(charQtt, symbolsCheckBox.Checked));
                     string numbers = Password_Manager.Password.NumGen(TurnFalseOnZero(charQtt, numbersCheckBox.Checked));
                     generatedPassword = Password_Manager.Password.ShuflePassword(charQtt, letters, numbers, upperLetters, symbols);
-                    generatedPasswordLabel.Text = generatedPassword;
+                    generatedPasswordTextBox.Text = generatedPassword;
 
                 }
             }

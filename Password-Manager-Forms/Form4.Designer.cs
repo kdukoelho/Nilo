@@ -44,8 +44,8 @@
             this.addListButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.generatedPasswordLabel = new System.Windows.Forms.Label();
             this.generateButton = new System.Windows.Forms.Button();
+            this.generatedPasswordTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,19 +210,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 257);
+            this.label5.Location = new System.Drawing.Point(12, 260);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 19);
             this.label5.TabIndex = 27;
             this.label5.Text = "Password:";
-            // 
-            // generatedPasswordLabel
-            // 
-            this.generatedPasswordLabel.AutoSize = true;
-            this.generatedPasswordLabel.Location = new System.Drawing.Point(85, 257);
-            this.generatedPasswordLabel.Name = "generatedPasswordLabel";
-            this.generatedPasswordLabel.Size = new System.Drawing.Size(0, 19);
-            this.generatedPasswordLabel.TabIndex = 28;
             // 
             // generateButton
             // 
@@ -236,14 +228,23 @@
             this.generateButton.UseVisualStyleBackColor = false;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
+            // generatedPasswordTextBox
+            // 
+            this.generatedPasswordTextBox.BackColor = System.Drawing.Color.DimGray;
+            this.generatedPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.generatedPasswordTextBox.Location = new System.Drawing.Point(91, 260);
+            this.generatedPasswordTextBox.Name = "generatedPasswordTextBox";
+            this.generatedPasswordTextBox.Size = new System.Drawing.Size(139, 18);
+            this.generatedPasswordTextBox.TabIndex = 30;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(269, 327);
+            this.Controls.Add(this.generatedPasswordTextBox);
             this.Controls.Add(this.generateButton);
-            this.Controls.Add(this.generatedPasswordLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.addListButton);
@@ -291,7 +292,7 @@
         private Button addListButton;
         private Button backButton;
         private Label label5;
-        private Label generatedPasswordLabel;
         private Button generateButton;
+        private TextBox generatedPasswordTextBox;
     }
 }
