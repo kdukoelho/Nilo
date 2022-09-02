@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.passwordSizeTrackBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupTextBox = new System.Windows.Forms.TextBox();
             this.numbersCheckBox = new System.Windows.Forms.CheckBox();
-            this.upperLettesCheckBox = new System.Windows.Forms.CheckBox();
+            this.upperLettersCheckBox = new System.Windows.Forms.CheckBox();
             this.symbolsCheckBox = new System.Windows.Forms.CheckBox();
             this.lettersCheckBox = new System.Windows.Forms.CheckBox();
-            this.chaQttLabel = new System.Windows.Forms.Label();
+            this.charQttLabel = new System.Windows.Forms.Label();
             this.copyButton = new System.Windows.Forms.Button();
             this.addListButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.generatedPasswordLabel = new System.Windows.Forms.Label();
             this.generateButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -58,12 +58,16 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "Password Size:";
             // 
-            // trackBar1
+            // passwordSizeTrackBar
             // 
-            this.trackBar1.Location = new System.Drawing.Point(122, 181);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 21;
+            this.passwordSizeTrackBar.Location = new System.Drawing.Point(122, 181);
+            this.passwordSizeTrackBar.Maximum = 25;
+            this.passwordSizeTrackBar.Minimum = 8;
+            this.passwordSizeTrackBar.Name = "passwordSizeTrackBar";
+            this.passwordSizeTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.passwordSizeTrackBar.TabIndex = 21;
+            this.passwordSizeTrackBar.Value = 8;
+            this.passwordSizeTrackBar.Scroll += new System.EventHandler(this.passwordSizeTrackBar_Scroll);
             // 
             // label3
             // 
@@ -114,6 +118,8 @@
             // numbersCheckBox
             // 
             this.numbersCheckBox.AutoSize = true;
+            this.numbersCheckBox.Checked = true;
+            this.numbersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.numbersCheckBox.Location = new System.Drawing.Point(131, 146);
             this.numbersCheckBox.Name = "numbersCheckBox";
             this.numbersCheckBox.Size = new System.Drawing.Size(89, 23);
@@ -121,19 +127,23 @@
             this.numbersCheckBox.Text = "Numbers";
             this.numbersCheckBox.UseVisualStyleBackColor = true;
             // 
-            // upperLettesCheckBox
+            // upperLettersCheckBox
             // 
-            this.upperLettesCheckBox.AutoSize = true;
-            this.upperLettesCheckBox.Location = new System.Drawing.Point(131, 117);
-            this.upperLettesCheckBox.Name = "upperLettesCheckBox";
-            this.upperLettesCheckBox.Size = new System.Drawing.Size(115, 23);
-            this.upperLettesCheckBox.TabIndex = 14;
-            this.upperLettesCheckBox.Text = "Upper Letters";
-            this.upperLettesCheckBox.UseVisualStyleBackColor = true;
+            this.upperLettersCheckBox.AutoSize = true;
+            this.upperLettersCheckBox.Checked = true;
+            this.upperLettersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.upperLettersCheckBox.Location = new System.Drawing.Point(131, 117);
+            this.upperLettersCheckBox.Name = "upperLettersCheckBox";
+            this.upperLettersCheckBox.Size = new System.Drawing.Size(115, 23);
+            this.upperLettersCheckBox.TabIndex = 14;
+            this.upperLettersCheckBox.Text = "Upper Letters";
+            this.upperLettersCheckBox.UseVisualStyleBackColor = true;
             // 
             // symbolsCheckBox
             // 
             this.symbolsCheckBox.AutoSize = true;
+            this.symbolsCheckBox.Checked = true;
+            this.symbolsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.symbolsCheckBox.Location = new System.Drawing.Point(37, 146);
             this.symbolsCheckBox.Name = "symbolsCheckBox";
             this.symbolsCheckBox.Size = new System.Drawing.Size(85, 23);
@@ -144,6 +154,8 @@
             // lettersCheckBox
             // 
             this.lettersCheckBox.AutoSize = true;
+            this.lettersCheckBox.Checked = true;
+            this.lettersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.lettersCheckBox.Location = new System.Drawing.Point(37, 117);
             this.lettersCheckBox.Name = "lettersCheckBox";
             this.lettersCheckBox.Size = new System.Drawing.Size(71, 23);
@@ -151,14 +163,14 @@
             this.lettersCheckBox.Text = "Letters";
             this.lettersCheckBox.UseVisualStyleBackColor = true;
             // 
-            // chaQttLabel
+            // charQttLabel
             // 
-            this.chaQttLabel.AutoSize = true;
-            this.chaQttLabel.Location = new System.Drawing.Point(233, 183);
-            this.chaQttLabel.Name = "chaQttLabel";
-            this.chaQttLabel.Size = new System.Drawing.Size(16, 19);
-            this.chaQttLabel.TabIndex = 23;
-            this.chaQttLabel.Text = "0";
+            this.charQttLabel.AutoSize = true;
+            this.charQttLabel.Location = new System.Drawing.Point(233, 183);
+            this.charQttLabel.Name = "charQttLabel";
+            this.charQttLabel.Size = new System.Drawing.Size(16, 19);
+            this.charQttLabel.TabIndex = 23;
+            this.charQttLabel.Text = "8";
             // 
             // copyButton
             // 
@@ -206,7 +218,7 @@
             // generatedPasswordLabel
             // 
             this.generatedPasswordLabel.AutoSize = true;
-            this.generatedPasswordLabel.Location = new System.Drawing.Point(93, 257);
+            this.generatedPasswordLabel.Location = new System.Drawing.Point(85, 257);
             this.generatedPasswordLabel.Name = "generatedPasswordLabel";
             this.generatedPasswordLabel.Size = new System.Drawing.Size(0, 19);
             this.generatedPasswordLabel.TabIndex = 28;
@@ -221,6 +233,7 @@
             this.generateButton.TabIndex = 29;
             this.generateButton.Text = "Generate";
             this.generateButton.UseVisualStyleBackColor = false;
+            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
             // Form4
             // 
@@ -234,16 +247,16 @@
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.addListButton);
             this.Controls.Add(this.copyButton);
-            this.Controls.Add(this.chaQttLabel);
+            this.Controls.Add(this.charQttLabel);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.passwordSizeTrackBar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupTextBox);
             this.Controls.Add(this.numbersCheckBox);
-            this.Controls.Add(this.upperLettesCheckBox);
+            this.Controls.Add(this.upperLettersCheckBox);
             this.Controls.Add(this.symbolsCheckBox);
             this.Controls.Add(this.lettersCheckBox);
             this.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -253,7 +266,7 @@
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Generator";
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,17 +275,17 @@
         #endregion
 
         private Label label4;
-        private TrackBar trackBar1;
+        private TrackBar passwordSizeTrackBar;
         private Label label3;
         private TextBox textBox1;
         private Label label2;
         private Label label1;
         private TextBox groupTextBox;
         private CheckBox numbersCheckBox;
-        private CheckBox upperLettesCheckBox;
+        private CheckBox upperLettersCheckBox;
         private CheckBox symbolsCheckBox;
         private CheckBox lettersCheckBox;
-        private Label chaQttLabel;
+        private Label charQttLabel;
         private Button copyButton;
         private Button addListButton;
         private Button backButton;

@@ -2,27 +2,13 @@
 {
     static public class Password
     {
-        static private int qttNums, qttSymbols, qttLetter, qttUpperLetter;
-        static public void Init(int letter, int upperLetter, int symbols, int nums)
-        {
-            if (letter <= 0 || upperLetter <= 0 || symbols <= 0 || nums <= 0)
-            {
-                throw new InvalidOperationException();
-            }
-            else
-            {
-                qttLetter = letter;
-                qttUpperLetter = upperLetter;
-                qttSymbols = symbols;
-                qttNums = nums;
-            }
-        }           
+        static private int qttNums, qttSymbols, qttLetter, qttUpperLetter;  
 
         static public string NumGen(int qttNums) // Generate a string with numbers.
         {
             if (qttNums <= 0)
             {
-                throw new InvalidOperationException();
+                return "";
             }
             else
             {
@@ -37,11 +23,11 @@
             }            
         }
 
-        static public string UpperLetterGen(int qttUpperLetter) // Generate a string with letters.
+        static public string UpperLetterGen(int qttUpperLetter) // Generate a string with upper letters.
         {
             if (qttUpperLetter <= 0)
             {
-                throw new InvalidOperationException();
+                return "";
             }
             else
             {
@@ -56,11 +42,11 @@
             }
         }
 
-        static public string LetterGen(int qttLetter) // Generate a string with upper letters.
+        static public string LetterGen(int qttLetter) // Generate a string with letters.
         {
             if (qttLetter <= 0)
             {
-                throw new InvalidOperationException();
+                return "";
             }
             else
             {
@@ -79,7 +65,7 @@
         {
             if (qttSymbols <= 0)
             {
-                throw new InvalidOperationException();
+                return "";
             }
             else
             {
@@ -102,29 +88,24 @@
             }            
         }
 
-        static public string GeneratePassword() // Generate a password and shuffle all chars.
+        static public string ShuflePassword(int charQtt, string letters, string nums, string upperLetters, string symbols) // Shuffle all chars and defines password lenght.
         {
-            char letter;
-            string finalPass = LetterGen(qttLetter) + NumGen(qttNums) + UpperLetterGen(qttUpperLetter) + SymbolsGen(qttSymbols);
+            string finalPass = letters + nums + upperLetters + symbols;
             string[] wordsList = new string[finalPass.Length];
 
-            for (int i = 0; i < finalPass.Length; i++)
-            {
-                letter = finalPass[i];
-                wordsList[i] += letter;
-            }
+            for (int i = 0; i < finalPass.Length; i++) { wordsList[i] += finalPass[i]; }
 
             Random random = new Random();
             for (int i = 0; i < (wordsList.Length - 1); i++)
             {
                 int x = random.Next(wordsList.Length);
-                string temp = wordsList[i];
+                string tempString = wordsList[i];
                 wordsList[i] = wordsList[x];
-                wordsList[x] = temp;
+                wordsList[x] = tempString;
             }
 
-            finalPass = "";
-            for (int i = 0; i < wordsList.Length; i++)
+            finalPass = String.Empty;
+            for (int i = 0; i < charQtt; i++)
             {
                 finalPass += wordsList[i];
             }

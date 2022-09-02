@@ -3,13 +3,7 @@ namespace Password_Manager_Tests
     public class PasswordGeneratorTests
     {
         const int qttChars = 5;
-
-        [Fact]
-        public void Init_ShouldThrow_InvalidOperationException()
-        {
-            Assert.Throws<InvalidOperationException>(() => Password.Init(-qttChars, -qttChars, -qttChars, -qttChars));
-        }
-        
+               
         [Fact]
         public void NumGen_ShouldReturn_Nums()
         {
@@ -35,9 +29,11 @@ namespace Password_Manager_Tests
         }
 
         [Fact]
-        public void NumGen_ShouldThrow_InvalidOperationExcepiton()
+        public void NumGen_ShouldReturn_EmptyString()
         {
-            Assert.Throws<InvalidOperationException>(() => Password.NumGen(-qttChars));
+            string generatedStr = Password.NumGen(0);
+            string expectedStr = "";
+            Assert.Equal(expectedStr, generatedStr);
         }
 
         [Fact]
@@ -65,9 +61,12 @@ namespace Password_Manager_Tests
         }
 
         [Fact]
-        public void SymbolsGen_ShouldThrow_InvalidOperationException()
+        public void SymbolsGen_ShouldReturn_EmptyString()
         {
-            Assert.Throws<InvalidOperationException>(() => Password.SymbolsGen(-qttChars));
+            string generatedStr = Password.SymbolsGen(0);
+            string expectedStr = "";
+
+            Assert.Equal(expectedStr, generatedStr);
         }
 
         [Fact]
@@ -95,9 +94,12 @@ namespace Password_Manager_Tests
         }
 
         [Fact]
-        public void LetterGen_ShouldThrow_InvalidOperationException()
+        public void LetterGen_ShouldReturn_EmptyString()
         {
-            Assert.Throws<InvalidOperationException>(() => Password.LetterGen(-qttChars));
+            string generatedStr = Password.LetterGen(0);
+            string expectedStr = "";
+
+            Assert.Equal(expectedStr, generatedStr);
         }
 
         [Fact]
@@ -125,34 +127,15 @@ namespace Password_Manager_Tests
         }
 
         [Fact]
-        public void UpperLetterGen_ShouldThrows_InvalidOperationException()
+        public void UpperLetterGen_ShouldReturn_EmptyString()
         {
-            Assert.Throws<InvalidOperationException>(() => Password.UpperLetterGen(-qttChars));
+            string generatedStr = Password.UpperLetterGen(0);
+            string expectedStr = "";
+
+            Assert.Equal(expectedStr, generatedStr);
         }
 
-        [Fact]
-        public void GeneratePassword_ShouldReturn_Password()
-        {
-
-            bool check = false;
-            string possibleChars = "qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM1234567890!#$%&()*+,=./:;<=>?@";
-            Password.Init(qttChars, qttChars, qttChars, qttChars);
-            string generatedPassword = Password.GeneratePassword();
-            foreach (char charac in generatedPassword)
-            {
-                if (possibleChars.Contains(charac))
-                {
-                    check = true;
-                }
-                else
-                {
-                    check = false;
-                    break;
-                }
-            }
-
-            Assert.True(check);
-            Assert.Equal(qttChars * 4, generatedPassword.Length);
-        }
+        
+        
     }
 }
