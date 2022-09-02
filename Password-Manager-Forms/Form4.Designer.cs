@@ -182,6 +182,7 @@
             this.copyButton.TabIndex = 24;
             this.copyButton.Text = "Copy";
             this.copyButton.UseVisualStyleBackColor = false;
+            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
             // 
             // addListButton
             // 
@@ -265,7 +266,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Password Generator";
+            this.Text = "PASSWORD GENERATOR";
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

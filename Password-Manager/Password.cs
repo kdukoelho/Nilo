@@ -2,8 +2,6 @@
 {
     static public class Password
     {
-        static private int qttNums, qttSymbols, qttLetter, qttUpperLetter;  
-
         static public string NumGen(int qttNums) // Generate a string with numbers.
         {
             if (qttNums <= 0)
@@ -13,7 +11,7 @@
             else
             {
                 Random rnd = new Random();
-                string genNums = "";               
+                string genNums = "";
                 for (int i = 0; i < qttNums; i++)
                 {
                     string strNums = Convert.ToString(rnd.Next(0, 9));
@@ -87,7 +85,7 @@
                 return genSymbols;
             }            
         }
-
+        
         static public string ShuflePassword(int charQtt, string letters, string nums, string upperLetters, string symbols) // Shuffle all chars and defines password lenght.
         {
             string finalPass = letters + nums + upperLetters + symbols;

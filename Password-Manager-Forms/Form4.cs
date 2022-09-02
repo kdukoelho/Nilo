@@ -13,6 +13,7 @@ namespace Password_Manager_Forms
     public partial class Form4 : Form
     {
         Thread? nt;
+        private string generatedPassword;
         public Form4()
         {
             InitializeComponent();
@@ -69,7 +70,7 @@ namespace Password_Manager_Forms
                     string upperLetters = Password_Manager.Password.UpperLetterGen(TurnFalseOnZero(charQtt, upperLettersCheckBox.Checked));
                     string symbols = Password_Manager.Password.SymbolsGen(TurnFalseOnZero(charQtt, symbolsCheckBox.Checked));
                     string numbers = Password_Manager.Password.NumGen(TurnFalseOnZero(charQtt, numbersCheckBox.Checked));
-                    string generatedPassword = Password_Manager.Password.ShuflePassword(charQtt, letters, numbers, upperLetters, symbols);
+                    generatedPassword = Password_Manager.Password.ShuflePassword(charQtt, letters, numbers, upperLetters, symbols);
                     generatedPasswordLabel.Text = generatedPassword;
 
                 }
@@ -78,6 +79,11 @@ namespace Password_Manager_Forms
             {
                 MessageBox.Show($"Unexpected error in generateButton_Click: {ex.Message}");
             }
+        }
+
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(generatedPassword);
         }
     }
 }
