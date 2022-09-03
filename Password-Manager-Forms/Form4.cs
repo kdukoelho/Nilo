@@ -13,7 +13,7 @@ namespace Password_Manager_Forms
     public partial class Form4 : Form
     {
         Thread? nt;
-        private string generatedPassword;
+        private string? generatedPassword;
         public Form4()
         {
             InitializeComponent();
@@ -84,6 +84,11 @@ namespace Password_Manager_Forms
         private void copyButton_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(generatedPassword);
+        }
+
+        public void addListButton_Click(object sender, EventArgs e)
+        {
+            string titleAndPassString = titleTextBox.Text + " = " + generatedPassword;
         }
     }
 }

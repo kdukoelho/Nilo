@@ -46,7 +46,10 @@ namespace Password_Manager_Forms
                     string? password = line.Substring(0);
                     return line;
                 }
-                return "Database not found.";
+                else
+                {
+                    return "Database not found.";
+                }                
             }
             catch (Exception ex)
             {

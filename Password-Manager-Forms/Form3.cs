@@ -12,8 +12,8 @@ namespace Password_Manager_Forms
 {
     public partial class Form3 : Form
     {
+        List<string> passwordsList = new List<string>();
         Thread? nt;
-        
         public Form3()
         {
             InitializeComponent();
@@ -40,6 +40,11 @@ namespace Password_Manager_Forms
         private void addComponentsInListBox()
         {
 
+        }
+
+        private void addComponentsInList(string element)
+        {
+            
         }
 
         private void extractStringCsv(string path= @"C:\Users\Cadu\Documents\Test")

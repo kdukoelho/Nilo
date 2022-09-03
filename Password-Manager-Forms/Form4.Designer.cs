@@ -31,7 +31,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.passwordSizeTrackBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.titleTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupTextBox = new System.Windows.Forms.TextBox();
@@ -78,14 +78,14 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Title:";
             // 
-            // textBox1
+            // titleTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(100, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 18);
-            this.textBox1.TabIndex = 19;
+            this.titleTextBox.BackColor = System.Drawing.Color.DimGray;
+            this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.titleTextBox.Location = new System.Drawing.Point(100, 83);
+            this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.Size = new System.Drawing.Size(131, 18);
+            this.titleTextBox.TabIndex = 19;
             // 
             // label2
             // 
@@ -108,7 +108,7 @@
             // 
             // groupTextBox
             // 
-            this.groupTextBox.BackColor = System.Drawing.Color.White;
+            this.groupTextBox.BackColor = System.Drawing.Color.DimGray;
             this.groupTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.groupTextBox.Location = new System.Drawing.Point(100, 51);
             this.groupTextBox.Name = "groupTextBox";
@@ -194,6 +194,7 @@
             this.addListButton.TabIndex = 25;
             this.addListButton.Text = "Add List";
             this.addListButton.UseVisualStyleBackColor = false;
+            this.addListButton.Click += new System.EventHandler(this.addListButton_Click);
             // 
             // backButton
             // 
@@ -230,11 +231,13 @@
             // 
             // generatedPasswordTextBox
             // 
-            this.generatedPasswordTextBox.BackColor = System.Drawing.Color.DimGray;
+            this.generatedPasswordTextBox.BackColor = System.Drawing.Color.Black;
             this.generatedPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.generatedPasswordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.generatedPasswordTextBox.ForeColor = System.Drawing.Color.White;
             this.generatedPasswordTextBox.Location = new System.Drawing.Point(91, 260);
             this.generatedPasswordTextBox.Name = "generatedPasswordTextBox";
-            this.generatedPasswordTextBox.Size = new System.Drawing.Size(139, 18);
+            this.generatedPasswordTextBox.Size = new System.Drawing.Size(139, 22);
             this.generatedPasswordTextBox.TabIndex = 30;
             // 
             // Form4
@@ -253,7 +256,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.passwordSizeTrackBar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupTextBox);
@@ -267,7 +270,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PASSWORD GENERATOR";
+            this.Text = "7";
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -279,7 +282,7 @@
         private Label label4;
         private TrackBar passwordSizeTrackBar;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox titleTextBox;
         private Label label2;
         private Label label1;
         private TextBox groupTextBox;
