@@ -48,8 +48,9 @@ namespace Password_Manager_Forms
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
+                    if (fileName.Text == null) { fileName.Text = "Safes";  }
                     textBox.Text = folderBrowserDialog.SelectedPath;
-                    this.path = folderBrowserDialog.SelectedPath + @"\safes.txt";
+                    this.path = folderBrowserDialog.SelectedPath + @"\" + fileName.Text + ".txt";
                 }
             }
             catch (Exception ex)

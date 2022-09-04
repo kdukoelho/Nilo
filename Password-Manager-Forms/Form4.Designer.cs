@@ -34,7 +34,6 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupTextBox = new System.Windows.Forms.TextBox();
             this.numbersCheckBox = new System.Windows.Forms.CheckBox();
             this.upperLettersCheckBox = new System.Windows.Forms.CheckBox();
             this.symbolsCheckBox = new System.Windows.Forms.CheckBox();
@@ -46,6 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.generateButton = new System.Windows.Forms.Button();
             this.generatedPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.groupComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +60,7 @@
             // 
             // passwordSizeTrackBar
             // 
+            this.passwordSizeTrackBar.BackColor = System.Drawing.Color.Black;
             this.passwordSizeTrackBar.Location = new System.Drawing.Point(122, 181);
             this.passwordSizeTrackBar.Maximum = 25;
             this.passwordSizeTrackBar.Minimum = 8;
@@ -80,8 +81,9 @@
             // 
             // titleTextBox
             // 
-            this.titleTextBox.BackColor = System.Drawing.Color.DimGray;
+            this.titleTextBox.BackColor = System.Drawing.Color.White;
             this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.titleTextBox.ForeColor = System.Drawing.Color.Black;
             this.titleTextBox.Location = new System.Drawing.Point(100, 83);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(131, 18);
@@ -105,15 +107,6 @@
             this.label1.Size = new System.Drawing.Size(55, 19);
             this.label1.TabIndex = 17;
             this.label1.Text = "Group:";
-            // 
-            // groupTextBox
-            // 
-            this.groupTextBox.BackColor = System.Drawing.Color.DimGray;
-            this.groupTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.groupTextBox.Location = new System.Drawing.Point(100, 51);
-            this.groupTextBox.Name = "groupTextBox";
-            this.groupTextBox.Size = new System.Drawing.Size(131, 18);
-            this.groupTextBox.TabIndex = 16;
             // 
             // numbersCheckBox
             // 
@@ -233,12 +226,23 @@
             // 
             this.generatedPasswordTextBox.BackColor = System.Drawing.Color.Black;
             this.generatedPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.generatedPasswordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.generatedPasswordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.generatedPasswordTextBox.ForeColor = System.Drawing.Color.White;
-            this.generatedPasswordTextBox.Location = new System.Drawing.Point(91, 260);
+            this.generatedPasswordTextBox.Location = new System.Drawing.Point(87, 260);
             this.generatedPasswordTextBox.Name = "generatedPasswordTextBox";
-            this.generatedPasswordTextBox.Size = new System.Drawing.Size(139, 22);
+            this.generatedPasswordTextBox.Size = new System.Drawing.Size(139, 18);
             this.generatedPasswordTextBox.TabIndex = 30;
+            // 
+            // groupComboBox
+            // 
+            this.groupComboBox.BackColor = System.Drawing.Color.White;
+            this.groupComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupComboBox.ForeColor = System.Drawing.Color.Black;
+            this.groupComboBox.FormattingEnabled = true;
+            this.groupComboBox.Location = new System.Drawing.Point(100, 47);
+            this.groupComboBox.Name = "groupComboBox";
+            this.groupComboBox.Size = new System.Drawing.Size(131, 26);
+            this.groupComboBox.TabIndex = 31;
             // 
             // Form4
             // 
@@ -246,6 +250,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(269, 327);
+            this.Controls.Add(this.groupComboBox);
             this.Controls.Add(this.generatedPasswordTextBox);
             this.Controls.Add(this.generateButton);
             this.Controls.Add(this.label5);
@@ -259,7 +264,6 @@
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupTextBox);
             this.Controls.Add(this.numbersCheckBox);
             this.Controls.Add(this.upperLettersCheckBox);
             this.Controls.Add(this.symbolsCheckBox);
@@ -270,7 +274,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "7";
+            this.Text = "PASSWORD GENERATOR";
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -285,7 +289,6 @@
         private TextBox titleTextBox;
         private Label label2;
         private Label label1;
-        private TextBox groupTextBox;
         private CheckBox numbersCheckBox;
         private CheckBox upperLettersCheckBox;
         private CheckBox symbolsCheckBox;
@@ -297,5 +300,6 @@
         private Label label5;
         private Button generateButton;
         private TextBox generatedPasswordTextBox;
+        private ComboBox groupComboBox;
     }
 }

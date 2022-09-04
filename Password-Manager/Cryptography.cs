@@ -4,25 +4,26 @@ namespace Password_Manager
 {
     static public class Cryptography
     {
-        static public string CaesarCipherEncrypt(string forEncrypt, int key = 7)
+        static private char[] charactersArray = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                                                 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                                                 '!', '@', '$', '%', '*', '(', ')', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', ' ', '>', '1', '2', '3', '4', '5', '6',
+                                                 '7', '8', '9', '0'};
+        static private int key = 7;
+
+        static public string CaesarCipherEncrypt(string forEncrypt)
         {
             if (key < 0) { throw new InvalidOperationException(); }
             else
             {
-                string encryptedString = "";
-                char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-                               'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                               '!', '@', '$', '%', '*', '(', ')', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', '>', '1', '2', '3', '4', '5', '6',
-                               '7', '8', '9', '0', ' '};
-
-                foreach (char letter in forEncrypt)
+                string encryptedString = String.Empty;
+                foreach (char character in forEncrypt)
                 {
-                    if (!alphabet.Contains(letter)) { throw new InvalidDataException(); }
+                    if (!charactersArray.Contains(character)) { throw new InvalidDataException($"charactersArray doesnt contains {character}"); }
                     else
                     {
-                        int letterIndex = Array.IndexOf(alphabet, letter);
+                        int charIndex = Array.IndexOf(charactersArray, character);
 
-                        char newLetter = alphabet[(letterIndex + key) % alphabet.Length];
+                        char newLetter = charactersArray[(charIndex + key) % charactersArray.Length];
                         encryptedString += newLetter;
                     }                    
                 }
@@ -31,25 +32,20 @@ namespace Password_Manager
            
         }
 
-        static public string CaesarCipherDecrypt(string forDecrypt, int key = 7)
+        static public string CaesarCipherDecrypt(string forDecrypt)
         {
             if (key <= 0) { throw new InvalidOperationException(); }
             else
             {
-                string decryptedString = "";
-                char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-                                   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                                   '!', '@', '$', '%', '*', '(', ')', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', '>', '1', '2', '3', '4', '5', '6',
-                                   '7', '8', '9', '0', ' '};
-
-                foreach (char letter in forDecrypt)
+                string decryptedString = String.Empty;                
+                foreach (char character in forDecrypt)
                 {
-                    if (!alphabet.Contains(letter)) { throw new InvalidDataException(); }
+                    if (!charactersArray.Contains(character)) { throw new InvalidDataException($"charactersArray doesnt contains {character}"); }
                     else
                     {
-                        int letterIndex = Array.IndexOf(alphabet, letter);
-                        if (letterIndex - key < 0) { letterIndex += 82; }
-                        char newLetter = alphabet[(letterIndex - key)];
+                        int charIndex = Array.IndexOf(charactersArray, character);
+                        charIndex = charIndex - key < 0  ? charIndex += 83 : charIndex;
+                        char newLetter = charactersArray[(charIndex - key)];
                         decryptedString += newLetter;
                     }    
                 }
@@ -61,14 +57,10 @@ namespace Password_Manager
         static public string EncodeString(string forEncrypt)
         {
             string encryptedString = String.Empty;
-            
-            foreach (char letter in forEncrypt)
+            foreach (char character in forEncrypt)
             {
-                switch (letter)
-                {
-                    case ' ':
-                        encryptedString += "7ig54";
-                        break;
+                switch (character)
+                {                    
                     case 'a':
                         encryptedString += "r2t5e";
                         break;
@@ -315,6 +307,9 @@ namespace Password_Manager
                     case '-':
                         encryptedString += "29mzs";
                         break;
+                    case ' ':
+                        encryptedString += "7ig54";
+                        break;
                     default:
                         throw new InvalidDataException();                        
                         
@@ -338,10 +333,7 @@ namespace Password_Manager
             foreach (string code in decryptedStringArray)
             {                                  
                 switch (code)
-                {
-                    case "7ig54":
-                        decryptedString += ' ';
-                        break;
+                {                   
                     case "r2t5e":
                         decryptedString += 'a';
                         break;
@@ -587,6 +579,9 @@ namespace Password_Manager
                         break;
                     case "plk3s":
                         decryptedString += '@';
+                        break;
+                    case "7ig54":
+                        decryptedString += ' ';
                         break;
                     default:
                         throw new InvalidDataException();                        

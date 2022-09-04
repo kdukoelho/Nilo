@@ -2,24 +2,24 @@
 {
     public class CryptographyTests
     {
-        const int key = 7;
+
         const string badString = "T3st&'";
         const string alphabet = "abcdefghijklmnopqrstuvwxyz";
         const string upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const string symbols = "!@$%*()&-+=:;,.?#/<>";
+        const string symbols = "!@$%*()&-+=:;,.?#/< >";
         const string numbers = "1234567890";
 
-        const string caesarEncryptedString = "hGH)&a";
-        const string caesarDecryptedString = "azAZ!4";
+        const string caesarEncryptedString = "0hGH)&";
+        const string caesarDecryptedString = "3azAZ!";
         const string caesarEncryptAlphabet = "hijklmnopqrstuvwxyzABCDEFG";
         const string caesarEncryptUpperAlphabet = "HIJKLMNOPQRSTUVWXYZ!@$%*()";
         const string caesarEncryptNumbers = "890abcdefg";
-        const string caesarEncryptSymbols = "&-+=:;,.?#/<>1234567";
+        const string caesarEncryptSymbols = "&-+=:;,.?#/< >1234567";
 
         const string encodedAlphabet = "r2t5egf32hh2y4gh1f2q1yf4rs1d2wtyr52u1y3d1we2dn2jm33tç3aw21nyes2a3d3fr6gm40qg51torf2d51cde3h41slç6w2f6y2um1a6ere1si8w2r3sh3ed4lo2u4";
         const string encodedUpperAlphabet = "9i3reui34f2t434y3h5h8g4dj0k3l56gp3f0jew4oj3264y6f0jk39k9o2t32ky2sli262u6d06o2d8r1e3td9ç2f22t8h5dr036t5p37m2s180d2i77sp2i2h2o4ts212";
         const string encodedNumbers = "7u2q1m3i0ta52yuw215023it4s14dx20s76ds12g28sçw0ki8t";
-        const string encodedSymbols = "i14dsplk3sq235238jsn54ft6s01lj67shb0k28n29mzs08kçh8kgcspf8q4jf8240865218hw69k2ssyt324tw4puw2k03420ja";
+        const string encodedSymbols = "i14dsplk3sq235238jsn54ft6s01lj67shb0k28n29mzs08kçh8kgcspf8q4jf8240865218hw69k2ssyt324tw4puw2k037ig54420ja";
 
         // Caesar cipher encryptation method tests.
 
@@ -27,7 +27,7 @@
         public void CaesarCipherEncrypt_ShouldReturn_EncryptedMessage()
         {
             string stringExpected = caesarEncryptedString;
-            string stringGenerated = Cryptography.CaesarCipherEncrypt(caesarDecryptedString, key);
+            string stringGenerated = Cryptography.CaesarCipherEncrypt(caesarDecryptedString);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -36,7 +36,7 @@
         public void CaesarCipherEncrypt_ShouldReturn_EncryptedAlphabet()
         {
             string stringExpected = caesarEncryptAlphabet;
-            string stringGenerated = Cryptography.CaesarCipherEncrypt(alphabet, key);
+            string stringGenerated = Cryptography.CaesarCipherEncrypt(alphabet);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -45,7 +45,7 @@
         public void CaesarCipherEncrypt_ShouldReturn_EncryptedUpperAlphabet()
         {
             string stringExpected = caesarEncryptUpperAlphabet;
-            string stringGenerated = Cryptography.CaesarCipherEncrypt(upperAlphabet, key);
+            string stringGenerated = Cryptography.CaesarCipherEncrypt(upperAlphabet);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -54,7 +54,7 @@
         public void CaesarCipherEncrypt_ShouldReturn_EncryptedNumbers()
         {
             string stringExpected = caesarEncryptNumbers;
-            string stringGenerated = Cryptography.CaesarCipherEncrypt(numbers, key);
+            string stringGenerated = Cryptography.CaesarCipherEncrypt(numbers);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -63,21 +63,16 @@
         public void CaesarCipherEncrypt_ShouldReturn_EncryptedSymbols()
         {
             string stringExpected = caesarEncryptSymbols;
-            string stringGenerated = Cryptography.CaesarCipherEncrypt(symbols, key);
+            string stringGenerated = Cryptography.CaesarCipherEncrypt(symbols);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
 
-        [Fact]
-        public void CaesarCipherEncrypt_ShouldThrow_InvalidOperationException()
-        {
-            Assert.Throws<InvalidOperationException>(() => Cryptography.CaesarCipherEncrypt(caesarDecryptedString, -1));
-        }
-
+        
         [Fact]
         public void CaesarCipherEncrypt_ShouldThrow_InvalidDataException()
         {
-            Assert.Throws<InvalidDataException>(() => Cryptography.CaesarCipherDecrypt(badString, key));
+            Assert.Throws<InvalidDataException>(() => Cryptography.CaesarCipherDecrypt(badString));
         }
 
         // Caesar cipher decryptation method tests.
@@ -86,7 +81,7 @@
         public void CaesarCipherDecrypt_ShouldReturn_DecryptedMessage()
         {
             string stringExpected = caesarDecryptedString;
-            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptedString, key);
+            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptedString);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -95,7 +90,7 @@
         public void CaesarCipherDencrypt_ShouldReturn_DecryptedAlphabet()
         {
             string stringExpected = alphabet;
-            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptAlphabet, key);
+            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptAlphabet);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -104,7 +99,7 @@
         public void CaesarCipherDecrypt_ShouldReturn_DecryptedUpperAlphabet()
         {
             string stringExpected = upperAlphabet;
-            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptUpperAlphabet, key);
+            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptUpperAlphabet);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -113,7 +108,7 @@
         public void CaesarCipherDecrypt_ShouldReturn_DecryptedNumbers()
         {
             string stringExpected = numbers;
-            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptNumbers, key);
+            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptNumbers);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
@@ -122,21 +117,16 @@
         public void CaesarCipherDecrypt_ShouldReturn_DecryptedSymbols()
         {
             string stringExpected = symbols;
-            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptSymbols, key);
+            string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptSymbols);
 
             Assert.Equal(stringExpected, stringGenerated);
         }
 
-        [Fact]
-        public void CaesarCipherDecrypt_ShouldThrow_InvalidOperationException()
-        {
-            Assert.Throws<InvalidOperationException>(() => Cryptography.CaesarCipherDecrypt(caesarEncryptedString, -1));
-        }
 
         [Fact]
         public void CaesarCipherDecrypt_ShouldThrow_InvalidDataException()
         {
-            Assert.Throws<InvalidDataException>(() => Cryptography.CaesarCipherDecrypt(badString, key));
+            Assert.Throws<InvalidDataException>(() => Cryptography.CaesarCipherDecrypt(badString));
         }
 
         // My encode pattern method tests.        

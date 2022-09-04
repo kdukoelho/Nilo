@@ -36,13 +36,14 @@
             this.saveDatabaseButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.fileName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(94, 105);
+            this.label3.Location = new System.Drawing.Point(101, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 19);
             this.label3.TabIndex = 2;
@@ -51,7 +52,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(68, 136);
+            this.label4.Location = new System.Drawing.Point(73, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 19);
             this.label4.TabIndex = 5;
@@ -61,11 +62,11 @@
             // 
             this.textBox.BackColor = System.Drawing.Color.White;
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox.Location = new System.Drawing.Point(169, 69);
             this.textBox.Name = "textBox";
             this.textBox.ReadOnly = true;
-            this.textBox.Size = new System.Drawing.Size(281, 25);
+            this.textBox.Size = new System.Drawing.Size(250, 23);
             this.textBox.TabIndex = 6;
             // 
             // password
@@ -77,7 +78,7 @@
             this.password.MaxLength = 100;
             this.password.Name = "password";
             this.password.PasswordChar = '●';
-            this.password.Size = new System.Drawing.Size(206, 18);
+            this.password.Size = new System.Drawing.Size(191, 18);
             this.password.TabIndex = 9;
             // 
             // Rpassword
@@ -88,18 +89,18 @@
             this.Rpassword.Location = new System.Drawing.Point(213, 137);
             this.Rpassword.Name = "Rpassword";
             this.Rpassword.PasswordChar = '●';
-            this.Rpassword.Size = new System.Drawing.Size(206, 18);
+            this.Rpassword.Size = new System.Drawing.Size(191, 18);
             this.Rpassword.TabIndex = 10;
             // 
             // saveDatabaseButton
             // 
             this.saveDatabaseButton.BackColor = System.Drawing.Color.Black;
             this.saveDatabaseButton.ForeColor = System.Drawing.Color.White;
-            this.saveDatabaseButton.Location = new System.Drawing.Point(456, 69);
+            this.saveDatabaseButton.Location = new System.Drawing.Point(7, 69);
             this.saveDatabaseButton.Name = "saveDatabaseButton";
-            this.saveDatabaseButton.Size = new System.Drawing.Size(38, 25);
+            this.saveDatabaseButton.Size = new System.Drawing.Size(156, 25);
             this.saveDatabaseButton.TabIndex = 11;
-            this.saveDatabaseButton.Text = "...";
+            this.saveDatabaseButton.Text = "Save database in >";
             this.saveDatabaseButton.UseVisualStyleBackColor = false;
             this.saveDatabaseButton.Click += new System.EventHandler(this.saveDatabaseButton_Click);
             // 
@@ -127,14 +128,25 @@
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
-            // label6
+            // fileName
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 19);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Save database in >";
+            this.fileName.BackColor = System.Drawing.Color.White;
+            this.fileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fileName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.fileName.Location = new System.Drawing.Point(425, 69);
+            this.fileName.Name = "fileName";
+            this.fileName.Size = new System.Drawing.Size(101, 23);
+            this.fileName.TabIndex = 14;
+            this.fileName.Text = "Safes";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(436, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 19);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "File name:";
             // 
             // Form2
             // 
@@ -142,7 +154,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.fileName);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveDatabaseButton);
@@ -172,6 +185,7 @@
         private Button saveDatabaseButton;
         private Button cancelButton;
         private Button CreateButton;
-        private Label label6;
+        private TextBox fileName;
+        private Label label1;
     }
 }

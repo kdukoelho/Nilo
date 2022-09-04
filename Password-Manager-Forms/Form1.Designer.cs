@@ -64,7 +64,7 @@
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.password.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.password.Location = new System.Drawing.Point(182, 139);
+            this.password.Location = new System.Drawing.Point(198, 138);
             this.password.MaxLength = 100;
             this.password.Name = "password";
             this.password.PasswordChar = '●';
@@ -85,9 +85,9 @@
             // searchBT
             // 
             this.searchBT.BackColor = System.Drawing.Color.Black;
-            this.searchBT.Location = new System.Drawing.Point(58, 93);
+            this.searchBT.Location = new System.Drawing.Point(23, 94);
             this.searchBT.Name = "searchBT";
-            this.searchBT.Size = new System.Drawing.Size(137, 28);
+            this.searchBT.Size = new System.Drawing.Size(137, 25);
             this.searchBT.TabIndex = 7;
             this.searchBT.Text = "Select database >";
             this.searchBT.UseVisualStyleBackColor = false;
@@ -97,11 +97,11 @@
             // 
             this.textBox.BackColor = System.Drawing.Color.White;
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox.Location = new System.Drawing.Point(201, 94);
+            this.textBox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox.Location = new System.Drawing.Point(166, 96);
             this.textBox.Name = "textBox";
             this.textBox.ReadOnly = true;
-            this.textBox.Size = new System.Drawing.Size(263, 25);
+            this.textBox.Size = new System.Drawing.Size(311, 23);
             this.textBox.TabIndex = 8;
             // 
             // pictureBox1
