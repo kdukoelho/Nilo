@@ -3,20 +3,13 @@ This software creates a text file to safely save your passwords. It encrypts all
 
 ## Images
 ### Software images
-- Form 1 - Login
 ![login form.png](https://www.dropbox.com/s/fr6wn0j6r3kqyim/login%20form.png?dl=0&raw=1)
-- Form 2 - Create database
 ![register form.png](https://www.dropbox.com/s/mlzqnp0nxngnlxl/register%20form.png?dl=0&raw=1)
-- Form 3 - Passwords List
 ![passwords form.png](https://www.dropbox.com/s/a6jykp73k79yisd/passwords%20form.png?dl=0&raw=1)
-- Form 4 - Password Generator
 ![password generator form.png](https://www.dropbox.com/s/ipmbb5udchtyl6t/password%20generator%20form.png?dl=0&raw=1)
 
 ### Files
-- Database file
 ![database text file.png](https://www.dropbox.com/s/asy8w30jadzzsbc/database%20text%20file.png?dl=0&raw=1)
-User password encrypted
-
 
 ## Features
 
