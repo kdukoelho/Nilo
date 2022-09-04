@@ -43,11 +43,6 @@ namespace Password_Manager_Forms
                 return 0;
             }
         }
-       
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            GoToPasswordsScreen();
-        }
 
         private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
         {

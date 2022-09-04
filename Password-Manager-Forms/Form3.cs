@@ -21,8 +21,7 @@ namespace Password_Manager_Forms
         private void GoToPasswordGeneratorScreen()
         {
             try
-            {
-                this.Close();
+            {                
                 nt = new Thread(OpenPasswordGeneratorForm);
                 nt.SetApartmentState(ApartmentState.STA);
                 nt.Start();
@@ -40,16 +39,6 @@ namespace Password_Manager_Forms
         private void addComponentsInListBox()
         {
 
-        }
-
-        private void addComponentsInList(string element)
-        {
-            
-        }
-
-        private void extractStringCsv(string path= @"C:\Users\Cadu\Documents\Test")
-        {
-            //File.ReadLines(); 
         }
 
         private void button1_Click(object sender, EventArgs e)

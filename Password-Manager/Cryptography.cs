@@ -4,15 +4,15 @@ namespace Password_Manager
 {
     static public class Cryptography
     {
+        static private int ceasarCipherKey = 7;
         static private char[] charactersArray = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                                  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
                                                  '!', '@', '$', '%', '*', '(', ')', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', ' ', '>', '1', '2', '3', '4', '5', '6',
-                                                 '7', '8', '9', '0'};
-        static private int key = 7;
+                                                 '7', '8', '9', '0'};        
 
         static public string CaesarCipherEncrypt(string forEncrypt)
         {
-            if (key < 0) { throw new InvalidOperationException(); }
+            if (ceasarCipherKey < 0) { throw new InvalidOperationException("ceasarCipherKey can't be < 0."); }
             else
             {
                 string encryptedString = String.Empty;
@@ -23,7 +23,7 @@ namespace Password_Manager
                     {
                         int charIndex = Array.IndexOf(charactersArray, character);
 
-                        char newLetter = charactersArray[(charIndex + key) % charactersArray.Length];
+                        char newLetter = charactersArray[(charIndex + ceasarCipherKey) % charactersArray.Length];
                         encryptedString += newLetter;
                     }                    
                 }
@@ -34,7 +34,7 @@ namespace Password_Manager
 
         static public string CaesarCipherDecrypt(string forDecrypt)
         {
-            if (key <= 0) { throw new InvalidOperationException(); }
+            if (ceasarCipherKey <= 0) { throw new InvalidOperationException("ceasarCipherKey can't be < 0."); }
             else
             {
                 string decryptedString = String.Empty;                
@@ -44,8 +44,8 @@ namespace Password_Manager
                     else
                     {
                         int charIndex = Array.IndexOf(charactersArray, character);
-                        charIndex = charIndex - key < 0  ? charIndex += 83 : charIndex;
-                        char newLetter = charactersArray[(charIndex - key)];
+                        charIndex = charIndex - ceasarCipherKey < 0  ? charIndex += 83 : charIndex;
+                        char newLetter = charactersArray[(charIndex - ceasarCipherKey)];
                         decryptedString += newLetter;
                     }    
                 }
@@ -323,11 +323,11 @@ namespace Password_Manager
             string decryptedString = String.Empty;
             int codesQtt = forDecrypt.Length / 5;
             string[] decryptedStringArray = new string[codesQtt];
-            int arrayIteration = 0;
-            for (int i = 0; i < forDecrypt.Length; i += 5)
+            int arrayIndexIteration = 0;
+            for (int codesBegin = 0; codesBegin < forDecrypt.Length; codesBegin += 5)
             {
-                decryptedStringArray[arrayIteration] = forDecrypt.Substring(i, 5);
-                arrayIteration++;
+                decryptedStringArray[arrayIndexIteration] = forDecrypt.Substring(codesBegin, 5);
+                arrayIndexIteration++;
                                 
             }            
             foreach (string code in decryptedStringArray)

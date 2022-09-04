@@ -41,7 +41,6 @@
             this.charQttLabel = new System.Windows.Forms.Label();
             this.copyButton = new System.Windows.Forms.Button();
             this.addListButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.generateButton = new System.Windows.Forms.Button();
             this.generatedPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -169,7 +168,7 @@
             // 
             this.copyButton.BackColor = System.Drawing.Color.Black;
             this.copyButton.ForeColor = System.Drawing.Color.White;
-            this.copyButton.Location = new System.Drawing.Point(101, 287);
+            this.copyButton.Location = new System.Drawing.Point(53, 289);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(75, 28);
             this.copyButton.TabIndex = 24;
@@ -181,25 +180,13 @@
             // 
             this.addListButton.BackColor = System.Drawing.Color.Black;
             this.addListButton.ForeColor = System.Drawing.Color.White;
-            this.addListButton.Location = new System.Drawing.Point(182, 287);
+            this.addListButton.Location = new System.Drawing.Point(135, 289);
             this.addListButton.Name = "addListButton";
             this.addListButton.Size = new System.Drawing.Size(75, 28);
             this.addListButton.TabIndex = 25;
             this.addListButton.Text = "Add List";
             this.addListButton.UseVisualStyleBackColor = false;
             this.addListButton.Click += new System.EventHandler(this.addListButton_Click);
-            // 
-            // backButton
-            // 
-            this.backButton.BackColor = System.Drawing.Color.Black;
-            this.backButton.ForeColor = System.Drawing.Color.White;
-            this.backButton.Location = new System.Drawing.Point(18, 287);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 28);
-            this.backButton.TabIndex = 26;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // label5
             // 
@@ -254,7 +241,6 @@
             this.Controls.Add(this.generatedPasswordTextBox);
             this.Controls.Add(this.generateButton);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.backButton);
             this.Controls.Add(this.addListButton);
             this.Controls.Add(this.copyButton);
             this.Controls.Add(this.charQttLabel);
@@ -296,7 +282,6 @@
         private Label charQttLabel;
         private Button copyButton;
         private Button addListButton;
-        private Button backButton;
         private Label label5;
         private Button generateButton;
         private TextBox generatedPasswordTextBox;
