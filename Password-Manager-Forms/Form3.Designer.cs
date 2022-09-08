@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PasswordsTextBox = new System.Windows.Forms.ListBox();
+            this.passwordsListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -36,15 +36,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // PasswordsTextBox
+            // passwordsListBox
             // 
-            this.PasswordsTextBox.BackColor = System.Drawing.Color.DimGray;
-            this.PasswordsTextBox.FormattingEnabled = true;
-            this.PasswordsTextBox.ItemHeight = 18;
-            this.PasswordsTextBox.Location = new System.Drawing.Point(203, 15);
-            this.PasswordsTextBox.Name = "PasswordsTextBox";
-            this.PasswordsTextBox.Size = new System.Drawing.Size(321, 238);
-            this.PasswordsTextBox.TabIndex = 0;
+            this.passwordsListBox.BackColor = System.Drawing.Color.DimGray;
+            this.passwordsListBox.FormattingEnabled = true;
+            this.passwordsListBox.ItemHeight = 18;
+            this.passwordsListBox.Location = new System.Drawing.Point(203, 15);
+            this.passwordsListBox.Name = "passwordsListBox";
+            this.passwordsListBox.Size = new System.Drawing.Size(321, 238);
+            this.passwordsListBox.TabIndex = 0;
             // 
             // button1
             // 
@@ -99,7 +99,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.PasswordsTextBox);
+            this.Controls.Add(this.passwordsListBox);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
@@ -114,11 +114,10 @@
         }
 
         #endregion
-
-        private ListBox PasswordsTextBox;
         private Button button1;
         private Button button2;
         private Button button3;
         private PictureBox pictureBox1;
+        private ListBox passwordsListBox;
     }
 }

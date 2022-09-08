@@ -87,8 +87,8 @@ namespace Password_Manager_Forms
                 {
                     if (path != null)
                     {
-                        string createDb = Password_Manager.Database.CreateDatabase(password.Text, path);
-                        if (createDb == "true")
+                        string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, path);
+                        if (createDatabaseConfirmation == "true")
                         {
                             password.Text = String.Empty;
                             this.Close();
@@ -96,7 +96,7 @@ namespace Password_Manager_Forms
                         }
                         else
                         {
-                            MessageBox.Show(createDb);
+                            MessageBox.Show(createDatabaseConfirmation);
                         }
                     }
                     else

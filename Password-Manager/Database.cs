@@ -6,7 +6,7 @@ namespace Password_Manager
 
     public static class Database
     {
-        private static string EncodeData(string password)
+        public static string EncodeData(string password)
         {
             try
             {                
@@ -52,7 +52,7 @@ namespace Password_Manager
                 else
                 {
                     string buildedString = EncodeData(password);
-                    File.WriteAllText(path, buildedString);
+                    File.AppendAllText(path, buildedString);
                     return "true";
                 }
             }
@@ -60,7 +60,7 @@ namespace Password_Manager
             {
                 return $"Unexpected error in CreateDatabase: {ex.Message}";
             }
-        }       
+        }
     }
 }
     

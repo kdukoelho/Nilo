@@ -31,7 +31,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.passwordSizeTrackBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
-            this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.tittleTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.numbersCheckBox = new System.Windows.Forms.CheckBox();
@@ -43,7 +43,7 @@
             this.addListButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.generateButton = new System.Windows.Forms.Button();
-            this.generatedPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.groupComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).BeginInit();
             this.SuspendLayout();
@@ -74,19 +74,19 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(38, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 19);
+            this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 20;
-            this.label3.Text = "Title:";
+            this.label3.Text = "Tittle:";
             // 
-            // titleTextBox
+            // tittleTextBox
             // 
-            this.titleTextBox.BackColor = System.Drawing.Color.White;
-            this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titleTextBox.ForeColor = System.Drawing.Color.Black;
-            this.titleTextBox.Location = new System.Drawing.Point(100, 83);
-            this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(131, 18);
-            this.titleTextBox.TabIndex = 19;
+            this.tittleTextBox.BackColor = System.Drawing.Color.White;
+            this.tittleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tittleTextBox.ForeColor = System.Drawing.Color.Black;
+            this.tittleTextBox.Location = new System.Drawing.Point(100, 83);
+            this.tittleTextBox.Name = "tittleTextBox";
+            this.tittleTextBox.Size = new System.Drawing.Size(131, 18);
+            this.tittleTextBox.TabIndex = 19;
             // 
             // label2
             // 
@@ -209,16 +209,16 @@
             this.generateButton.UseVisualStyleBackColor = false;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
-            // generatedPasswordTextBox
+            // passwordTextBox
             // 
-            this.generatedPasswordTextBox.BackColor = System.Drawing.Color.Black;
-            this.generatedPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.generatedPasswordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.generatedPasswordTextBox.ForeColor = System.Drawing.Color.White;
-            this.generatedPasswordTextBox.Location = new System.Drawing.Point(87, 260);
-            this.generatedPasswordTextBox.Name = "generatedPasswordTextBox";
-            this.generatedPasswordTextBox.Size = new System.Drawing.Size(139, 18);
-            this.generatedPasswordTextBox.TabIndex = 30;
+            this.passwordTextBox.BackColor = System.Drawing.Color.Black;
+            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.passwordTextBox.ForeColor = System.Drawing.Color.White;
+            this.passwordTextBox.Location = new System.Drawing.Point(87, 260);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(139, 18);
+            this.passwordTextBox.TabIndex = 30;
             // 
             // groupComboBox
             // 
@@ -238,7 +238,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(269, 327);
             this.Controls.Add(this.groupComboBox);
-            this.Controls.Add(this.generatedPasswordTextBox);
+            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.generateButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.addListButton);
@@ -247,7 +247,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.passwordSizeTrackBar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.titleTextBox);
+            this.Controls.Add(this.tittleTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numbersCheckBox);
@@ -272,7 +272,7 @@
         private Label label4;
         private TrackBar passwordSizeTrackBar;
         private Label label3;
-        private TextBox titleTextBox;
+        private TextBox tittleTextBox;
         private Label label2;
         private Label label1;
         private CheckBox numbersCheckBox;
@@ -284,7 +284,7 @@
         private Button addListButton;
         private Label label5;
         private Button generateButton;
-        private TextBox generatedPasswordTextBox;
+        private TextBox passwordTextBox;
         private ComboBox groupComboBox;
     }
 }

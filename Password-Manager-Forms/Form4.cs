@@ -23,7 +23,7 @@ namespace Password_Manager_Forms
         {
             this.Close();
             nt = new Thread(OpenPasswordsWindow);
-            nt.SetApartmentState(ApartmentState.STA);
+            nt.SetApartmentState(ApartmentState.STA);            
             nt.Start();
         }
 
@@ -66,7 +66,7 @@ namespace Password_Manager_Forms
                     string symbols = Password_Manager.Password.SymbolsGen(TurnFalseOnZero(charQtt, symbolsCheckBox.Checked));
                     string numbers = Password_Manager.Password.NumGen(TurnFalseOnZero(charQtt, numbersCheckBox.Checked));
                     generatedPassword = Password_Manager.Password.ShuflePassword(charQtt, letters, numbers, upperLetters, symbols);
-                    generatedPasswordTextBox.Text = generatedPassword;
+                    passwordTextBox.Text = generatedPassword;
 
                 }
             }
@@ -83,7 +83,28 @@ namespace Password_Manager_Forms
 
         public void addListButton_Click(object sender, EventArgs e)
         {
-            string titleAndPassString = titleTextBox.Text + " = " + generatedPassword;
+            try
+            {
+                if (tittleTextBox.Text == String.Empty || passwordTextBox.Text == String.Empty)
+                {                  
+                    MessageBox.Show("Tittle and password can't be null.");
+                }
+                else
+                {
+                    string toEnconde = tittleTextBox.Text + " = " + generatedPassword;
+                    string encodedString = Password_Manager.Database.EncodeData(toEnconde);
+                    using (StreamWriter textFile = File.AppendText(Form1.GetPath))
+                    {
+                        textFile.Write(encodedString);
+                    }                    
+                    GoToPasswordsScreen();                    
+                    this.Close();
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

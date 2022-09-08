@@ -3,7 +3,7 @@ namespace Password_Manager_Forms
     public partial class Form1 : Form
     {
         private Thread? nt;
-        private string? path;
+        private static string? path;
         private int loginAttempts = 0;
         public Form1() => InitializeComponent();
 
@@ -35,21 +35,21 @@ namespace Password_Manager_Forms
 
         private string ReadPassword(string path)
         {
-            try 
+            try
             {
-                StreamReader streamReader = new StreamReader(path);
-                
-                string? line = streamReader.ReadLine();
-                if (line != null) 
+                StreamReader textFile = new StreamReader(path);
+                string? line = textFile.ReadLine();                
+                textFile.Close();
+                if (line != null)
                 {
-                    //int indexPassBegin = line.IndexOf(@"\");
-                    string? password = line.Substring(0);
-                    return line;
+                    int backslashIndex = line.IndexOf(@"\");
+                    string password = backslashIndex <= 0 ? line : line.Substring(0, backslashIndex);
+                    return password;
                 }
                 else
                 {
                     return "Database not found.";
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -75,10 +75,11 @@ namespace Password_Manager_Forms
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBox.Text = openFileDialog.FileName;
-                    this.path = openFileDialog.FileName;
+                    path = openFileDialog.FileName;
                 }
             }
             catch (Exception ex)
@@ -91,9 +92,9 @@ namespace Password_Manager_Forms
         {
             try
             {
-                if (this.path != null)
+                if (path != null)
                 {
-                    string passwordReader = ReadPassword(this.path);
+                    string passwordReader = ReadPassword(path);
                     if (passwordReader != "Database not found.")
                     {
                         string decodedPassword = Password_Manager.Database.DecodeData(passwordReader);
@@ -111,7 +112,7 @@ namespace Password_Manager_Forms
                             }
                             MessageBox.Show($"Wrong Password {this.loginAttempts}/3");
                         }
-                    }                    
+                    }
                     else
                     {
                         MessageBox.Show(passwordReader);
@@ -121,11 +122,23 @@ namespace Password_Manager_Forms
                 {
                     MessageBox.Show("Select a file to continue.");
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Unexpected error in loginButton_Click {ex.Message}");
+            }
+        }
+
+        public static string GetPath
+        {
+            get
+            {
+                if (path != null) { return path; }
+                else
+                {
+                    throw new ArgumentNullException("Path is null.");
+                }
             }
         }
     }
