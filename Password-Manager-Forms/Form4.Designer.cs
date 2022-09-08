@@ -45,13 +45,15 @@
             this.generateButton = new System.Windows.Forms.Button();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.groupComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.loginTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 183);
+            this.label4.Location = new System.Drawing.Point(12, 203);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 19);
             this.label4.TabIndex = 22;
@@ -60,7 +62,7 @@
             // passwordSizeTrackBar
             // 
             this.passwordSizeTrackBar.BackColor = System.Drawing.Color.Black;
-            this.passwordSizeTrackBar.Location = new System.Drawing.Point(122, 181);
+            this.passwordSizeTrackBar.Location = new System.Drawing.Point(122, 201);
             this.passwordSizeTrackBar.Maximum = 25;
             this.passwordSizeTrackBar.Minimum = 8;
             this.passwordSizeTrackBar.Name = "passwordSizeTrackBar";
@@ -112,7 +114,7 @@
             this.numbersCheckBox.AutoSize = true;
             this.numbersCheckBox.Checked = true;
             this.numbersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.numbersCheckBox.Location = new System.Drawing.Point(131, 146);
+            this.numbersCheckBox.Location = new System.Drawing.Point(131, 166);
             this.numbersCheckBox.Name = "numbersCheckBox";
             this.numbersCheckBox.Size = new System.Drawing.Size(89, 23);
             this.numbersCheckBox.TabIndex = 15;
@@ -124,7 +126,7 @@
             this.upperLettersCheckBox.AutoSize = true;
             this.upperLettersCheckBox.Checked = true;
             this.upperLettersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.upperLettersCheckBox.Location = new System.Drawing.Point(131, 117);
+            this.upperLettersCheckBox.Location = new System.Drawing.Point(131, 137);
             this.upperLettersCheckBox.Name = "upperLettersCheckBox";
             this.upperLettersCheckBox.Size = new System.Drawing.Size(115, 23);
             this.upperLettersCheckBox.TabIndex = 14;
@@ -136,7 +138,7 @@
             this.symbolsCheckBox.AutoSize = true;
             this.symbolsCheckBox.Checked = true;
             this.symbolsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.symbolsCheckBox.Location = new System.Drawing.Point(37, 146);
+            this.symbolsCheckBox.Location = new System.Drawing.Point(37, 166);
             this.symbolsCheckBox.Name = "symbolsCheckBox";
             this.symbolsCheckBox.Size = new System.Drawing.Size(85, 23);
             this.symbolsCheckBox.TabIndex = 13;
@@ -148,7 +150,7 @@
             this.lettersCheckBox.AutoSize = true;
             this.lettersCheckBox.Checked = true;
             this.lettersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.lettersCheckBox.Location = new System.Drawing.Point(37, 117);
+            this.lettersCheckBox.Location = new System.Drawing.Point(37, 137);
             this.lettersCheckBox.Name = "lettersCheckBox";
             this.lettersCheckBox.Size = new System.Drawing.Size(71, 23);
             this.lettersCheckBox.TabIndex = 12;
@@ -158,7 +160,7 @@
             // charQttLabel
             // 
             this.charQttLabel.AutoSize = true;
-            this.charQttLabel.Location = new System.Drawing.Point(233, 183);
+            this.charQttLabel.Location = new System.Drawing.Point(233, 203);
             this.charQttLabel.Name = "charQttLabel";
             this.charQttLabel.Size = new System.Drawing.Size(16, 19);
             this.charQttLabel.TabIndex = 23;
@@ -168,7 +170,7 @@
             // 
             this.copyButton.BackColor = System.Drawing.Color.Black;
             this.copyButton.ForeColor = System.Drawing.Color.White;
-            this.copyButton.Location = new System.Drawing.Point(53, 289);
+            this.copyButton.Location = new System.Drawing.Point(53, 309);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(75, 28);
             this.copyButton.TabIndex = 24;
@@ -180,7 +182,7 @@
             // 
             this.addListButton.BackColor = System.Drawing.Color.Black;
             this.addListButton.ForeColor = System.Drawing.Color.White;
-            this.addListButton.Location = new System.Drawing.Point(135, 289);
+            this.addListButton.Location = new System.Drawing.Point(135, 309);
             this.addListButton.Name = "addListButton";
             this.addListButton.Size = new System.Drawing.Size(75, 28);
             this.addListButton.TabIndex = 25;
@@ -191,7 +193,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 260);
+            this.label5.Location = new System.Drawing.Point(12, 280);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 19);
             this.label5.TabIndex = 27;
@@ -201,7 +203,7 @@
             // 
             this.generateButton.BackColor = System.Drawing.Color.Black;
             this.generateButton.ForeColor = System.Drawing.Color.White;
-            this.generateButton.Location = new System.Drawing.Point(93, 221);
+            this.generateButton.Location = new System.Drawing.Point(93, 241);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(79, 28);
             this.generateButton.TabIndex = 29;
@@ -215,7 +217,7 @@
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.passwordTextBox.ForeColor = System.Drawing.Color.White;
-            this.passwordTextBox.Location = new System.Drawing.Point(87, 260);
+            this.passwordTextBox.Location = new System.Drawing.Point(87, 280);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(139, 18);
             this.passwordTextBox.TabIndex = 30;
@@ -231,12 +233,33 @@
             this.groupComboBox.Size = new System.Drawing.Size(131, 26);
             this.groupComboBox.TabIndex = 31;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(38, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 19);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Login:";
+            // 
+            // loginTextBox
+            // 
+            this.loginTextBox.BackColor = System.Drawing.Color.White;
+            this.loginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.loginTextBox.ForeColor = System.Drawing.Color.Black;
+            this.loginTextBox.Location = new System.Drawing.Point(100, 110);
+            this.loginTextBox.Name = "loginTextBox";
+            this.loginTextBox.Size = new System.Drawing.Size(131, 18);
+            this.loginTextBox.TabIndex = 33;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(269, 327);
+            this.ClientSize = new System.Drawing.Size(269, 351);
+            this.Controls.Add(this.loginTextBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupComboBox);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.generateButton);
@@ -286,5 +309,7 @@
         private Button generateButton;
         private TextBox passwordTextBox;
         private ComboBox groupComboBox;
+        private Label label6;
+        private TextBox loginTextBox;
     }
 }

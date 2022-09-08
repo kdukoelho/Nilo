@@ -7,7 +7,7 @@ namespace Password_Manager
         static private int ceasarCipherKey = 7;
         static private char[] charactersArray = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                                  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                                                 '!', '@', '$', '%', '*', '(', ')', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', ' ', '>', '1', '2', '3', '4', '5', '6',
+                                                 '!', '@', '$', '%', '*', '(', ')', '[', ']', '&', '-', '+', '=', ':', ';', ',', '.', '?', '#', '/', '<', ' ', '>', '1', '2', '3', '4', '5', '6',
                                                  '7', '8', '9', '0'};        
 
         static public string CaesarCipherEncrypt(string forEncrypt)
@@ -44,7 +44,7 @@ namespace Password_Manager
                     else
                     {
                         int charIndex = Array.IndexOf(charactersArray, character);
-                        charIndex = charIndex - ceasarCipherKey < 0  ? charIndex += 83 : charIndex;
+                        charIndex = charIndex - ceasarCipherKey < 0  ? charIndex += 85 : charIndex;
                         char newLetter = charactersArray[(charIndex - ceasarCipherKey)];
                         decryptedString += newLetter;
                     }    
@@ -267,6 +267,12 @@ namespace Password_Manager
                         break;
                     case ')':
                         encryptedString += "67shb";
+                        break;
+                    case '[':
+                        encryptedString += "y436f";
+                        break;
+                    case ']':
+                        encryptedString += "7y3s8";
                         break;
                     case '*':
                         encryptedString += "54ft6";
@@ -540,6 +546,12 @@ namespace Password_Manager
                         break;
                     case "67shb":
                         decryptedString += ')';
+                        break;
+                    case "y436f":
+                        decryptedString += '[';
+                        break;
+                    case "7y3s8":
+                        decryptedString += ']';
                         break;
                     case "54ft6":
                         decryptedString += '*';

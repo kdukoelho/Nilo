@@ -91,12 +91,12 @@ namespace Password_Manager_Forms
                 }
                 else
                 {
-                    string toEnconde = tittleTextBox.Text + " = " + generatedPassword;
+                    string toEnconde = tittleTextBox.Text + " [" + loginTextBox.Text + ']' + " = " + generatedPassword;
                     string encodedString = Password_Manager.Database.EncodeData(toEnconde);
                     using (StreamWriter textFile = File.AppendText(Form1.GetPath))
                     {
                         textFile.Write(encodedString);
-                    }                    
+                    }
                     GoToPasswordsScreen();                    
                     this.Close();
                 }

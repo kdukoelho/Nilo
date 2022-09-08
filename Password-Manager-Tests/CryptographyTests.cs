@@ -6,20 +6,21 @@
         const string badString = "T3st&'";
         const string alphabet = "abcdefghijklmnopqrstuvwxyz";
         const string upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const string symbols = "!@$%*()&-+=:;,.?#/< >";
+        const string symbols = "!@$%*()[]&-+=:;,.?#/< >";
         const string numbers = "1234567890";
 
-        const string caesarEncryptedString = "0hGH)&";
+        const string caesarEncryptedString = "0hGH)[";
         const string caesarDecryptedString = "3azAZ!";
         const string caesarEncryptAlphabet = "hijklmnopqrstuvwxyzABCDEFG";
         const string caesarEncryptUpperAlphabet = "HIJKLMNOPQRSTUVWXYZ!@$%*()";
         const string caesarEncryptNumbers = "890abcdefg";
-        const string caesarEncryptSymbols = "&-+=:;,.?#/< >1234567";
+        const string caesarEncryptSymbols = "[]&-+=:;,.?#/< >1234567";
+                                                 
 
         const string encodedAlphabet = "r2t5egf32hh2y4gh1f2q1yf4rs1d2wtyr52u1y3d1we2dn2jm33tç3aw21nyes2a3d3fr6gm40qg51torf2d51cde3h41slç6w2f6y2um1a6ere1si8w2r3sh3ed4lo2u4";
         const string encodedUpperAlphabet = "9i3reui34f2t434y3h5h8g4dj0k3l56gp3f0jew4oj3264y6f0jk39k9o2t32ky2sli262u6d06o2d8r1e3td9ç2f22t8h5dr036t5p37m2s180d2i77sp2i2h2o4ts212";
         const string encodedNumbers = "7u2q1m3i0ta52yuw215023it4s14dx20s76ds12g28sçw0ki8t";
-        const string encodedSymbols = "i14dsplk3sq235238jsn54ft6s01lj67shb0k28n29mzs08kçh8kgcspf8q4jf8240865218hw69k2ssyt324tw4puw2k037ig54420ja";
+        const string encodedSymbols = "i14dsplk3sq235238jsn54ft6s01lj67shby436f7y3s80k28n29mzs08kçh8kgcspf8q4jf8240865218hw69k2ssyt324tw4puw2k037ig54420ja";
 
         // Caesar cipher encryptation method tests.
 
@@ -120,6 +121,7 @@
             string stringGenerated = Cryptography.CaesarCipherDecrypt(caesarEncryptSymbols);
 
             Assert.Equal(stringExpected, stringGenerated);
+            Assert.Equal(symbols.Length, stringGenerated.Length);  
         }
 
 
