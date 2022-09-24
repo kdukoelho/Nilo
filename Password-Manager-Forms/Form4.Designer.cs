@@ -47,6 +47,7 @@
             this.groupComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             this.passwordSizeTrackBar.Minimum = 8;
             this.passwordSizeTrackBar.Name = "passwordSizeTrackBar";
             this.passwordSizeTrackBar.Size = new System.Drawing.Size(104, 45);
-            this.passwordSizeTrackBar.TabIndex = 21;
+            this.passwordSizeTrackBar.TabIndex = 7;
             this.passwordSizeTrackBar.Value = 8;
             this.passwordSizeTrackBar.Scroll += new System.EventHandler(this.passwordSizeTrackBar_Scroll);
             // 
@@ -88,7 +89,7 @@
             this.tittleTextBox.Location = new System.Drawing.Point(100, 83);
             this.tittleTextBox.Name = "tittleTextBox";
             this.tittleTextBox.Size = new System.Drawing.Size(131, 18);
-            this.tittleTextBox.TabIndex = 19;
+            this.tittleTextBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -117,7 +118,7 @@
             this.numbersCheckBox.Location = new System.Drawing.Point(131, 166);
             this.numbersCheckBox.Name = "numbersCheckBox";
             this.numbersCheckBox.Size = new System.Drawing.Size(89, 23);
-            this.numbersCheckBox.TabIndex = 15;
+            this.numbersCheckBox.TabIndex = 6;
             this.numbersCheckBox.Text = "Numbers";
             this.numbersCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +130,7 @@
             this.upperLettersCheckBox.Location = new System.Drawing.Point(131, 137);
             this.upperLettersCheckBox.Name = "upperLettersCheckBox";
             this.upperLettersCheckBox.Size = new System.Drawing.Size(115, 23);
-            this.upperLettersCheckBox.TabIndex = 14;
+            this.upperLettersCheckBox.TabIndex = 4;
             this.upperLettersCheckBox.Text = "Upper Letters";
             this.upperLettersCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -141,7 +142,7 @@
             this.symbolsCheckBox.Location = new System.Drawing.Point(37, 166);
             this.symbolsCheckBox.Name = "symbolsCheckBox";
             this.symbolsCheckBox.Size = new System.Drawing.Size(85, 23);
-            this.symbolsCheckBox.TabIndex = 13;
+            this.symbolsCheckBox.TabIndex = 5;
             this.symbolsCheckBox.Text = "Symbols";
             this.symbolsCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -153,7 +154,7 @@
             this.lettersCheckBox.Location = new System.Drawing.Point(37, 137);
             this.lettersCheckBox.Name = "lettersCheckBox";
             this.lettersCheckBox.Size = new System.Drawing.Size(71, 23);
-            this.lettersCheckBox.TabIndex = 12;
+            this.lettersCheckBox.TabIndex = 3;
             this.lettersCheckBox.Text = "Letters";
             this.lettersCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -170,10 +171,10 @@
             // 
             this.copyButton.BackColor = System.Drawing.Color.Black;
             this.copyButton.ForeColor = System.Drawing.Color.White;
-            this.copyButton.Location = new System.Drawing.Point(53, 309);
+            this.copyButton.Location = new System.Drawing.Point(97, 311);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(75, 28);
-            this.copyButton.TabIndex = 24;
+            this.copyButton.TabIndex = 10;
             this.copyButton.Text = "Copy";
             this.copyButton.UseVisualStyleBackColor = false;
             this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
@@ -182,10 +183,10 @@
             // 
             this.addListButton.BackColor = System.Drawing.Color.Black;
             this.addListButton.ForeColor = System.Drawing.Color.White;
-            this.addListButton.Location = new System.Drawing.Point(135, 309);
+            this.addListButton.Location = new System.Drawing.Point(179, 311);
             this.addListButton.Name = "addListButton";
             this.addListButton.Size = new System.Drawing.Size(75, 28);
-            this.addListButton.TabIndex = 25;
+            this.addListButton.TabIndex = 9;
             this.addListButton.Text = "Add List";
             this.addListButton.UseVisualStyleBackColor = false;
             this.addListButton.Click += new System.EventHandler(this.addListButton_Click);
@@ -206,7 +207,7 @@
             this.generateButton.Location = new System.Drawing.Point(93, 241);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(79, 28);
-            this.generateButton.TabIndex = 29;
+            this.generateButton.TabIndex = 8;
             this.generateButton.Text = "Generate";
             this.generateButton.UseVisualStyleBackColor = false;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
@@ -231,7 +232,7 @@
             this.groupComboBox.Location = new System.Drawing.Point(100, 47);
             this.groupComboBox.Name = "groupComboBox";
             this.groupComboBox.Size = new System.Drawing.Size(131, 26);
-            this.groupComboBox.TabIndex = 31;
+            this.groupComboBox.TabIndex = 0;
             // 
             // label6
             // 
@@ -250,7 +251,19 @@
             this.loginTextBox.Location = new System.Drawing.Point(100, 110);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(131, 18);
-            this.loginTextBox.TabIndex = 33;
+            this.loginTextBox.TabIndex = 2;
+            // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.Color.Black;
+            this.backButton.ForeColor = System.Drawing.Color.White;
+            this.backButton.Location = new System.Drawing.Point(16, 311);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 28);
+            this.backButton.TabIndex = 11;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // Form4
             // 
@@ -258,6 +271,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(269, 351);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupComboBox);
@@ -311,5 +325,6 @@
         private ComboBox groupComboBox;
         private Label label6;
         private TextBox loginTextBox;
+        private Button backButton;
     }
 }

@@ -45,7 +45,7 @@
             this.loginButton.Location = new System.Drawing.Point(299, 180);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(92, 28);
-            this.loginButton.TabIndex = 0;
+            this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Go!";
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
@@ -69,7 +69,7 @@
             this.password.Name = "password";
             this.password.PasswordChar = '●';
             this.password.Size = new System.Drawing.Size(240, 18);
-            this.password.TabIndex = 5;
+            this.password.TabIndex = 2;
             // 
             // registerButton
             // 
@@ -77,7 +77,7 @@
             this.registerButton.Location = new System.Drawing.Point(166, 180);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(127, 28);
-            this.registerButton.TabIndex = 6;
+            this.registerButton.TabIndex = 4;
             this.registerButton.Text = "Create database";
             this.registerButton.UseVisualStyleBackColor = false;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
@@ -88,7 +88,7 @@
             this.searchBT.Location = new System.Drawing.Point(23, 94);
             this.searchBT.Name = "searchBT";
             this.searchBT.Size = new System.Drawing.Size(137, 25);
-            this.searchBT.TabIndex = 7;
+            this.searchBT.TabIndex = 5;
             this.searchBT.Text = "Select database >";
             this.searchBT.UseVisualStyleBackColor = false;
             this.searchBT.Click += new System.EventHandler(this.searchBT_Click);
@@ -102,7 +102,7 @@
             this.textBox.Name = "textBox";
             this.textBox.ReadOnly = true;
             this.textBox.Size = new System.Drawing.Size(311, 23);
-            this.textBox.TabIndex = 8;
+            this.textBox.TabIndex = 1;
             // 
             // pictureBox1
             // 

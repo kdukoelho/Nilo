@@ -67,7 +67,7 @@
             this.textBox.Name = "textBox";
             this.textBox.ReadOnly = true;
             this.textBox.Size = new System.Drawing.Size(250, 23);
-            this.textBox.TabIndex = 6;
+            this.textBox.TabIndex = 0;
             // 
             // password
             // 
@@ -79,7 +79,7 @@
             this.password.Name = "password";
             this.password.PasswordChar = '●';
             this.password.Size = new System.Drawing.Size(191, 18);
-            this.password.TabIndex = 9;
+            this.password.TabIndex = 2;
             // 
             // Rpassword
             // 
@@ -87,10 +87,12 @@
             this.Rpassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Rpassword.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Rpassword.Location = new System.Drawing.Point(213, 137);
+            this.Rpassword.MaxLength = 100;
             this.Rpassword.Name = "Rpassword";
             this.Rpassword.PasswordChar = '●';
+            this.Rpassword.ShortcutsEnabled = false;
             this.Rpassword.Size = new System.Drawing.Size(191, 18);
-            this.Rpassword.TabIndex = 10;
+            this.Rpassword.TabIndex = 3;
             // 
             // saveDatabaseButton
             // 
@@ -111,7 +113,7 @@
             this.cancelButton.Location = new System.Drawing.Point(184, 180);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(78, 28);
-            this.cancelButton.TabIndex = 12;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -123,7 +125,7 @@
             this.CreateButton.Location = new System.Drawing.Point(278, 180);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(98, 28);
-            this.CreateButton.TabIndex = 13;
+            this.CreateButton.TabIndex = 4;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.registerButton_Click);
@@ -136,7 +138,7 @@
             this.fileName.Location = new System.Drawing.Point(425, 69);
             this.fileName.Name = "fileName";
             this.fileName.Size = new System.Drawing.Size(101, 23);
-            this.fileName.TabIndex = 14;
+            this.fileName.TabIndex = 1;
             this.fileName.Text = "Safes";
             // 
             // label1

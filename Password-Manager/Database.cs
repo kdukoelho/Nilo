@@ -12,7 +12,7 @@ namespace Password_Manager
             {                
                 password = Cryptography.EncodeString(Cryptography.CaesarCipherEncrypt(password));
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"{password}");
+                stringBuilder.AppendLine(password);
                 string encodedData = stringBuilder.ToString();
                 
                 return encodedData;
@@ -29,7 +29,7 @@ namespace Password_Manager
             {
                 password = Cryptography.CaesarCipherDecrypt(Cryptography.DecodeString(password));
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"{password}");
+                stringBuilder.AppendLine(password);
                 string decodedData = stringBuilder.ToString();
                 decodedData = decodedData.Trim();
 
@@ -61,6 +61,16 @@ namespace Password_Manager
                 return $"Unexpected error in CreateDatabase: {ex.Message}";
             }
         }
+
+        public static void WriteLinesOnFile(string line, string path)
+        {
+            using (StreamWriter textFile = File.AppendText(path))
+            {
+                textFile.Write(line);
+            }
+        }
+
+        
     }
 }
     

@@ -14,16 +14,18 @@ namespace Password_Manager_Forms
     {
         Thread? nt;
         private string? generatedPassword;
-        public Form4()
+        List<string> passwordsList;
+        public Form4(List<string> passwordsList)
         {
             InitializeComponent();
+            this.passwordsList = passwordsList;
         }
 
         public void GoToPasswordsScreen()
         {
             this.Close();
             nt = new Thread(OpenPasswordsWindow);
-            nt.SetApartmentState(ApartmentState.STA);            
+            nt.SetApartmentState(ApartmentState.STA);
             nt.Start();
         }
 
@@ -91,13 +93,10 @@ namespace Password_Manager_Forms
                 }
                 else
                 {
-                    string toEnconde = tittleTextBox.Text + " [" + loginTextBox.Text + ']' + " = " + generatedPassword;
-                    string encodedString = Password_Manager.Database.EncodeData(toEnconde);
-                    using (StreamWriter textFile = File.AppendText(Form1.GetPath))
-                    {
-                        textFile.Write(encodedString);
-                    }
-                    GoToPasswordsScreen();                    
+                    string buildedString = tittleTextBox.Text + " [" + loginTextBox.Text + "] " + "= " + generatedPassword;                            
+                    string encodedString = Password_Manager.Database.EncodeData(buildedString);
+                    Password_Manager.Database.WriteLinesOnFile(encodedString, Form1.GetPath);
+                    GoToPasswordsScreen();
                     this.Close();
                 }
             }
@@ -105,6 +104,11 @@ namespace Password_Manager_Forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            GoToPasswordsScreen();
         }
     }
 }

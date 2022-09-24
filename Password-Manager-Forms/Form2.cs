@@ -44,13 +44,12 @@ namespace Password_Manager_Forms
         private void saveDatabaseButton_Click(object sender, EventArgs e)
         {
             try
-            {
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            {                
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();                
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (fileName.Text == null) { fileName.Text = "Safes";  }
                     textBox.Text = folderBrowserDialog.SelectedPath;
-                    this.path = folderBrowserDialog.SelectedPath + @"\" + fileName.Text + ".txt";
+                    this.path = folderBrowserDialog.SelectedPath;
                 }
             }
             catch (Exception ex)
@@ -79,6 +78,10 @@ namespace Password_Manager_Forms
                 {
                     MessageBox.Show("Please fill all fields.");
                 }
+                else if (fileName.Text == String.Empty)
+                {
+                    MessageBox.Show("Choose a name to the database.");
+                }
                 else if (password.Text != Rpassword.Text) 
                 { 
                     MessageBox.Show("Passwords doesnt match."); 
@@ -87,6 +90,7 @@ namespace Password_Manager_Forms
                 {
                     if (path != null)
                     {
+                        path = path + @"\" + fileName.Text + ".txt";
                         string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, path);
                         if (createDatabaseConfirmation == "true")
                         {

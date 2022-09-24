@@ -30,7 +30,7 @@
         {
             this.passwordsListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,16 +58,17 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // removeButton
             // 
-            this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(104, 152);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 35);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = false;
+            this.removeButton.BackColor = System.Drawing.Color.Black;
+            this.removeButton.ForeColor = System.Drawing.Color.White;
+            this.removeButton.Location = new System.Drawing.Point(104, 152);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(82, 35);
+            this.removeButton.TabIndex = 2;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // button3
             // 
@@ -97,7 +98,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.removeButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.passwordsListBox);
             this.Controls.Add(this.pictureBox1);
@@ -115,7 +116,7 @@
 
         #endregion
         private Button button1;
-        private Button button2;
+        private Button removeButton;
         private Button button3;
         private PictureBox pictureBox1;
         private ListBox passwordsListBox;
