@@ -87,13 +87,14 @@ namespace Password_Manager_Forms
         {
             try
             {
+                if  (groupComboBox.Text == String.Empty) { groupComboBox.Text = "General"; }
                 if (tittleTextBox.Text == String.Empty || passwordTextBox.Text == String.Empty)
-                {                  
+                {
                     MessageBox.Show("Tittle and password can't be null.");
                 }
                 else
                 {
-                    string buildedString = tittleTextBox.Text + " [" + loginTextBox.Text + "] " + "= " + generatedPassword;                            
+                    string buildedString = "[ " + groupComboBox.Text + " ] " + tittleTextBox.Text + " [" + loginTextBox.Text + "] " + "= " + generatedPassword;                    
                     string encodedString = Password_Manager.Database.EncodeData(buildedString);
                     Password_Manager.Database.WriteLinesOnFile(encodedString, Form1.GetPath);
                     GoToPasswordsScreen();

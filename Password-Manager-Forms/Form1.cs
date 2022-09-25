@@ -5,7 +5,17 @@ namespace Password_Manager_Forms
         private Thread? nt;
         private static string? path;
         private int loginAttempts = 0;
-        public Form1() => InitializeComponent();
+        public Form1()
+        {
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in Form1 constructor: {ex.Message}");
+            }
+        }
 
         public void GoToRegisterScreen()
         {

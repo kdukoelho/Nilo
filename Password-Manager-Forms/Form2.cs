@@ -13,7 +13,7 @@ namespace Password_Manager_Forms
     public partial class Form2 : Form
     {
         private Thread? nt;
-        private string? path;
+        private static string? path;
 
 
         public Form2()
@@ -36,6 +36,7 @@ namespace Password_Manager_Forms
             }
         }
 
+
         private void openLoginForm()
         {
             Application.Run(new Form1());
@@ -49,7 +50,7 @@ namespace Password_Manager_Forms
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBox.Text = folderBrowserDialog.SelectedPath;
-                    this.path = folderBrowserDialog.SelectedPath;
+                    path = folderBrowserDialog.SelectedPath;
                 }
             }
             catch (Exception ex)
