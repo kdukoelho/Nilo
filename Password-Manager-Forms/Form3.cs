@@ -57,7 +57,10 @@ namespace Password_Manager_Forms
                         //decodedPass = decodedPass.Substring(indexSquareBracket + 1);
                         passwordsList.Add(decodedPass);
                     }
-                    passwordsListBox.DataSource = passwordsList;
+                    foreach (string str in passwordsList)
+                    {
+                        passwordsListBox.Items.Add(str);                        
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -116,7 +119,8 @@ namespace Password_Manager_Forms
                 if (selectedIndex > -1)
                 {
                     DeleteLine(selectedIndex);
-                    LoadListBox();
+                    passwordsListBox.Items.RemoveAt(selectedIndex);
+                    passwordsList.RemoveAt(selectedIndex);
                 }
                 else
                 {
