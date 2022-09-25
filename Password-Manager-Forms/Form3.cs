@@ -122,9 +122,34 @@ namespace Password_Manager_Forms
                 return tmpList;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addPasswordsButton_Click(object sender, EventArgs e)
         {
-            GoToPasswordGeneratorScreen();
+            try
+            {
+                GoToPasswordGeneratorScreen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected erro in addPasswordsButton_Click: {ex.Message}");
+            }
+        }
+
+        private void doubleClickTextBox(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = passwordsListBox.SelectedIndex;
+                if (index > -1) 
+                {
+                    string password = passwordsListBox.Items[index].ToString();
+                }
+                
+                //Clipboard.SetText();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in doubleClickTextBox: {ex.Message}");
+            }
         }
 
         private void removeButton_Click(object sender, EventArgs e)
