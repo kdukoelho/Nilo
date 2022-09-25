@@ -15,7 +15,6 @@ namespace Password_Manager_Forms
         Thread? nt;
         string filePath = Form1.GetPath;
         List<string> passwordsList = new List<string>();
-        List<List<string>> groupsList = new List<List<string>>();
         public Form3()
         {
             InitializeComponent();
@@ -55,12 +54,13 @@ namespace Password_Manager_Forms
                         //int indexSquareBracket = decodedPass.IndexOf("]");
                         //string group = decodedPass.Substring(1, indexSquareBracket - 1);
                         //decodedPass = decodedPass.Substring(indexSquareBracket + 1);
-                        passwordsList.Add(decodedPass);
+                        passwordsList.Add(decodedPass);                        
                     }
+                    passwordsList = ClearEmptyLines(passwordsList);
                     foreach (string str in passwordsList)
                     {
-                        passwordsListBox.Items.Add(str);                        
-                    }                    
+                        passwordsListBox.Items.Add(str);
+                    }
                 }
             }
             catch (Exception ex)
@@ -78,7 +78,7 @@ namespace Password_Manager_Forms
 
                 if (index != -1)
                 {
-                    string toExcludeLine = passwordsList[index].ToString();
+                    string? toExcludeLine = passwordsListBox.Items[index].ToString();    
 
                     using (var fileContent = File.OpenText(filePath))
                     using (var tmpFile = new StreamWriter(path + "tmpDF.txt"))
@@ -87,14 +87,15 @@ namespace Password_Manager_Forms
                         while ((actualLine = fileContent.ReadLine()) != null)
                         {
                             actualLine = Password_Manager.Database.DecodeData(actualLine);
-                            if (actualLine != toExcludeLine)
+                            if (actualLine != toExcludeLine && actualLine != "")
                             {
                                 actualLine = Password_Manager.Database.EncodeData(actualLine);
                                 tmpFile.WriteLine(actualLine);
-                            }
+                            }                            
                         }
                     }
 
+                    passwordsList = ClearEmptyLines(passwordsList);
                     File.Delete(filePath);
                     File.Move(path + "tmpDF.txt", filePath);
                 }
@@ -104,7 +105,22 @@ namespace Password_Manager_Forms
                 MessageBox.Show($"Unexpected error in: {ex.Message}");
             }
         }
-            
+        
+        private static List<string> ClearEmptyLines(List<string> list)
+        {
+                List<string> tmpList = new List<string>();                
+                if (list != null)
+                {                    
+                    foreach (string line in list)
+                    {
+                        if (line != "")
+                        {
+                            tmpList.Add(line);
+                        }
+                    }                    
+                }
+                return tmpList;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -120,7 +136,7 @@ namespace Password_Manager_Forms
                 {
                     DeleteLine(selectedIndex);
                     passwordsListBox.Items.RemoveAt(selectedIndex);
-                    passwordsList.RemoveAt(selectedIndex);
+                    passwordsList.RemoveAt(selectedIndex);                                        
                 }
                 else
                 {
