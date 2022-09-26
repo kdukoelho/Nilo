@@ -5,11 +5,16 @@ namespace Password_Manager_Forms
         private Thread? nt;
         private static string? path;
         private int loginAttempts = 0;
-        public Form1()
-        {
+        public Form1(string filePath)
+        {            
             try
             {
                 InitializeComponent();
+                if (filePath != String.Empty)
+                {
+                    pathTextBox.Text = filePath;
+                    path = filePath;
+                }
             }
             catch (Exception ex)
             {
@@ -17,7 +22,7 @@ namespace Password_Manager_Forms
             }
         }
 
-        public void GoToRegisterScreen()
+        private void GoToRegisterScreen()
         {
             this.Close();
             nt = new Thread(OpenRegisterWindow);
@@ -30,7 +35,7 @@ namespace Password_Manager_Forms
             Application.Run(new Form2());
         }
 
-        public void GoToPasswordsScreen()
+        private void GoToPasswordsScreen()
         {
             this.Close();
             nt = new Thread(OpenPasswordsWindow);
@@ -88,7 +93,7 @@ namespace Password_Manager_Forms
                 openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    textBox.Text = openFileDialog.FileName;
+                    pathTextBox.Text = openFileDialog.FileName;
                     path = openFileDialog.FileName;
                 }
             }
@@ -151,5 +156,7 @@ namespace Password_Manager_Forms
                 }
             }
         }
+
+       
     }
 }

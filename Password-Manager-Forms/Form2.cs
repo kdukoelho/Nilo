@@ -39,7 +39,27 @@ namespace Password_Manager_Forms
 
         private void OpenLoginForm()
         {
-            Application.Run(new Form1());
+            Application.Run(new Form1(String.Empty));
+        }
+
+        private void GoToLoginScreen(string filePath)
+        {
+            try
+            {
+                this.Close();
+                nt = new Thread(()=>OpenLoginForm(filePath));
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
+            }
+        }
+
+        private void OpenLoginForm(string filePath)
+        {
+            Application.Run(new Form1(filePath));
         }
 
         private void saveDatabaseButton_Click(object sender, EventArgs e)
@@ -91,13 +111,13 @@ namespace Password_Manager_Forms
                 {
                     if (path != null)
                     {
-                        path = path + @"\" + fileName.Text + ".txt";
-                        string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, path);
+                        string filePath = path + @"\" + fileName.Text + ".txt";
+                        string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, filePath);
                         if (createDatabaseConfirmation == "true")
                         {
                             password.Text = String.Empty;
                             this.Close();
-                            GoToLoginScreen();
+                            GoToLoginScreen(filePath);
                         }
                         else
                         {

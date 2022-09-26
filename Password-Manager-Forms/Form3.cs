@@ -42,7 +42,7 @@ namespace Password_Manager_Forms
             }
         }
 
-        public void LoadListBox()
+        private void LoadListBox()
         {
             try
             {

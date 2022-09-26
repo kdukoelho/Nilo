@@ -33,7 +33,7 @@
             this.password = new System.Windows.Forms.TextBox();
             this.registerButton = new System.Windows.Forms.Button();
             this.searchBT = new System.Windows.Forms.Button();
-            this.textBox = new System.Windows.Forms.TextBox();
+            this.pathTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,17 +93,17 @@
             this.searchBT.UseVisualStyleBackColor = false;
             this.searchBT.Click += new System.EventHandler(this.searchBT_Click);
             // 
-            // textBox
+            // pathTextBox
             // 
-            this.textBox.BackColor = System.Drawing.Color.White;
-            this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox.Location = new System.Drawing.Point(166, 96);
-            this.textBox.MaxLength = 300;
-            this.textBox.Name = "textBox";
-            this.textBox.ReadOnly = true;
-            this.textBox.Size = new System.Drawing.Size(311, 23);
-            this.textBox.TabIndex = 1;
+            this.pathTextBox.BackColor = System.Drawing.Color.White;
+            this.pathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pathTextBox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.pathTextBox.Location = new System.Drawing.Point(166, 96);
+            this.pathTextBox.MaxLength = 300;
+            this.pathTextBox.Name = "pathTextBox";
+            this.pathTextBox.ReadOnly = true;
+            this.pathTextBox.Size = new System.Drawing.Size(311, 23);
+            this.pathTextBox.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -126,7 +126,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.pathTextBox);
             this.Controls.Add(this.searchBT);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.password);
@@ -152,7 +152,7 @@
         private TextBox password;
         private Button registerButton;
         private Button searchBT;
-        private TextBox textBox;
+        private TextBox pathTextBox;
         private PictureBox pictureBox1;
         private OpenFileDialog openFileDialog1;
     }

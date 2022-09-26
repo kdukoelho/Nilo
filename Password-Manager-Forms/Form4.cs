@@ -20,7 +20,7 @@ namespace Password_Manager_Forms
             PutGroupsOnComboBox(GetGroups(passwordsList));
         }
 
-        public void GoToPasswordsScreen()
+        private void GoToPasswordsScreen()
         {
             this.Close();
             nt = new Thread(OpenPasswordsWindow);
@@ -42,7 +42,7 @@ namespace Password_Manager_Forms
                 string group = str.Substring(2, indexCloseBracket - 3);
                 groupsList.Add(group);
             }
-            return groupsList;
+            return groupsList.Distinct().ToList();
         }
 
         private void PutGroupsOnComboBox(List<string> groupsList)
@@ -50,7 +50,7 @@ namespace Password_Manager_Forms
             try
             {
                 foreach (string group in groupsList)
-                {
+                {                    
                     groupComboBox.Items.Add(group);
                 }
             }
