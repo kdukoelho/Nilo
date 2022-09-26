@@ -13,12 +13,11 @@ namespace Password_Manager_Forms
     public partial class Form4 : Form
     {
         Thread? nt;
-        private string? generatedPassword;
-        List<string> passwordsList;
+        private string? generatedPassword;        
         public Form4(List<string> passwordsList)
         {
             InitializeComponent();
-            this.passwordsList = passwordsList;
+            PutGroupsOnComboBox(GetGroups(passwordsList));
         }
 
         public void GoToPasswordsScreen()
@@ -32,6 +31,33 @@ namespace Password_Manager_Forms
         private void OpenPasswordsWindow()
         {
             Application.Run(new Form3());
+        }
+
+        private List<string> GetGroups(List<string> passwordsList)
+        {
+            List<string> groupsList = new List<string>();
+            foreach (string str in passwordsList)
+            {
+                int indexCloseBracket = str.IndexOf("]");
+                string group = str.Substring(2, indexCloseBracket - 3);
+                groupsList.Add(group);
+            }
+            return groupsList;
+        }
+
+        private void PutGroupsOnComboBox(List<string> groupsList)
+        {
+            try
+            {
+                foreach (string group in groupsList)
+                {
+                    groupComboBox.Items.Add(group);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpeceted error in PutGroupsOnComboBox {ex.Message}");
+            }
         }
 
         private int TurnFalseOnZero(int charQtt, bool checkBoxValue) 

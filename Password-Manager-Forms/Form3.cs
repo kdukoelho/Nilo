@@ -15,6 +15,7 @@ namespace Password_Manager_Forms
         Thread? nt;
         string filePath = Form1.GetPath;
         List<string> passwordsList = new List<string>();
+        List<string> groupsList = new List<string>();
         public Form3()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in goToLoginScreen: {ex.Message}");
+                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
             }
         }
 
@@ -50,11 +51,8 @@ namespace Password_Manager_Forms
                 {
                     for (int i = 1; i < linesArray.Length; i++)
                     {
-                        string decodedPass = Password_Manager.Database.DecodeData(linesArray[i]);
-                        //int indexSquareBracket = decodedPass.IndexOf("]");
-                        //string group = decodedPass.Substring(1, indexSquareBracket - 1);
-                        //decodedPass = decodedPass.Substring(indexSquareBracket + 1);
-                        passwordsList.Add(decodedPass);                        
+                        string decodedString = Password_Manager.Database.DecodeData(linesArray[i]);                                               
+                        passwordsList.Add(decodedString);
                     }
                     passwordsList = ClearEmptyLines(passwordsList);
                     foreach (string str in passwordsList)
@@ -134,17 +132,21 @@ namespace Password_Manager_Forms
             }
         }
 
-        private void doubleClickTextBox(object sender, EventArgs e)
+        private void textBox_DoubleClick(object sender, EventArgs e)
         {
             try
             {
                 int index = passwordsListBox.SelectedIndex;
-                if (index > -1) 
+                if (index > -1)
                 {
-                    string password = passwordsListBox.Items[index].ToString();
+                    string? password = passwordsListBox.Items[index].ToString();
+                    if (password != null)
+                    {
+                        int indexEqualOperator = password.LastIndexOf("=") + 1;
+                        password = password.Substring(indexEqualOperator);
+                        Clipboard.SetText(password);
+                    }
                 }
-                
-                //Clipboard.SetText();
             }
             catch (Exception ex)
             {

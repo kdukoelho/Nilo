@@ -21,23 +21,23 @@ namespace Password_Manager_Forms
             InitializeComponent();
         }
 
-        private void goToLoginScreen()
+        private void GoToLoginScreen()
         {
             try
             {
                 this.Close();
-                nt = new Thread(openLoginForm);
+                nt = new Thread(OpenLoginForm);
                 nt.SetApartmentState(ApartmentState.STA);
                 nt.Start();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in goToLoginScreen: {ex.Message}");
+                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
             }
         }
 
 
-        private void openLoginForm()
+        private void OpenLoginForm()
         {
             Application.Run(new Form1());
         }
@@ -63,7 +63,7 @@ namespace Password_Manager_Forms
         { 
             try
             {
-                goToLoginScreen();
+                GoToLoginScreen();
             }
             catch (Exception ex)
             {
@@ -97,7 +97,7 @@ namespace Password_Manager_Forms
                         {
                             password.Text = String.Empty;
                             this.Close();
-                            goToLoginScreen();
+                            GoToLoginScreen();
                         }
                         else
                         {
