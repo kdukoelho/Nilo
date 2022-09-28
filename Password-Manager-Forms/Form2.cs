@@ -115,8 +115,7 @@ namespace Password_Manager_Forms
                         string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, filePath);
                         if (createDatabaseConfirmation == "true")
                         {
-                            password.Text = String.Empty;
-                            this.Close();
+                            password.Text = String.Empty;                           
                             GoToLoginScreen(filePath);
                         }
                         else

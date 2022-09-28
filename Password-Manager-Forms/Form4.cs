@@ -113,24 +113,23 @@ namespace Password_Manager_Forms
         {
             try
             {
-                if  (groupComboBox.Text == String.Empty) { groupComboBox.Text = "General"; }
                 if (tittleTextBox.Text == String.Empty || passwordTextBox.Text == String.Empty)
                 {
                     MessageBox.Show("Tittle and password can't be null.");
                 }
                 else
                 {
-                    string buildedString = "[ " + groupComboBox.Text + " ] " + tittleTextBox.Text + " [" + loginTextBox.Text + "] " + "= " + generatedPassword;                    
+                    string groupString = groupComboBox.Text.Length > 0 ? "[ " + groupComboBox.Text + " ] " : String.Empty;
+                    string buildedString = groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;                    
                     string encodedString = Password_Manager.Database.EncodeData(buildedString);
                     Password_Manager.Database.WriteLinesOnFile(encodedString, Form1.GetPath);
                     GoToPasswordsScreen();
-                    this.Close();
                 }
             }
-            catch (ArgumentNullException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-            }
+                MessageBox.Show($"Unexpected error in addListButton_Click: {ex.Message}");
+            }            
         }
 
         private void backButton_Click(object sender, EventArgs e)
