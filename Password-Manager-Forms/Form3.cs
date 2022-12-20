@@ -15,7 +15,8 @@ namespace Password_Manager_Forms
         Thread? nt;
         string filePath = Form1.GetPath;
         List<string> passwordsList = new List<string>();
-        List<string> groupsList = new List<string>(); 
+        List<string> groupsList = new List<string>();
+        
         public Form3()
         {
             InitializeComponent();
@@ -86,36 +87,32 @@ namespace Password_Manager_Forms
             }
         }
 
-        private void DeleteLine(int index)
+        private void DeleteLine(string toExcludeLine)
         {
             try
             {
                 int lastBackslashIndex = filePath.LastIndexOf(@"\"); 
                 string path = filePath.Substring(0, lastBackslashIndex + 1);
 
-                if (index != -1)
+                using (var fileContent = File.OpenText(filePath))
+                using (var tmpFile = new StreamWriter(path + "tmpDF.txt"))
                 {
-                    string? toExcludeLine = passwordsListBox.Items[index].ToString();    
-
-                    using (var fileContent = File.OpenText(filePath))
-                    using (var tmpFile = new StreamWriter(path + "tmpDF.txt"))
+                    string? actualLine;
+                    while ((actualLine = fileContent.ReadLine()) != null)
                     {
-                        string? actualLine;
-                        while ((actualLine = fileContent.ReadLine()) != null)
+                        actualLine = Password_Manager.Database.DecodeData(actualLine);
+                        if (actualLine != toExcludeLine && actualLine != "")
                         {
-                            actualLine = Password_Manager.Database.DecodeData(actualLine);
-                            if (actualLine != toExcludeLine && actualLine != "")
-                            {
-                                actualLine = Password_Manager.Database.EncodeData(actualLine);
-                                tmpFile.WriteLine(actualLine);
-                            }                            
-                        }
-                    tmpFile.Close();
+                            actualLine = Password_Manager.Database.EncodeData(actualLine);
+                            tmpFile.WriteLine(actualLine);
+                        }                        
                     }
-                    passwordsList = ClearEmptyLines(passwordsList);
-                    File.Delete(filePath);
-                    File.Move(path + "tmpDF.txt", filePath);
+                    tmpFile.Close();
                 }
+                passwordsList = ClearEmptyLines(passwordsList);
+                File.Delete(filePath);
+                File.Move(path + "tmpDF.txt", filePath);
+                
             }
             catch (Exception ex)
             {
@@ -178,15 +175,29 @@ namespace Password_Manager_Forms
             try
             {
                 int selectedIndex = passwordsListBox.SelectedIndex;
+                string? textBoxString = passwordsListBox.Items[selectedIndex].ToString();
+                string[] groups = new string[passwordsList.Count];
                 if (selectedIndex > -1)
                 {
-                    DeleteLine(selectedIndex);
-                    passwordsListBox.Items.RemoveAt(selectedIndex);
-                    passwordsList.RemoveAt(selectedIndex);
-                    string selectedString = passwordsListBox.GetItemText(selectedIndex);
-                    int indexClosedBracket = selectedString.IndexOf("]");
-                    string groupString = selectedString.Substring(2, indexClosedBracket - 3);
-                    groupComboBox.Items.Remove(groupString);
+                    foreach (string password in passwordsList)
+                    {
+                        int indexClosedBracket = password.IndexOf("]");
+                        string groupString = password.Substring(2, indexClosedBracket - 3);
+                        string strWithoutGroup = password.Substring(indexClosedBracket + 2);
+                        if (strWithoutGroup == textBoxString)
+                        {
+                            DeleteLine(password);
+                            passwordsListBox.Items.Remove(strWithoutGroup);
+                            passwordsList.Remove(password);
+                            Form4 frm4 = new Form4(passwordsList);
+                            groupsList = frm4.GetGroups(passwordsList);
+                            if (!groupsList.Contains(groupString))
+                            {
+                                groupComboBox.Items.Remove(groupString);
+                            }
+                                
+                        } 
+                    }                    
                 }
                 else
                 {
@@ -225,12 +236,10 @@ namespace Password_Manager_Forms
                 {
                     for (int i = 0; i < passwordsList.Count; i++)
                     {
-                        string decodedString = passwordsList[i];
-                        int indexClosedBracket = decodedString.IndexOf("]");                        
-                        string groupString = decodedString.Substring(2, indexClosedBracket - 3);
-                        string strWithoutGroup = decodedString.Substring(indexClosedBracket + 2);
-                        // MessageBox.Show($"{groupString}, {groupString.Length}");
-                        // MessageBox.Show($"{groupComboBox.Text}, {groupComboBox.Text.Length}");
+                        string password = passwordsList[i];
+                        int indexClosedBracket = password.IndexOf("]");                        
+                        string groupString = password.Substring(2, indexClosedBracket - 3);
+                        string strWithoutGroup = password.Substring(indexClosedBracket + 2);
                         if (groupComboBox.Text == groupString)
                         {                            
                             passwordsListBox.Items.Add(strWithoutGroup);
