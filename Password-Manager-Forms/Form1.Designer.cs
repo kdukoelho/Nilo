@@ -89,7 +89,7 @@
             this.searchBT.Name = "searchBT";
             this.searchBT.Size = new System.Drawing.Size(148, 32);
             this.searchBT.TabIndex = 5;
-            this.searchBT.Text = "Select database >";
+            this.searchBT.Text = "Select database";
             this.searchBT.UseVisualStyleBackColor = false;
             this.searchBT.Click += new System.EventHandler(this.searchBT_Click);
             // 

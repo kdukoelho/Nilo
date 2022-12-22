@@ -48,6 +48,7 @@
             this.passwordsListBox.Name = "passwordsListBox";
             this.passwordsListBox.Size = new System.Drawing.Size(321, 188);
             this.passwordsListBox.TabIndex = 0;
+            this.passwordsListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.passwordsListBox_MouseClick);
             this.passwordsListBox.DoubleClick += new System.EventHandler(this.textBox_DoubleClick);
             // 
             // addPasswordsButton

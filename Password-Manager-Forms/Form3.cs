@@ -257,5 +257,20 @@ namespace Password_Manager_Forms
                 MessageBox.Show($"Unexpected error in groupComboBox_TextChanged: {ex.Message}");
             }
         }
+
+        private void passwordsListBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (copyInstructionLabel.Text == "Password copied to clipboard")
+                {
+                    copyInstructionLabel.Text = "Double click to copy password";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in passwordsListBox_MouseClick: {ex.Message}");
+            }
+        }
     }
 }
