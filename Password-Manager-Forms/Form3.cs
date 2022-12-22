@@ -161,6 +161,7 @@ namespace Password_Manager_Forms
                         int indexEqualOperator = password.LastIndexOf("=") + 1;
                         password = password.Substring(indexEqualOperator);
                         Clipboard.SetText(password);
+                        copyInstructionLabel.Text = "Password copied to clipboard";
                     }
                 }
             }
@@ -176,7 +177,6 @@ namespace Password_Manager_Forms
             {
                 int selectedIndex = passwordsListBox.SelectedIndex;
                 string? textBoxString = passwordsListBox.Items[selectedIndex].ToString();
-                string[] groups = new string[passwordsList.Count];
                 if (selectedIndex > -1)
                 {
                     foreach (string password in passwordsList)

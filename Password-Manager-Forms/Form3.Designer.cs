@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.copyInstructionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,10 +43,10 @@
             // 
             this.passwordsListBox.BackColor = System.Drawing.Color.DimGray;
             this.passwordsListBox.FormattingEnabled = true;
-            this.passwordsListBox.ItemHeight = 18;
-            this.passwordsListBox.Location = new System.Drawing.Point(203, 51);
+            this.passwordsListBox.ItemHeight = 23;
+            this.passwordsListBox.Location = new System.Drawing.Point(203, 47);
             this.passwordsListBox.Name = "passwordsListBox";
-            this.passwordsListBox.Size = new System.Drawing.Size(321, 202);
+            this.passwordsListBox.Size = new System.Drawing.Size(321, 188);
             this.passwordsListBox.TabIndex = 0;
             this.passwordsListBox.DoubleClick += new System.EventHandler(this.textBox_DoubleClick);
             // 
@@ -77,7 +78,7 @@
             // 
             this.changeButton.BackColor = System.Drawing.Color.Black;
             this.changeButton.ForeColor = System.Drawing.Color.White;
-            this.changeButton.Location = new System.Drawing.Point(16, 153);
+            this.changeButton.Location = new System.Drawing.Point(16, 152);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(82, 35);
             this.changeButton.TabIndex = 3;
@@ -88,7 +89,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Password_Manager_Forms.Properties.Resources.cat_eyes;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(174, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -101,7 +102,7 @@
             this.groupComboBox.FormattingEnabled = true;
             this.groupComboBox.Location = new System.Drawing.Point(375, 12);
             this.groupComboBox.Name = "groupComboBox";
-            this.groupComboBox.Size = new System.Drawing.Size(149, 26);
+            this.groupComboBox.Size = new System.Drawing.Size(149, 31);
             this.groupComboBox.TabIndex = 12;
             this.groupComboBox.Text = "All";
             this.groupComboBox.TextChanged += new System.EventHandler(this.groupComboBox_TextChanged);
@@ -109,25 +110,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(314, 15);
+            this.label1.Location = new System.Drawing.Point(312, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 19);
+            this.label1.Size = new System.Drawing.Size(64, 23);
             this.label1.TabIndex = 13;
             this.label1.Text = "Group:";
             // 
+            // copyInstructionLabel
+            // 
+            this.copyInstructionLabel.AutoSize = true;
+            this.copyInstructionLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.copyInstructionLabel.Location = new System.Drawing.Point(244, 240);
+            this.copyInstructionLabel.Name = "copyInstructionLabel";
+            this.copyInstructionLabel.Size = new System.Drawing.Size(244, 23);
+            this.copyInstructionLabel.TabIndex = 14;
+            this.copyInstructionLabel.Text = "Double click to copy password";
+            this.copyInstructionLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupComboBox);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addPasswordsButton);
             this.Controls.Add(this.passwordsListBox);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.copyInstructionLabel);
+            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -149,5 +162,6 @@
         private ListBox passwordsListBox;
         private ComboBox groupComboBox;
         private Label label1;
+        private Label copyInstructionLabel;
     }
 }

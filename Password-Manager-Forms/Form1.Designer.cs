@@ -42,9 +42,9 @@
             // loginButton
             // 
             this.loginButton.BackColor = System.Drawing.Color.Black;
-            this.loginButton.Location = new System.Drawing.Point(299, 180);
+            this.loginButton.Location = new System.Drawing.Point(310, 180);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(92, 28);
+            this.loginButton.Size = new System.Drawing.Size(92, 33);
             this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Go!";
             this.loginButton.UseVisualStyleBackColor = false;
@@ -55,9 +55,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(95, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 19);
+            this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Password >";
+            this.label2.Text = "Password:";
             // 
             // password
             // 
@@ -68,7 +68,7 @@
             this.password.MaxLength = 100;
             this.password.Name = "password";
             this.password.PasswordChar = '●';
-            this.password.Size = new System.Drawing.Size(240, 18);
+            this.password.Size = new System.Drawing.Size(240, 23);
             this.password.TabIndex = 2;
             // 
             // registerButton
@@ -76,7 +76,7 @@
             this.registerButton.BackColor = System.Drawing.Color.Black;
             this.registerButton.Location = new System.Drawing.Point(166, 180);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(127, 28);
+            this.registerButton.Size = new System.Drawing.Size(127, 33);
             this.registerButton.TabIndex = 4;
             this.registerButton.Text = "Create database";
             this.registerButton.UseVisualStyleBackColor = false;
@@ -85,9 +85,9 @@
             // searchBT
             // 
             this.searchBT.BackColor = System.Drawing.Color.Black;
-            this.searchBT.Location = new System.Drawing.Point(23, 94);
+            this.searchBT.Location = new System.Drawing.Point(12, 94);
             this.searchBT.Name = "searchBT";
-            this.searchBT.Size = new System.Drawing.Size(137, 25);
+            this.searchBT.Size = new System.Drawing.Size(148, 32);
             this.searchBT.TabIndex = 5;
             this.searchBT.Text = "Select database >";
             this.searchBT.UseVisualStyleBackColor = false;
@@ -97,12 +97,12 @@
             // 
             this.pathTextBox.BackColor = System.Drawing.Color.White;
             this.pathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pathTextBox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.pathTextBox.Location = new System.Drawing.Point(166, 96);
+            this.pathTextBox.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.pathTextBox.Location = new System.Drawing.Point(166, 97);
             this.pathTextBox.MaxLength = 300;
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.ReadOnly = true;
-            this.pathTextBox.Size = new System.Drawing.Size(311, 23);
+            this.pathTextBox.Size = new System.Drawing.Size(311, 27);
             this.pathTextBox.TabIndex = 1;
             // 
             // pictureBox1
@@ -121,7 +121,7 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
