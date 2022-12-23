@@ -158,6 +158,7 @@ namespace Password_Manager_Forms
                     string? password = passwordsListBox.Items[index].ToString();
                     if (password != null)
                     {
+                        MessageBox.Show(passwordsList[index]);
                         int indexEqualOperator = password.LastIndexOf("=") + 1;
                         password = password.Substring(indexEqualOperator);
                         Clipboard.SetText(password);

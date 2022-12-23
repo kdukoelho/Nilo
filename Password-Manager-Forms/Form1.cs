@@ -73,6 +73,58 @@ namespace Password_Manager_Forms
             }
         }
 
+        private void LoginAction()
+        {
+            try
+            {
+                if (path != null)
+                {
+                    string passwordReader = ReadPassword(path);
+                    if (passwordReader != "Database not found.")
+                    {
+                        string decodedPassword = Password_Manager.Database.DecodeData(passwordReader);
+                        string userPassword = password.Text;
+                        if (userPassword == decodedPassword)
+                        {
+                            GoToPasswordsScreen();
+                        }
+                        else if (userPassword != decodedPassword)
+                        {
+                            this.loginAttempts++;
+                            if (this.loginAttempts > 3)
+                            {
+                                this.Close();
+                            }
+                            MessageBox.Show($"Wrong Password {this.loginAttempts}/3");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(passwordReader);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Select a file to continue.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in LoginAction: {ex.Message}");
+            }
+        }
+        public static string GetPath
+        {
+            get
+            {
+                if (path != null) { return path; }
+                else
+                {
+                    throw new ArgumentNullException("Path is null.");
+                }
+            }
+        }
+
         private void registerButton_Click(object sender, EventArgs e)
         {
             try
@@ -107,37 +159,7 @@ namespace Password_Manager_Forms
         {
             try
             {
-                if (path != null)
-                {
-                    string passwordReader = ReadPassword(path);
-                    if (passwordReader != "Database not found.")
-                    {
-                        string decodedPassword = Password_Manager.Database.DecodeData(passwordReader);
-                        string userPassword = password.Text;
-                        if (userPassword == decodedPassword)
-                        {
-                            GoToPasswordsScreen();
-                        }
-                        else if (userPassword != decodedPassword)
-                        {
-                            this.loginAttempts++;
-                            if (this.loginAttempts > 3)
-                            {
-                                this.Close();
-                            }
-                            MessageBox.Show($"Wrong Password {this.loginAttempts}/3");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(passwordReader);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Select a file to continue.");
-                }
-
+                LoginAction();
             }
             catch (Exception ex)
             {
@@ -145,18 +167,12 @@ namespace Password_Manager_Forms
             }
         }
 
-        public static string GetPath
+        private void password_KeyDown(object sender, KeyEventArgs e)
         {
-            get
+            if (e.KeyCode == Keys.Enter)
             {
-                if (path != null) { return path; }
-                else
-                {
-                    throw new ArgumentNullException("Path is null.");
-                }
+                LoginAction();
             }
         }
-
-       
     }
 }

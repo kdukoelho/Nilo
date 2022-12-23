@@ -107,7 +107,6 @@
             {
                 finalPass += wordsList[i];
             }
-
             return finalPass;
         }
     }

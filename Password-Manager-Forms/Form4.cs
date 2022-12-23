@@ -133,6 +133,7 @@ namespace Password_Manager_Forms
                             }
                         }
                         tmpFile.Close();
+                        fileContent.Close();
                     }
                     File.Delete(filePath);
                     File.Move(tmpFilePath, fileName);
@@ -142,6 +143,20 @@ namespace Password_Manager_Forms
             {
                 MessageBox.Show($"Unexpected error in ReplaceLine: {ex.Message}");
             }
+        }
+
+        private string GenerateId()
+        {
+            int actualId = 0;
+            if (passwordsList.Count > 0)
+            {                
+                foreach (string line in passwordsList)
+                {
+                    actualId = Convert.ToInt32(line.Substring(0, line.IndexOf('[')).Replace(' ', Char.MinValue));
+                }
+                actualId += 1;
+            }
+            return Convert.ToString(actualId);
         }
 
         private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
@@ -191,8 +206,9 @@ namespace Password_Manager_Forms
                 }
                 else
                 {
+                    string passwordId = GenerateId();
                     string groupString = groupComboBox.Text.Length > 0 ? "[ " + groupComboBox.Text + " ] " : String.Empty;
-                    string buildedString = groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
+                    string buildedString = passwordId + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
                     string checkString = buildedString.Substring(0, buildedString.IndexOf("="));
                     foreach (string str in passwordsList) 
                     {
@@ -213,7 +229,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in addListButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error in addListButton_Click: {ex}");
             }            
         }
 

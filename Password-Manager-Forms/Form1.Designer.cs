@@ -70,6 +70,7 @@
             this.password.PasswordChar = '●';
             this.password.Size = new System.Drawing.Size(240, 23);
             this.password.TabIndex = 2;
+            this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_KeyDown);
             // 
             // registerButton
             // 
