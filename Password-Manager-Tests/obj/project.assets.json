@@ -5998,11 +5998,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cadu\\Documents\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\Password-Manager-Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Cadu\\Documents\\My Files\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\Password-Manager-Tests.csproj",
       "projectName": "Password-Manager-Tests",
-      "projectPath": "C:\\Users\\Cadu\\Documents\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\Password-Manager-Tests.csproj",
+      "projectPath": "C:\\Users\\Cadu\\Documents\\My Files\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\Password-Manager-Tests.csproj",
       "packagesPath": "C:\\Users\\Cadu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cadu\\Documents\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\obj\\",
+      "outputPath": "C:\\Users\\Cadu\\Documents\\My Files\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Cadu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6019,8 +6019,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Cadu\\Documents\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager\\Password-Manager.csproj": {
-              "projectPath": "C:\\Users\\Cadu\\Documents\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager\\Password-Manager.csproj"
+            "C:\\Users\\Cadu\\Documents\\My Files\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager\\Password-Manager.csproj": {
+              "projectPath": "C:\\Users\\Cadu\\Documents\\My Files\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager\\Password-Manager.csproj"
             }
           }
         }

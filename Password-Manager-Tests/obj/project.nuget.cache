@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wjBwdsq8tuFQqBZ8ybViPrF3pAJOOYjgTJco9fW/oE6H41rUZfdxre2NT3nGctmrLEeePs32q+AcBaRCOzLNYA==",
+  "dgSpecHash": "SS7zPpfezc3VE8DQIu8+Pcpor6XcMHYiUmy3u0fy4KSKnjgqVRdSRHyKjKm/OG5RWufe7W/YEZMN/bx1Xc8ieQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cadu\\Documents\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\Password-Manager-Tests.csproj",
+  "projectFilePath": "C:\\Users\\Cadu\\Documents\\My Files\\My Projects\\Programs\\1. Password Manager - Windows\\Password-Manager-Tests\\Password-Manager-Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cadu\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Cadu\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

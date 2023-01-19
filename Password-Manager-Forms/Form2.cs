@@ -36,12 +36,6 @@ namespace Password_Manager_Forms
             }
         }
 
-
-        private void OpenLoginForm()
-        {
-            Application.Run(new Form1(String.Empty));
-        }
-
         private void GoToLoginScreen(string filePath)
         {
             try
@@ -55,6 +49,11 @@ namespace Password_Manager_Forms
             {
                 MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
             }
+        }
+
+        private void OpenLoginForm()
+        {
+            Application.Run(new Form1(String.Empty));
         }
 
         private void OpenLoginForm(string filePath)

@@ -55,7 +55,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(95, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 23);
+            this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password:";
             // 
@@ -68,8 +68,8 @@
             this.password.MaxLength = 100;
             this.password.Name = "password";
             this.password.PasswordChar = '●';
-            this.password.Size = new System.Drawing.Size(240, 23);
-            this.password.TabIndex = 2;
+            this.password.Size = new System.Drawing.Size(240, 18);
+            this.password.TabIndex = 1;
             this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_KeyDown);
             // 
             // registerButton
@@ -78,7 +78,7 @@
             this.registerButton.Location = new System.Drawing.Point(166, 180);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(127, 33);
-            this.registerButton.TabIndex = 4;
+            this.registerButton.TabIndex = 2;
             this.registerButton.Text = "Create database";
             this.registerButton.UseVisualStyleBackColor = false;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
@@ -103,8 +103,9 @@
             this.pathTextBox.MaxLength = 300;
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.ReadOnly = true;
-            this.pathTextBox.Size = new System.Drawing.Size(311, 27);
-            this.pathTextBox.TabIndex = 1;
+            this.pathTextBox.Size = new System.Drawing.Size(311, 23);
+            this.pathTextBox.TabIndex = 0;
+            this.pathTextBox.UseWaitCursor = true;
             // 
             // pictureBox1
             // 
@@ -122,7 +123,7 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);

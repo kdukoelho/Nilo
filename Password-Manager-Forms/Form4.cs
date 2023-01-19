@@ -16,11 +16,13 @@ namespace Password_Manager_Forms
         List<string> passwordsList;
         string filePath = Form1.GetPath;
         private string? generatedPassword;
-        int toChangeIndex;
-        public Form4(List<string> passwordsList, int toChangeIndex = -1)
+        int toChangeIndex; string toChangeId;
+        public Form4(List<string> passwordsList, int toChangeId = -1, int toChangeIndex = -1)
         {
             this.passwordsList = passwordsList;
             this.toChangeIndex = toChangeIndex;
+            this.toChangeId = Convert.ToString(toChangeId);
+            //addListButton.Text = toChangeIndex > -1 ? "Change" : "Add";
             InitializeComponent();
             PutElementsOnTextBox(SplitStringComponents(passwordsList, toChangeIndex));
             PutGroupsOnComboBox(GetGroups(passwordsList));
@@ -41,18 +43,20 @@ namespace Password_Manager_Forms
 
         private string[] SplitStringComponents(List<string> passwordsList, int toChangeIndex)
         {
-            string[] elementsArray = new string[4];
+            string[] elementsArray = new string[5];
             if (toChangeIndex > -1)
             {
                 string str = passwordsList[toChangeIndex];
-                int indexCloseBracket = str.IndexOf("]");         
+                int indexMinus = str.IndexOf('-');
+                int indexClosedBracket = str.IndexOf("]");         
                 int indexLastOpenBracket = str.LastIndexOf("[");
                 int indexEqual = str.IndexOf("=");
-                string group = str.Substring(2, indexCloseBracket - 3);
-                string tittle = str.Substring(indexCloseBracket + 2, indexLastOpenBracket - indexCloseBracket - 3);
+                string id = str.Substring(0, indexMinus - 1);
+                string group = str.Substring(indexMinus + 5, indexClosedBracket - 8);
+                string tittle = str.Substring(indexClosedBracket + 2, indexLastOpenBracket - indexClosedBracket - 3);
                 string login = str.Substring(indexLastOpenBracket + 2, indexEqual - indexLastOpenBracket - 5);
                 string password = str.Substring(indexEqual + 2);
-                elementsArray[0] = group; elementsArray[1] = tittle; elementsArray[2] = login; elementsArray[3] = password;
+                elementsArray[0] = id; elementsArray[1] = group; elementsArray[2] = tittle; elementsArray[3] = login; elementsArray[4] = password;
                 return elementsArray;
             }
             return elementsArray;
@@ -60,10 +64,10 @@ namespace Password_Manager_Forms
 
         private void PutElementsOnTextBox(string[] elementsArray)
         {
-            groupComboBox.Text = elementsArray[0];
-            tittleTextBox.Text = elementsArray[1];
-            loginTextBox.Text = elementsArray[2];
-            passwordTextBox.Text = elementsArray[3];
+            groupComboBox.Text = elementsArray[1];
+            tittleTextBox.Text = elementsArray[2];
+            loginTextBox.Text = elementsArray[3];
+            passwordTextBox.Text = elementsArray[4];
         }
 
         public List<string> GetGroups(List<string> passwordsList)
@@ -71,8 +75,8 @@ namespace Password_Manager_Forms
             List<string> groupsList = new List<string>();
             foreach (string str in passwordsList)
             {
-                int indexCloseBracket = str.IndexOf("]");
-                string group = str.Substring(2, indexCloseBracket - 3);
+                int indexClosedBracket = str.IndexOf("]");
+                string group = str.Substring(7, indexClosedBracket - 7);
                 groupsList.Add(group);
             }
             return groupsList.Distinct().ToList();
@@ -105,7 +109,7 @@ namespace Password_Manager_Forms
             }
         }
 
-        private void ReplaceLine(string toReplaceLine, string olderLine)
+        private void ReplaceLine(string toReplaceLine, string olderLineId)
         {
             try
             {
@@ -118,18 +122,23 @@ namespace Password_Manager_Forms
                     using (var tmpFile = new StreamWriter(tmpFilePath))
                     {
                         string? actualLine;
+                        string toReplaceLineId = toReplaceLine.Substring(0, toReplaceLine.IndexOf("["));
                         while ((actualLine = fileContent.ReadLine()) != null)
                         {
                             actualLine = Password_Manager.Database.DecodeData(actualLine);
-                            if (actualLine == olderLine)
+                            string actualLineId = actualLine.Substring(0, actualLine.IndexOf("["));
+                            if (actualLineId == olderLineId)
                             {
+                                toReplaceLine = toReplaceLine.Replace(toReplaceLineId, olderLineId);                   
                                 toReplaceLine = Password_Manager.Database.EncodeData(toReplaceLine);
                                 tmpFile.WriteLine(toReplaceLine);
+                                MessageBox.Show(actualLineId, olderLineId);
                             }
                             else
                             {
                                 actualLine = Password_Manager.Database.EncodeData(actualLine);
                                 tmpFile.WriteLine(actualLine);
+                                MessageBox.Show($"Else: {actualLineId}, {olderLineId}");
                             }
                         }
                         tmpFile.Close();
@@ -141,7 +150,16 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in ReplaceLine: {ex.Message}");
+                MessageBox.Show($"Unexpected error in ReplaceLine: {ex}");
+            }
+        }
+
+        private void AddLine(string toEncode)
+        {
+            string encodedString = Password_Manager.Database.EncodeData(toEncode);
+            using (StreamWriter textFile = File.AppendText(Form1.GetPath))
+            {
+                textFile.Write(encodedString);
             }
         }
 
@@ -152,11 +170,12 @@ namespace Password_Manager_Forms
             {                
                 foreach (string line in passwordsList)
                 {
-                    actualId = Convert.ToInt32(line.Substring(0, line.IndexOf('[')).Replace(' ', Char.MinValue));
+                    actualId = Convert.ToInt32(line.Substring(0, line.IndexOf('-')).Trim());
                 }
                 actualId += 1;
             }
-            return Convert.ToString(actualId);
+            string finalString = $"{actualId} - ";
+            return finalString;
         }
 
         private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
@@ -196,6 +215,14 @@ namespace Password_Manager_Forms
             Clipboard.SetText(generatedPassword);
         }
 
+        private string GenerateBuildedString(bool generateId)
+        {
+            string passwordId = generateId ? GenerateId() : "";
+            string groupString = groupComboBox.Text.Length > 0 ? " [ " + groupComboBox.Text + " ] " : String.Empty;
+            string buildedString = passwordId + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
+            return buildedString;
+        }
+        
         public void addListButton_Click(object sender, EventArgs e)
         {
             try
@@ -206,26 +233,23 @@ namespace Password_Manager_Forms
                 }
                 else
                 {
-                    string passwordId = GenerateId();
-                    string groupString = groupComboBox.Text.Length > 0 ? "[ " + groupComboBox.Text + " ] " : String.Empty;
-                    string buildedString = passwordId + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
-                    string checkString = buildedString.Substring(0, buildedString.IndexOf("="));
-                    foreach (string str in passwordsList) 
+                    if (toChangeIndex > -1)
                     {
-                        string toCompareStr = str.Substring(0, str.IndexOf("="));
-                        if (checkString == toCompareStr)
+                        DialogResult dialogResult = MessageBox.Show("Do you really want to change this field?", "Confirmation", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
                         {
-                            DialogResult dialogResult = MessageBox.Show("Do you really want to change this field?", "Confirmation", MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                ReplaceLine(buildedString, passwordsList[toChangeIndex]);
-                            }
+                            Form3 frm3 = new Form3();
+                            this.passwordsList = frm3.RemoveStringFromTextBox(passwordsList, toChangeIndex);
+                            
                         }
                     }
-                    string encodedString = Password_Manager.Database.EncodeData(buildedString);
-                    Password_Manager.Database.WriteLinesOnFile(encodedString, Form1.GetPath);
+                    else
+                    {
+                        AddLine(GenerateBuildedString(true));
+                    }
                     GoToPasswordsScreen();
                 }
+                
             }
             catch (Exception ex)
             {

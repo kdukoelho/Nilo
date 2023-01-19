@@ -10,6 +10,7 @@ namespace Password_Manager_Forms
             try
             {
                 InitializeComponent();
+                password.Focus();
                 if (filePath != String.Empty)
                 {
                     pathTextBox.Text = filePath;
