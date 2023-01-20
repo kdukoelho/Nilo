@@ -26,16 +26,16 @@ namespace Password_Manager_Forms
             PutGroupsOnComboBox(groupsList);
         }
 
-        private void OpenPasswordGeneratorForm(int toChangeId=-1, int toChangeIndex=-1)
+        private void OpenPasswordGeneratorForm(int toChangeIndex=-1)
         {
-            Application.Run(new Form4(passwordsList, toChangeId, toChangeIndex));
+            Application.Run(new Form4(passwordsList, toChangeIndex));
         }
 
-        private void GoToPasswordGeneratorScreen(int toChangeId=-1, int toChangeIndex=-1)
+        private void GoToPasswordGeneratorScreen(int toChangeIndex=-1)
         {
             try
             {
-                nt = new Thread(()=>OpenPasswordGeneratorForm(toChangeId, toChangeIndex));
+                nt = new Thread(()=>OpenPasswordGeneratorForm(toChangeIndex));
                 nt.SetApartmentState(ApartmentState.STA);
                 nt.Start();
                 this.Close();
@@ -150,12 +150,12 @@ namespace Password_Manager_Forms
             }
         }
 
-        public List<string> RemoveStringFromTextBox(List<string> passwordsList, int selectedIndex)
+        public void RemoveStringFromTextBox(List<string> passwordsList, int selectedIndex)
         {
             if (selectedIndex > -1)
             {
                 string passwordString = passwordsList[selectedIndex].ToString();
-                foreach (string password in passwordsList)
+                foreach (string password in passwordsList.ToList<string>())
                 {
                     int indexClosedBracket = password.IndexOf("]");
                     string groupString = password.Substring(2, indexClosedBracket - 3);                    
@@ -176,7 +176,6 @@ namespace Password_Manager_Forms
             {
                 MessageBox.Show("Select a item.");
             }
-            return passwordsList;
         }
 
         private static List<string> ClearEmptyLines(List<string> list)
@@ -199,7 +198,7 @@ namespace Password_Manager_Forms
         {
             try
             {
-                GoToPasswordGeneratorScreen(-1, -1);
+                GoToPasswordGeneratorScreen(-1);
             }
             catch (Exception ex)
             {
@@ -217,10 +216,9 @@ namespace Password_Manager_Forms
                     string? password = passwordsListBox.Items[index].ToString();
                     if (password != null)
                     {
-                        MessageBox.Show(passwordsList[index]);
                         int indexEqualOperator = password.LastIndexOf('=') + 1;
-                        password = password.Substring(indexEqualOperator);
-                        Clipboard.SetText(password);
+                        MessageBox.Show(passwordsList[index]);
+                        password = password.Substring(indexEqualOperator);                       
                         copyInstructionLabel.Text = "Password copied to clipboard";
                     }
                 }
@@ -252,8 +250,10 @@ namespace Password_Manager_Forms
                 if (selectedIndex > -1)
                 {
                     string? listBoxString = passwordsList[selectedIndex].ToString();
-                    int strId = Convert.ToInt32(listBoxString.Substring(0, listBoxString.IndexOf('-') - 1));
-                    GoToPasswordGeneratorScreen(strId, selectedIndex);                    
+                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(listBoxString);
+                    string strId = strMpl.GetId();
+                    MessageBox.Show(strId);
+                    GoToPasswordGeneratorScreen(selectedIndex);                    
                 }                
             }
             catch (Exception ex)
@@ -273,7 +273,8 @@ namespace Password_Manager_Forms
                     {
                         string password = passwordsList[i];
                         int indexClosedBracket = password.IndexOf("]");
-                        string groupString = password.Substring(7, indexClosedBracket - 7);
+                        int indexOpenBracket = password.IndexOf("[");
+                        string groupString = password.Substring(indexOpenBracket + 2, indexClosedBracket - 7);
                         string strWithoutGroup = password.Substring(indexClosedBracket + 2);
                         if (groupComboBox.Text == groupString)
                         {                            

@@ -43,10 +43,10 @@
             // 
             this.passwordsListBox.BackColor = System.Drawing.Color.DimGray;
             this.passwordsListBox.FormattingEnabled = true;
-            this.passwordsListBox.ItemHeight = 23;
+            this.passwordsListBox.ItemHeight = 18;
             this.passwordsListBox.Location = new System.Drawing.Point(203, 47);
             this.passwordsListBox.Name = "passwordsListBox";
-            this.passwordsListBox.Size = new System.Drawing.Size(321, 188);
+            this.passwordsListBox.Size = new System.Drawing.Size(321, 184);
             this.passwordsListBox.TabIndex = 0;
             this.passwordsListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.passwordsListBox_MouseClick);
             this.passwordsListBox.DoubleClick += new System.EventHandler(this.textBox_DoubleClick);
@@ -99,13 +99,13 @@
             // 
             // groupComboBox
             // 
+            this.groupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.groupComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupComboBox.FormattingEnabled = true;
             this.groupComboBox.Location = new System.Drawing.Point(375, 12);
             this.groupComboBox.Name = "groupComboBox";
-            this.groupComboBox.Size = new System.Drawing.Size(149, 31);
+            this.groupComboBox.Size = new System.Drawing.Size(149, 26);
             this.groupComboBox.TabIndex = 12;
-            this.groupComboBox.Text = "All";
             this.groupComboBox.TextChanged += new System.EventHandler(this.groupComboBox_TextChanged);
             // 
             // label1
@@ -113,7 +113,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(312, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 23);
+            this.label1.Size = new System.Drawing.Size(55, 19);
             this.label1.TabIndex = 13;
             this.label1.Text = "Group:";
             // 
@@ -123,14 +123,14 @@
             this.copyInstructionLabel.ForeColor = System.Drawing.Color.DimGray;
             this.copyInstructionLabel.Location = new System.Drawing.Point(244, 240);
             this.copyInstructionLabel.Name = "copyInstructionLabel";
-            this.copyInstructionLabel.Size = new System.Drawing.Size(244, 23);
+            this.copyInstructionLabel.Size = new System.Drawing.Size(206, 19);
             this.copyInstructionLabel.TabIndex = 14;
             this.copyInstructionLabel.Text = "Double click to copy password";
             this.copyInstructionLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);

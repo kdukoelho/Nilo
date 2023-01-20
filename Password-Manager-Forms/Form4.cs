@@ -16,12 +16,12 @@ namespace Password_Manager_Forms
         List<string> passwordsList;
         string filePath = Form1.GetPath;
         private string? generatedPassword;
-        int toChangeIndex; string toChangeId;
-        public Form4(List<string> passwordsList, int toChangeId = -1, int toChangeIndex = -1)
+        int toChangeIndex;
+        public Form4(List<string> passwordsList, int toChangeIndex = -1)
         {
             this.passwordsList = passwordsList;
             this.toChangeIndex = toChangeIndex;
-            this.toChangeId = Convert.ToString(toChangeId);
+
             //addListButton.Text = toChangeIndex > -1 ? "Change" : "Add";
             InitializeComponent();
             PutElementsOnTextBox(SplitStringComponents(passwordsList, toChangeIndex));
@@ -46,16 +46,12 @@ namespace Password_Manager_Forms
             string[] elementsArray = new string[5];
             if (toChangeIndex > -1)
             {
-                string str = passwordsList[toChangeIndex];
-                int indexMinus = str.IndexOf('-');
-                int indexClosedBracket = str.IndexOf("]");         
-                int indexLastOpenBracket = str.LastIndexOf("[");
-                int indexEqual = str.IndexOf("=");
-                string id = str.Substring(0, indexMinus - 1);
-                string group = str.Substring(indexMinus + 5, indexClosedBracket - 8);
-                string tittle = str.Substring(indexClosedBracket + 2, indexLastOpenBracket - indexClosedBracket - 3);
-                string login = str.Substring(indexLastOpenBracket + 2, indexEqual - indexLastOpenBracket - 5);
-                string password = str.Substring(indexEqual + 2);
+                Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
+                string id = strMpl.GetId();
+                string group = strMpl.GetGroup();
+                string tittle = strMpl.GetTittle();
+                string login = strMpl.GetUsername();
+                string password = strMpl.GetPassword();
                 elementsArray[0] = id; elementsArray[1] = group; elementsArray[2] = tittle; elementsArray[3] = login; elementsArray[4] = password;
                 return elementsArray;
             }
@@ -73,10 +69,11 @@ namespace Password_Manager_Forms
         public List<string> GetGroups(List<string> passwordsList)
         {
             List<string> groupsList = new List<string>();
+            
             foreach (string str in passwordsList)
             {
-                int indexClosedBracket = str.IndexOf("]");
-                string group = str.Substring(7, indexClosedBracket - 7);
+                Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(str);
+                string group = strMpl.GetGroup();
                 groupsList.Add(group);
             }
             return groupsList.Distinct().ToList();
@@ -163,19 +160,18 @@ namespace Password_Manager_Forms
             }
         }
 
-        private string GenerateId()
+        private int GenerateId()
         {
             int actualId = 0;
             if (passwordsList.Count > 0)
             {                
                 foreach (string line in passwordsList)
                 {
-                    actualId = Convert.ToInt32(line.Substring(0, line.IndexOf('-')).Trim());
+                    actualId = Convert.ToInt32(line.Substring(0, line.IndexOf('-') - 1));
                 }
                 actualId += 1;
             }
-            string finalString = $"{actualId} - ";
-            return finalString;
+            return actualId;
         }
 
         private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
@@ -215,11 +211,11 @@ namespace Password_Manager_Forms
             Clipboard.SetText(generatedPassword);
         }
 
-        private string GenerateBuildedString(bool generateId)
+        private string GenerateBuildedString(int actualId)
         {
-            string passwordId = generateId ? GenerateId() : "";
-            string groupString = groupComboBox.Text.Length > 0 ? " [ " + groupComboBox.Text + " ] " : String.Empty;
-            string buildedString = passwordId + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
+            int passwordId = actualId < 0 ? GenerateId() : actualId;
+            string groupString = groupComboBox.Text.Length > 0 ? " [ " + groupComboBox.Text + "] " : String.Empty;
+            string buildedString = passwordId + " - " + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
             return buildedString;
         }
         
@@ -239,13 +235,16 @@ namespace Password_Manager_Forms
                         if (dialogResult == DialogResult.Yes)
                         {
                             Form3 frm3 = new Form3();
-                            this.passwordsList = frm3.RemoveStringFromTextBox(passwordsList, toChangeIndex);
-                            
+                            frm3.RemoveStringFromTextBox(passwordsList, toChangeIndex);
+                            Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
+                            MessageBox.Show(strMpl.GetId());
+                            int actualPasswordId = Convert.ToInt32(strMpl.GetId()); 
+                            AddLine(GenerateBuildedString(actualPasswordId));
                         }
                     }
                     else
                     {
-                        AddLine(GenerateBuildedString(true));
+                        AddLine(GenerateBuildedString(-1));
                     }
                     GoToPasswordsScreen();
                 }
