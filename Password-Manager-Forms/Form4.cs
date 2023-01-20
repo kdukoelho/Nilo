@@ -162,16 +162,19 @@ namespace Password_Manager_Forms
 
         private int GenerateId()
         {
-            int actualId = 0;
+            int actualId, nextId = 0;
+            int biggiestId = 0;           
             if (passwordsList.Count > 0)
             {                
                 foreach (string line in passwordsList)
                 {
-                    actualId = Convert.ToInt32(line.Substring(0, line.IndexOf('-') - 1));
+                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(line);
+                    actualId = Convert.ToInt32(strMpl.GetId());
+                    biggiestId = actualId > biggiestId ? actualId : biggiestId;                   
                 }
-                actualId += 1;
+                nextId = biggiestId + 1;
             }
-            return actualId;
+            return nextId;
         }
 
         private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
@@ -213,9 +216,9 @@ namespace Password_Manager_Forms
 
         private string GenerateBuildedString(int actualId)
         {
-            int passwordId = actualId < 0 ? GenerateId() : actualId;
+            int passwordId = actualId == -1 ? GenerateId() : actualId;
             string groupString = groupComboBox.Text.Length > 0 ? " [ " + groupComboBox.Text + "] " : String.Empty;
-            string buildedString = passwordId + " - " + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + generatedPassword;
+            string buildedString = passwordId + " - " + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + passwordTextBox.Text;
             return buildedString;
         }
         
@@ -234,9 +237,9 @@ namespace Password_Manager_Forms
                         DialogResult dialogResult = MessageBox.Show("Do you really want to change this field?", "Confirmation", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            Form3 frm3 = new Form3();
-                            frm3.RemoveStringFromTextBox(passwordsList, toChangeIndex);
                             Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
+                            Form3 frm3 = new Form3();
+                            frm3.RemoveStringFromTextBox(passwordsList, toChangeIndex);                            
                             MessageBox.Show(strMpl.GetId());
                             int actualPasswordId = Convert.ToInt32(strMpl.GetId()); 
                             AddLine(GenerateBuildedString(actualPasswordId));

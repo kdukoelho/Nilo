@@ -64,6 +64,7 @@ namespace Password_Manager_Forms
             try
             {
                 groupComboBox.Items.Add("All");
+                groupComboBox.Text = "All";
                 string[] linesArray = File.ReadAllLines(filePath);
                 if (linesArray.Length > 0)
                 {
@@ -127,8 +128,9 @@ namespace Password_Manager_Forms
                 string? passwordListString = passwordsListBox.Items[selectedIndex].ToString();
                 foreach (string password in passwordsList)
                 {
+                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(password);
                     int indexClosedBracket = password.IndexOf("]");
-                    string groupString = password.Substring(2, indexClosedBracket - 3);
+                    string groupString = strMpl.GetGroup();
                     string strWithoutGroup = password.Substring(indexClosedBracket + 2);
                     if (strWithoutGroup == passwordListString)
                     {
@@ -140,6 +142,7 @@ namespace Password_Manager_Forms
                         if (!groupsList.Contains(groupString))
                         {
                             groupComboBox.Items.Remove(groupString);
+                            groupComboBox.Text = "All";
                         }
                     }
                 }
@@ -249,10 +252,6 @@ namespace Password_Manager_Forms
                 int selectedIndex = passwordsListBox.SelectedIndex;
                 if (selectedIndex > -1)
                 {
-                    string? listBoxString = passwordsList[selectedIndex].ToString();
-                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(listBoxString);
-                    string strId = strMpl.GetId();
-                    MessageBox.Show(strId);
                     GoToPasswordGeneratorScreen(selectedIndex);                    
                 }                
             }
