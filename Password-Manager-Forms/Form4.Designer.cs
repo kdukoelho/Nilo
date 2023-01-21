@@ -56,7 +56,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 203);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 23);
+            this.label4.Size = new System.Drawing.Size(106, 19);
             this.label4.TabIndex = 22;
             this.label4.Text = "Password Size:";
             // 
@@ -64,12 +64,12 @@
             // 
             this.passwordSizeTrackBar.BackColor = System.Drawing.Color.Black;
             this.passwordSizeTrackBar.Location = new System.Drawing.Point(126, 201);
-            this.passwordSizeTrackBar.Maximum = 25;
+            this.passwordSizeTrackBar.Maximum = 51;
             this.passwordSizeTrackBar.Minimum = 8;
             this.passwordSizeTrackBar.Name = "passwordSizeTrackBar";
-            this.passwordSizeTrackBar.Size = new System.Drawing.Size(104, 56);
+            this.passwordSizeTrackBar.Size = new System.Drawing.Size(104, 45);
             this.passwordSizeTrackBar.TabIndex = 7;
-            this.passwordSizeTrackBar.Value = 8;
+            this.passwordSizeTrackBar.Value = 15;
             this.passwordSizeTrackBar.Scroll += new System.EventHandler(this.passwordSizeTrackBar_Scroll);
             // 
             // label3
@@ -77,7 +77,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(38, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 23);
+            this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 20;
             this.label3.Text = "Tittle:";
             // 
@@ -87,17 +87,18 @@
             this.tittleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tittleTextBox.ForeColor = System.Drawing.Color.Black;
             this.tittleTextBox.Location = new System.Drawing.Point(100, 83);
+            this.tittleTextBox.MaxLength = 25;
             this.tittleTextBox.Name = "tittleTextBox";
-            this.tittleTextBox.Size = new System.Drawing.Size(131, 23);
+            this.tittleTextBox.Size = new System.Drawing.Size(131, 18);
             this.tittleTextBox.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 5);
+            this.label2.Location = new System.Drawing.Point(36, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(245, 34);
+            this.label2.Size = new System.Drawing.Size(197, 27);
             this.label2.TabIndex = 18;
             this.label2.Text = "Password Generator";
             // 
@@ -106,7 +107,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(38, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 23);
+            this.label1.Size = new System.Drawing.Size(55, 19);
             this.label1.TabIndex = 17;
             this.label1.Text = "Group:";
             // 
@@ -117,7 +118,7 @@
             this.numbersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.numbersCheckBox.Location = new System.Drawing.Point(131, 166);
             this.numbersCheckBox.Name = "numbersCheckBox";
-            this.numbersCheckBox.Size = new System.Drawing.Size(104, 27);
+            this.numbersCheckBox.Size = new System.Drawing.Size(89, 23);
             this.numbersCheckBox.TabIndex = 6;
             this.numbersCheckBox.Text = "Numbers";
             this.numbersCheckBox.UseVisualStyleBackColor = true;
@@ -129,7 +130,7 @@
             this.upperLettersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.upperLettersCheckBox.Location = new System.Drawing.Point(131, 137);
             this.upperLettersCheckBox.Name = "upperLettersCheckBox";
-            this.upperLettersCheckBox.Size = new System.Drawing.Size(136, 27);
+            this.upperLettersCheckBox.Size = new System.Drawing.Size(115, 23);
             this.upperLettersCheckBox.TabIndex = 4;
             this.upperLettersCheckBox.Text = "Upper Letters";
             this.upperLettersCheckBox.UseVisualStyleBackColor = true;
@@ -141,7 +142,7 @@
             this.symbolsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.symbolsCheckBox.Location = new System.Drawing.Point(37, 166);
             this.symbolsCheckBox.Name = "symbolsCheckBox";
-            this.symbolsCheckBox.Size = new System.Drawing.Size(98, 27);
+            this.symbolsCheckBox.Size = new System.Drawing.Size(85, 23);
             this.symbolsCheckBox.TabIndex = 5;
             this.symbolsCheckBox.Text = "Symbols";
             this.symbolsCheckBox.UseVisualStyleBackColor = true;
@@ -153,7 +154,7 @@
             this.lettersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.lettersCheckBox.Location = new System.Drawing.Point(37, 137);
             this.lettersCheckBox.Name = "lettersCheckBox";
-            this.lettersCheckBox.Size = new System.Drawing.Size(84, 27);
+            this.lettersCheckBox.Size = new System.Drawing.Size(71, 23);
             this.lettersCheckBox.TabIndex = 3;
             this.lettersCheckBox.Text = "Letters";
             this.lettersCheckBox.UseVisualStyleBackColor = true;
@@ -163,9 +164,9 @@
             this.charQttLabel.AutoSize = true;
             this.charQttLabel.Location = new System.Drawing.Point(233, 203);
             this.charQttLabel.Name = "charQttLabel";
-            this.charQttLabel.Size = new System.Drawing.Size(19, 23);
+            this.charQttLabel.Size = new System.Drawing.Size(23, 19);
             this.charQttLabel.TabIndex = 23;
-            this.charQttLabel.Text = "8";
+            this.charQttLabel.Text = "15";
             // 
             // copyButton
             // 
@@ -196,7 +197,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(18, 280);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 23);
+            this.label5.Size = new System.Drawing.Size(74, 19);
             this.label5.TabIndex = 27;
             this.label5.Text = "Password:";
             // 
@@ -218,9 +219,9 @@
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordTextBox.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.passwordTextBox.ForeColor = System.Drawing.Color.White;
-            this.passwordTextBox.Location = new System.Drawing.Point(114, 280);
+            this.passwordTextBox.Location = new System.Drawing.Point(92, 281);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(139, 23);
+            this.passwordTextBox.Size = new System.Drawing.Size(154, 18);
             this.passwordTextBox.TabIndex = 30;
             // 
             // groupComboBox
@@ -231,7 +232,7 @@
             this.groupComboBox.FormattingEnabled = true;
             this.groupComboBox.Location = new System.Drawing.Point(100, 47);
             this.groupComboBox.Name = "groupComboBox";
-            this.groupComboBox.Size = new System.Drawing.Size(131, 31);
+            this.groupComboBox.Size = new System.Drawing.Size(131, 26);
             this.groupComboBox.TabIndex = 0;
             // 
             // label6
@@ -239,7 +240,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(38, 110);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 23);
+            this.label6.Size = new System.Drawing.Size(50, 19);
             this.label6.TabIndex = 32;
             this.label6.Text = "Login:";
             // 
@@ -249,8 +250,9 @@
             this.loginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.loginTextBox.ForeColor = System.Drawing.Color.Black;
             this.loginTextBox.Location = new System.Drawing.Point(100, 110);
+            this.loginTextBox.MaxLength = 80;
             this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(131, 23);
+            this.loginTextBox.Size = new System.Drawing.Size(131, 18);
             this.loginTextBox.TabIndex = 2;
             // 
             // backButton
@@ -267,7 +269,7 @@
             // 
             // Form4
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(269, 351);
@@ -297,7 +299,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PASSWORD GENERATOR";
+            this.Text = "Nilo - Password Generator";
             ((System.ComponentModel.ISupportInitialize)(this.passwordSizeTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

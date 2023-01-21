@@ -10,7 +10,6 @@ namespace Password_Manager_Forms
             try
             {
                 InitializeComponent();
-                password.Focus();
                 if (filePath != String.Empty)
                 {
                     pathTextBox.Text = filePath;
@@ -19,34 +18,78 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in Form1 constructor: {ex.Message}");
+                MessageBox.Show($"Unexpected error at Form1 constructor: {ex.Message}");
+            }
+        }
+
+        // Getters.
+
+        public static string GetPath
+        {
+            get
+            {
+                if (path != null) { return path; }
+                else
+                {
+                    throw new ArgumentNullException("Path is null.");
+                }
+            }
+        }
+
+        // Functions.
+
+        private void OpenRegisterWindow()
+        {
+            try
+            {
+                Application.Run(new Form2());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at OpenRegisterWindow: {ex}");
+            }
+        }
+
+        private void OpenPasswordsWindow()
+        {
+            try
+            {
+                Application.Run(new Form3());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at OpenPasswordsWindow: {ex}");
+            }
+        }
+
+        private void GoToPasswordsScreen()
+        {
+            try
+            {
+                this.Close();
+                nt = new Thread(OpenPasswordsWindow);
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at GoToPasswordsScreen: {ex}");
             }
         }
 
         private void GoToRegisterScreen()
         {
-            this.Close();
-            nt = new Thread(OpenRegisterWindow);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
-        }
-
-        private void OpenRegisterWindow()
-        {
-            Application.Run(new Form2());
-        }
-
-        private void GoToPasswordsScreen()
-        {
-            this.Close();
-            nt = new Thread(OpenPasswordsWindow);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
-        }
-
-        private void OpenPasswordsWindow()
-        {
-            Application.Run(new Form3());
+            try
+            {
+                this.Close();
+                nt = new Thread(OpenRegisterWindow);
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at GoToRegisterScreen: {ex}");
+            }
         }
 
         private string ReadPassword(string path)
@@ -69,8 +112,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in ReadPasswordLine: {ex.Message}");
-                return String.Empty;
+                MessageBox.Show($"Unexpected error at ReadPassword: {ex}"); return String.Empty;
             }
         }
 
@@ -111,20 +153,22 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in LoginAction: {ex.Message}");
+                MessageBox.Show($"Unexpected error in LoginAction: {ex}");
             }
         }
-        public static string GetPath
+        
+        private void OpenFileDialog()
         {
-            get
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (path != null) { return path; }
-                else
-                {
-                    throw new ArgumentNullException("Path is null.");
-                }
+                pathTextBox.Text = openFileDialog.FileName;
+                path = openFileDialog.FileName;
             }
         }
+
+        // Events.
 
         private void registerButton_Click(object sender, EventArgs e)
         {
@@ -134,7 +178,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in registerButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error in registerButton_Click: {ex}");
             }
         }
 
@@ -142,17 +186,11 @@ namespace Password_Manager_Forms
         {
             try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    pathTextBox.Text = openFileDialog.FileName;
-                    path = openFileDialog.FileName;
-                }
+                OpenFileDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in searchBT_Click {ex.Message}");
+                MessageBox.Show($"Unexpected error in searchBT_Click {ex}");
             }
         }
 
@@ -164,15 +202,23 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in loginButton_Click {ex.Message}");
+                MessageBox.Show($"Unexpected error in loginButton_Click {ex}");
             }
         }
 
         private void password_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                LoginAction();
+
+                if (e.KeyCode == Keys.Enter)
+                {
+                    LoginAction();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in passwords_KeyDown{ex}");
             }
         }
     }

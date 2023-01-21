@@ -18,7 +18,40 @@ namespace Password_Manager_Forms
 
         public Form2()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }            
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at Form2 Constructor: {ex}");
+            }
+        }
+
+        // Functions.
+
+        private void OpenLoginForm()
+        {
+            try
+            {
+                Application.Run(new Form1(String.Empty));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in OpenLoginForm: {ex}");
+            }
+        }
+
+        private void OpenLoginForm(string filePath)
+        {
+            try
+            {
+                Application.Run(new Form1(filePath));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in OpenLoginForm(Overloaded): {ex}");
+            }
         }
 
         private void GoToLoginScreen()
@@ -32,7 +65,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
+                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex}");
             }
         }
 
@@ -47,25 +80,15 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
+                MessageBox.Show($"Unexpected error in GoToLoginScreen(Overloaded): {ex}");
             }
         }
-
-        private void OpenLoginForm()
-        {
-            Application.Run(new Form1(String.Empty));
-        }
-
-        private void OpenLoginForm(string filePath)
-        {
-            Application.Run(new Form1(filePath));
-        }
-
-        private void saveDatabaseButton_Click(object sender, EventArgs e)
+        
+        private void SaveDatabasePath()
         {
             try
-            {                
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();                
+            {
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBox.Text = folderBrowserDialog.SelectedPath;
@@ -74,7 +97,43 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in saveDatabaseButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error in SaveDatabasePath: {ex}");
+            }
+        }
+
+        private void CreateDatabase()
+        {
+            try
+            {
+                string filePath = path + @"\" + fileName.Text + ".txt";
+                string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, filePath);
+                if (createDatabaseConfirmation == "true")
+                {
+                    password.Text = String.Empty;
+                    GoToLoginScreen(filePath);
+                }
+                else
+                {
+                    MessageBox.Show(createDatabaseConfirmation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in CreateDatabase: {ex}");
+            }
+        }
+
+        // Events.
+
+        private void saveDatabaseButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveDatabasePath();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error in saveDatabaseButton_Click: {ex}");
             }
         }
 
@@ -86,7 +145,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in cancelButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error in cancelButton_Click: {ex}");
             }
         }
 
@@ -110,17 +169,7 @@ namespace Password_Manager_Forms
                 {
                     if (path != null)
                     {
-                        string filePath = path + @"\" + fileName.Text + ".txt";
-                        string createDatabaseConfirmation = Password_Manager.Database.CreateDatabase(password.Text, filePath);
-                        if (createDatabaseConfirmation == "true")
-                        {
-                            password.Text = String.Empty;                           
-                            GoToLoginScreen(filePath);
-                        }
-                        else
-                        {
-                            MessageBox.Show(createDatabaseConfirmation);
-                        }
+                        CreateDatabase();
                     }
                     else
                     {
@@ -130,7 +179,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in registerButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error in registerButton_Click: {ex}");
             }
         }      
     }

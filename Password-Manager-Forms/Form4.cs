@@ -16,67 +16,96 @@ namespace Password_Manager_Forms
         List<string> passwordsList;
         string filePath = Form1.GetPath;
         private string? generatedPassword;
-        int toChangeIndex;
+        int toChangeIndex;        
         public Form4(List<string> passwordsList, int toChangeIndex = -1)
         {
-            this.passwordsList = passwordsList;
-            this.toChangeIndex = toChangeIndex;
-
-            //addListButton.Text = toChangeIndex > -1 ? "Change" : "Add";
-            InitializeComponent();
-            PutElementsOnTextBox(SplitStringComponents(passwordsList, toChangeIndex));
-            PutGroupsOnComboBox(GetGroups(passwordsList));
+            try
+            {
+                this.passwordsList = passwordsList;
+                this.toChangeIndex = toChangeIndex;                
+                InitializeComponent();                
+                PutElementsOnTextBox();
+                PutGroupsOnComboBox(GetGroups(passwordsList));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at Form4 Constructor: {ex}");
+            }
         }
+
+        // Functions.
 
         private void GoToPasswordsScreen()
         {
-            this.Close();
-            nt = new Thread(OpenPasswordsWindow);
-            nt.SetApartmentState(ApartmentState.STA);
-            nt.Start();
+            try 
+            {
+                this.Close();
+                nt = new Thread(OpenPasswordsWindow);
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at GoToPasswordsScreen: {ex}");
+            }
+            
         }
 
         private void OpenPasswordsWindow()
         {
-            Application.Run(new Form3());
-        }
-
-        private string[] SplitStringComponents(List<string> passwordsList, int toChangeIndex)
-        {
-            string[] elementsArray = new string[5];
-            if (toChangeIndex > -1)
+            try
             {
-                Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
-                string id = strMpl.GetId();
-                string group = strMpl.GetGroup();
-                string tittle = strMpl.GetTittle();
-                string login = strMpl.GetUsername();
-                string password = strMpl.GetPassword();
-                elementsArray[0] = id; elementsArray[1] = group; elementsArray[2] = tittle; elementsArray[3] = login; elementsArray[4] = password;
-                return elementsArray;
+                Application.Run(new Form3());
             }
-            return elementsArray;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at OpenPasswordsWindow: {ex}");
+            }
         }
 
-        private void PutElementsOnTextBox(string[] elementsArray)
+        private void PutElementsOnTextBox()
         {
-            groupComboBox.Text = elementsArray[1];
-            tittleTextBox.Text = elementsArray[2];
-            loginTextBox.Text = elementsArray[3];
-            passwordTextBox.Text = elementsArray[4];
+            try
+            {
+                if (toChangeIndex > -1)
+                {
+                    addListButton.Text = "Change";
+                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
+                    string[] elementsArray = strMpl.SplitElements();
+                    groupComboBox.Text = elementsArray[1];
+                    tittleTextBox.Text = elementsArray[2];
+                    loginTextBox.Text = elementsArray[3];
+                    passwordTextBox.Text = elementsArray[4];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at PutElementsOnTextBox: {ex}");
+            }
+            
         }
 
         public List<string> GetGroups(List<string> passwordsList)
         {
-            List<string> groupsList = new List<string>();
-            
-            foreach (string str in passwordsList)
+            try
             {
-                Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(str);
-                string group = strMpl.GetGroup();
-                groupsList.Add(group);
+                List<string> groupsList = new List<string>();
+
+                foreach (string line in passwordsList)
+                {
+                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(line);
+                    string group = strMpl.GetGroup();
+                    groupsList.Add(group);
+                }
+                return groupsList.Distinct().ToList();
             }
-            return groupsList.Distinct().ToList();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at GetGroups: {ex}");
+                List<string> emptyList = new List<string>;
+                return emptyList;
+            }
+            
         }
 
         private void PutGroupsOnComboBox(List<string> groupsList)
@@ -92,64 +121,7 @@ namespace Password_Manager_Forms
             {
                 MessageBox.Show($"Unexpeceted error in PutGroupsOnComboBox {ex.Message}");
             }
-        }
-
-        private int TurnFalseOnZero(int charQtt, bool checkBoxValue) 
-        {
-            if (checkBoxValue)
-            {
-                return charQtt;
-            } 
-            else
-            {
-                return 0;
-            }
-        }
-
-        private void ReplaceLine(string toReplaceLine, string olderLineId)
-        {
-            try
-            {
-                int lastBackslashIndex = filePath.LastIndexOf(@"\");
-                string path = filePath.Substring(0, lastBackslashIndex + 1);
-                string fileName = filePath;
-                string tmpFilePath = path + "tmpDF.txt";
-
-                using (var fileContent = new StreamReader(filePath)) {
-                    using (var tmpFile = new StreamWriter(tmpFilePath))
-                    {
-                        string? actualLine;
-                        string toReplaceLineId = toReplaceLine.Substring(0, toReplaceLine.IndexOf("["));
-                        while ((actualLine = fileContent.ReadLine()) != null)
-                        {
-                            actualLine = Password_Manager.Database.DecodeData(actualLine);
-                            string actualLineId = actualLine.Substring(0, actualLine.IndexOf("["));
-                            if (actualLineId == olderLineId)
-                            {
-                                toReplaceLine = toReplaceLine.Replace(toReplaceLineId, olderLineId);                   
-                                toReplaceLine = Password_Manager.Database.EncodeData(toReplaceLine);
-                                tmpFile.WriteLine(toReplaceLine);
-                                MessageBox.Show(actualLineId, olderLineId);
-                            }
-                            else
-                            {
-                                actualLine = Password_Manager.Database.EncodeData(actualLine);
-                                tmpFile.WriteLine(actualLine);
-                                MessageBox.Show($"Else: {actualLineId}, {olderLineId}");
-                            }
-                        }
-                        tmpFile.Close();
-                        fileContent.Close();
-                    }
-                    File.Delete(filePath);
-                    File.Move(tmpFilePath, fileName);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Unexpected error in ReplaceLine: {ex}");
-            }
-        }
+        }       
 
         private void AddLine(string toEncode)
         {
@@ -176,17 +148,32 @@ namespace Password_Manager_Forms
             }
             return nextId;
         }
-
-        private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
+        private string GenerateBuildedString(int actualId)
         {
-            charQttLabel.Text = Convert.ToString(passwordSizeTrackBar.Value);
+            int passwordId = actualId == -1 ? GenerateId() : actualId;
+            string groupString = groupComboBox.Text.Length > 0 ? " [ " + groupComboBox.Text + "] " : String.Empty;
+            string buildedString = passwordId + " - " + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + passwordTextBox.Text;
+            return buildedString;
         }
 
-        private void generateButton_Click(object sender, EventArgs e)
+        private int TurnFalseOnZero(int charQtt, bool checkBoxValue)
         {
             try
             {
-                int charQtt;                
+                return checkBoxValue ? charQtt : 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at TurnFalseOnZero: {ex}");
+                return 0;
+            }
+        }
+
+        private void GeneratePassword()
+        {
+            try
+            {
+                int charQtt;
                 if (lettersCheckBox.Checked == false && upperLettersCheckBox.Checked == false && symbolsCheckBox.Checked == false && numbersCheckBox.Checked == false)
                 {
                     MessageBox.Show("Mark at least one type of char.");
@@ -203,6 +190,45 @@ namespace Password_Manager_Forms
 
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at GeneratePassword: {ex}");
+            }
+        }
+
+        private void ChangeLine()
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you really want to change this field?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
+                    Form3 frm3 = new Form3();
+                    frm3.RemoveLine(passwordsList, toChangeIndex);
+                    int actualPasswordId = Convert.ToInt32(strMpl.GetId());
+                    AddLine(GenerateBuildedString(actualPasswordId));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at ChangeLine: {ex}");
+            }
+        }
+
+        // Events.
+
+        private void passwordSizeTrackBar_Scroll(object sender, EventArgs e)
+        {
+            charQttLabel.Text = Convert.ToString(passwordSizeTrackBar.Value);
+        }
+
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GeneratePassword();
+            }
             catch (Exception ex) 
             {
                 MessageBox.Show($"Unexpected error in generateButton_Click: {ex.Message}");
@@ -212,15 +238,7 @@ namespace Password_Manager_Forms
         private void copyButton_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(generatedPassword);
-        }
-
-        private string GenerateBuildedString(int actualId)
-        {
-            int passwordId = actualId == -1 ? GenerateId() : actualId;
-            string groupString = groupComboBox.Text.Length > 0 ? " [ " + groupComboBox.Text + "] " : String.Empty;
-            string buildedString = passwordId + " - " + groupString + tittleTextBox.Text + " [ " + loginTextBox.Text + " ] " + "= " + passwordTextBox.Text;
-            return buildedString;
-        }
+        }        
         
         public void addListButton_Click(object sender, EventArgs e)
         {
@@ -234,16 +252,7 @@ namespace Password_Manager_Forms
                 {
                     if (toChangeIndex > -1)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Do you really want to change this field?", "Confirmation", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(passwordsList[toChangeIndex]);
-                            Form3 frm3 = new Form3();
-                            frm3.RemoveStringFromTextBox(passwordsList, toChangeIndex);                            
-                            MessageBox.Show(strMpl.GetId());
-                            int actualPasswordId = Convert.ToInt32(strMpl.GetId()); 
-                            AddLine(GenerateBuildedString(actualPasswordId));
-                        }
+                        ChangeLine();                 
                     }
                     else
                     {

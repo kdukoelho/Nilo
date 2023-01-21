@@ -42,9 +42,13 @@ namespace Password_Manager
         {
             return inputString.Substring(equalIndex + 2);
         }
+        public string GetStringWithoutGroup()
+        {
+            return inputString.Substring(closedBracketIndex + 2);
+        }
         public string[] SplitElements()
         {
-            string[] splitedElemts = { GetId(), GetGroup(), GetUsername(), GetPassword() };
+            string[] splitedElemts = { GetId(), GetGroup(), GetTittle(), GetUsername(), GetPassword() };
             return splitedElemts;
         }
     }

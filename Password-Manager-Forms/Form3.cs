@@ -19,16 +19,32 @@ namespace Password_Manager_Forms
         
         public Form3()
         {
-            InitializeComponent();
-            LoadListBox();
-            Form4 frm4 = new Form4(passwordsList);
-            groupsList = frm4.GetGroups(passwordsList);
-            PutGroupsOnComboBox(groupsList);
+            try
+            {
+                InitializeComponent();
+                LoadListBox();
+                Form4 frm4 = new Form4(passwordsList);
+                groupsList = frm4.GetGroups(passwordsList);
+                PutGroupsOnComboBox(groupsList);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at Form3 Constructor: {ex}");
+            }
         }
+
+        // Functions.
 
         private void OpenPasswordGeneratorForm(int toChangeIndex=-1)
         {
-            Application.Run(new Form4(passwordsList, toChangeIndex));
+            try
+            {
+                Application.Run(new Form4(passwordsList, toChangeIndex));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at OpenPasswordGeneratorForm: {ex}");
+            }
         }
 
         private void GoToPasswordGeneratorScreen(int toChangeIndex=-1)
@@ -42,9 +58,10 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in GoToLoginScreen: {ex.Message}");
+                MessageBox.Show($"Unexpected error at GoToLoginScreen: {ex}");
             }
         }
+
         private void PutGroupsOnComboBox(List<string> list) 
         {
         try
@@ -56,9 +73,10 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in PutGroupsOnComboBox {ex}");
+                MessageBox.Show($"Unexpected error at PutGroupsOnComboBox {ex}");
             }
         }
+
         private void LoadListBox()
         {
             try
@@ -73,18 +91,17 @@ namespace Password_Manager_Forms
                         string decodedString = Password_Manager.Database.DecodeData(linesArray[i]);                                               
                         passwordsList.Add(decodedString);
                     }
-                    passwordsList = ClearEmptyLines(passwordsList);
+                    passwordsList.RemoveAll(string.IsNullOrEmpty);
                     foreach (string str in passwordsList)
                     {
-                        int indexFirstClosedBracket = str.IndexOf(']');
-                        string strWithoutGroup = str.Substring(indexFirstClosedBracket + 2);
-                        passwordsListBox.Items.Add(strWithoutGroup);
+                        Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(str);                        
+                        passwordsListBox.Items.Add(strMpl.GetStringWithoutGroup());
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexepected error in LoadListBox: {ex.Message}");
+                MessageBox.Show($"Unexepected error at LoadListBox: {ex}");
             }
         }
 
@@ -94,9 +111,10 @@ namespace Password_Manager_Forms
             {
                 int lastBackslashIndex = filePath.LastIndexOf(@"\"); 
                 string path = filePath.Substring(0, lastBackslashIndex + 1);
+                string tmpFilePath = path + "tmpNiloFile.txt";
 
                 using (var fileContent = File.OpenText(filePath))
-                using (var tmpFile = new StreamWriter(path + "tmpDF.txt"))
+                using (var tmpFile = new StreamWriter(tmpFilePath))
                 {
                     string? actualLine;
                     while ((actualLine = fileContent.ReadLine()) != null)
@@ -110,92 +128,139 @@ namespace Password_Manager_Forms
                     }
                     tmpFile.Close();
                 }
-                passwordsList = ClearEmptyLines(passwordsList);
+                passwordsList.RemoveAll(string.IsNullOrEmpty);
                 File.Delete(filePath);
-                File.Move(path + "tmpDF.txt", filePath);
-                
+                File.Move(tmpFilePath, filePath);                
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in DeleteLine: {ex.Message}");
+                MessageBox.Show($"Unexpected error at DeleteLine: {ex}");
             }
         }
-        public void RemoveStringFromTextBox()
+        public void RemoveLine()
         {
-            int selectedIndex = passwordsListBox.SelectedIndex;
-            if (selectedIndex > -1)
+            try
             {
-                string? passwordListString = passwordsListBox.Items[selectedIndex].ToString();
-                foreach (string password in passwordsList)
+                int selectedIndex = passwordsListBox.SelectedIndex;
+                if (selectedIndex > -1)
                 {
-                    Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(password);
-                    int indexClosedBracket = password.IndexOf("]");
-                    string groupString = strMpl.GetGroup();
-                    string strWithoutGroup = password.Substring(indexClosedBracket + 2);
-                    if (strWithoutGroup == passwordListString)
+                    string? passwordListBoxString = passwordsListBox.Items[selectedIndex].ToString();
+                    foreach (string line in passwordsList.ToList())
                     {
-                        DeleteLine(password);
-                        passwordsListBox.Items.Remove(strWithoutGroup);
-                        passwordsList.Remove(password);
-                        Form4 frm4 = new Form4(passwordsList);
-                        groupsList = frm4.GetGroups(passwordsList);
-                        if (!groupsList.Contains(groupString))
+                        Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(line);
+                        string groupString = strMpl.GetGroup();
+                        string strWithoutGroup = strMpl.GetStringWithoutGroup();
+                        if (strWithoutGroup == passwordListBoxString)
                         {
-                            groupComboBox.Items.Remove(groupString);
-                            groupComboBox.Text = "All";
+                            DeleteLine(line);
+                            passwordsListBox.Items.Remove(strWithoutGroup); passwordsList.Remove(line);
+                            Form4 frm4 = new Form4(passwordsList); groupsList = frm4.GetGroups(passwordsList);
+                            if (!groupsList.Contains(groupString))
+                            {
+                                groupComboBox.Items.Remove(groupString);
+                                groupComboBox.Text = "All";
+                            }
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Select a item.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Select a item.");
+                MessageBox.Show($"Unexpected error at RemoveLine: {ex}");
             }
         }
 
-        public void RemoveStringFromTextBox(List<string> passwordsList, int selectedIndex)
+        public void RemoveLine(List<string> passwordsList, int selectedIndex)
         {
-            if (selectedIndex > -1)
+            try
             {
-                string passwordString = passwordsList[selectedIndex].ToString();
-                foreach (string password in passwordsList.ToList<string>())
+                if (selectedIndex > -1)
                 {
-                    int indexClosedBracket = password.IndexOf("]");
-                    string groupString = password.Substring(2, indexClosedBracket - 3);                    
-                    if (password == passwordString)
+                    string passwordListString = passwordsList[selectedIndex].ToString();
+                    foreach (string line in passwordsList.ToList())
                     {
-                        DeleteLine(password);                       
-                        passwordsList.Remove(password);
-                        Form4 frm4 = new Form4(passwordsList);
-                        groupsList = frm4.GetGroups(passwordsList);
-                        if (!groupsList.Contains(groupString))
+                        Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(line);
+                        string groupString = strMpl.GetGroup();
+                        if (line == passwordListString)
                         {
-                            groupComboBox.Items.Remove(groupString);
+                            DeleteLine(line);
+                            passwordsList.Remove(line);
+                            Form4 frm4 = new Form4(passwordsList);
+                            groupsList = frm4.GetGroups(passwordsList);
+                            if (!groupsList.Contains(groupString))
+                            {
+                                groupComboBox.Items.Remove(groupString);
+                            }
                         }
                     }
                 }
-            }
-            else
+                else
+                {
+                    MessageBox.Show("Select a item.");
+                }
+            }catch (Exception ex)
             {
-                MessageBox.Show("Select a item.");
+                MessageBox.Show($"Unexpected error at RemoveLine(Overloaded): {ex}");
             }
         }
 
-        private static List<string> ClearEmptyLines(List<string> list)
+        private void FilterByGroup()
         {
-                List<string> tmpList = new List<string>();                
-                if (list != null)
-                {                    
-                    foreach (string line in list)
+            try
+            {
+                passwordsListBox.Items.Clear();
+                if (passwordsList.Count > 0)
+                {
+                    foreach (string line in passwordsList)
                     {
-                        if (line != "")
+                        Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(line);
+                        string groupString = strMpl.GetGroup();
+                        string strWithoutGroup = strMpl.GetStringWithoutGroup();
+                        if (groupComboBox.Text == groupString)
                         {
-                            tmpList.Add(line);
+                            passwordsListBox.Items.Add(strWithoutGroup);
                         }
-                    }                    
+                        else if (groupComboBox.Text == "All")
+                        {
+                            passwordsListBox.Items.Add(strWithoutGroup);
+                        }
+                    }
+                    passwordsList.RemoveAll(string.IsNullOrEmpty);
                 }
-                return tmpList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at FilterByGroup: {ex}");
+            }
         }
+        
+        private void CopyPasswordToClipboard()
+        {
+            try
+            {
+                int index = passwordsListBox.SelectedIndex;
+                if (index > -1)
+                {
+                    string? line = passwordsListBox.Items[index].ToString();
+                    if (line != null)
+                    {
+                        Password_Manager.StringManipulation strMpl = new Password_Manager.StringManipulation(line);
+                        Clipboard.SetText(strMpl.GetPassword());
+                        copyInstructionLabel.Text = "Password copied to clipboard";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error at CopyPasswordToClipboard: {ex}");
+            }
+        }
+
+        // Events.
 
         private void addPasswordsButton_Click(object sender, EventArgs e)
         {
@@ -205,30 +270,19 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected erro in addPasswordsButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error at addPasswordsButton_Click: {ex.Message}");
             }
         }
 
-        private void textBox_DoubleClick(object sender, EventArgs e) // With a double click on any item in the list, that password will go to the clipboard.
+        private void textBox_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                int index = passwordsListBox.SelectedIndex;
-                if (index > -1)
-                {
-                    string? password = passwordsListBox.Items[index].ToString();
-                    if (password != null)
-                    {
-                        int indexEqualOperator = password.LastIndexOf('=') + 1;
-                        MessageBox.Show(passwordsList[index]);
-                        password = password.Substring(indexEqualOperator);                       
-                        copyInstructionLabel.Text = "Password copied to clipboard";
-                    }
-                }
+                CopyPasswordToClipboard();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in doubleClickTextBox: {ex.Message}");
+                MessageBox.Show($"Unexpected error at textBox_DoubleClick: {ex}");
             }
         }
 
@@ -236,11 +290,11 @@ namespace Password_Manager_Forms
         {
             try
             {
-                RemoveStringFromTextBox();
+                RemoveLine();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in removeButton_Click: {ex.Message}");
+                MessageBox.Show($"Unexpected error at removeButton_Click: {ex}");
             }
         }
 
@@ -257,7 +311,7 @@ namespace Password_Manager_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in changeButton: {ex}");
+                MessageBox.Show($"Unexpected error at changeButton_Click: {ex}");
             }
         }
 
@@ -265,31 +319,11 @@ namespace Password_Manager_Forms
         {
             try
             {
-                passwordsListBox.Items.Clear();
-                if (passwordsList.Count > 0)
-                {
-                    for (int i = 0; i < passwordsList.Count; i++)
-                    {
-                        string password = passwordsList[i];
-                        int indexClosedBracket = password.IndexOf("]");
-                        int indexOpenBracket = password.IndexOf("[");
-                        string groupString = password.Substring(indexOpenBracket + 2, indexClosedBracket - 7);
-                        string strWithoutGroup = password.Substring(indexClosedBracket + 2);
-                        if (groupComboBox.Text == groupString)
-                        {                            
-                            passwordsListBox.Items.Add(strWithoutGroup);
-                        }
-                        else if (groupComboBox.Text == "All") 
-                        {
-                            passwordsListBox.Items.Add(strWithoutGroup);
-                        }
-                    }
-                    passwordsList = ClearEmptyLines(passwordsList);
-                }
+                FilterByGroup();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unexpected error in groupComboBox_TextChanged: {ex.Message}");
+                MessageBox.Show($"Unexpected error at groupComboBox_TextChanged: {ex.Message}");
             }
         }
 
@@ -297,15 +331,17 @@ namespace Password_Manager_Forms
         {
             try
             {
-                if (copyInstructionLabel.Text == "Password copied to clipboard")
-                {
-                    copyInstructionLabel.Text = "Double click to copy password";
-                }
+                if (copyInstructionLabel.Text == "Password copied to clipboard") { copyInstructionLabel.Text = "Double click to copy password"; }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Unexpected error in passwordsListBox_MouseClick: {ex.Message}");
             }
+        }
+
+        private void copyInstructionLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
