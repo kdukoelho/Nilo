@@ -102,7 +102,7 @@ namespace Password_Manager_Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Unexpected error at GetGroups: {ex}");
-                List<string> emptyList = new List<string>;
+                List<string> emptyList = new List<string>();
                 return emptyList;
             }
             
@@ -173,19 +173,16 @@ namespace Password_Manager_Forms
         {
             try
             {
-                int charQtt;
                 if (lettersCheckBox.Checked == false && upperLettersCheckBox.Checked == false && symbolsCheckBox.Checked == false && numbersCheckBox.Checked == false)
                 {
                     MessageBox.Show("Mark at least one type of char.");
                 }
                 else
                 {
-                    charQtt = passwordSizeTrackBar.Value;
-                    string letters = Password_Manager.Password.LetterGen(TurnFalseOnZero(charQtt, lettersCheckBox.Checked));
-                    string upperLetters = Password_Manager.Password.UpperLetterGen(TurnFalseOnZero(charQtt, upperLettersCheckBox.Checked));
-                    string symbols = Password_Manager.Password.SymbolsGen(TurnFalseOnZero(charQtt, symbolsCheckBox.Checked));
-                    string numbers = Password_Manager.Password.NumGen(TurnFalseOnZero(charQtt, numbersCheckBox.Checked));
-                    generatedPassword = Password_Manager.Password.ShuflePassword(charQtt, letters, numbers, upperLetters, symbols);
+                    int charQtt = passwordSizeTrackBar.Value;
+                    bool[] charsChecks = {numbersCheckBox.Checked, lettersCheckBox.Checked, upperLettersCheckBox.Checked, symbolsCheckBox.Checked};
+                    Password_Manager.Password generatePassword = new Password_Manager.Password(charsChecks, charQtt);
+                    generatedPassword = generatePassword.GeneratePassword();                    
                     passwordTextBox.Text = generatedPassword;
 
                 }

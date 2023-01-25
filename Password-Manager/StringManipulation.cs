@@ -10,7 +10,7 @@ namespace Password_Manager
     {
         private string inputString;
         private int openedBracketIndex;  private int closedBracketIndex;
-        private int lastOpenedBracketIndex; private int lastClosedBracketIndex;
+        private int lastOpenedBracketIndex;
         private int minusIndex; private int equalIndex;
         public StringManipulation(string inputString)
         {

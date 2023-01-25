@@ -1,10 +1,29 @@
 ﻿namespace Password_Manager
 {
-    static public class Password
+    public class Password
     {
-        static public string NumGen(int qttNums) // Generate a string with numbers.
+        int individuallyCharQtt;
+        bool[] charsBool;
+        public Password(bool[] charsBool, int charsQtt)
         {
-            if (qttNums <= 0)
+            this.individuallyCharQtt = CalculateCharsQtt(charsBool, charsQtt);
+            this.charsBool = charsBool;
+        }
+
+        private int CalculateCharsQtt(bool[] charsBool, int charsQtt)
+        {
+            charsQtt = charsQtt % 2 != 0 ? charsQtt + 1 : charsQtt;
+            int charTypesQtt = 0;
+            foreach (bool type in charsBool)
+            {
+                charTypesQtt = type ? charTypesQtt + 1 : charTypesQtt;
+            }
+            return charTypesQtt > 0 ? charsQtt / charTypesQtt : 1;
+        }
+
+        public string NumGen(bool willGenerate) // Generate a string with numbers.
+        {
+            if (!willGenerate)
             {
                 return "";
             }
@@ -12,7 +31,7 @@
             {
                 Random rnd = new Random();
                 string genNums = "";
-                for (int i = 0; i < qttNums; i++)
+                for (int i = 0; i < individuallyCharQtt; i++)
                 {
                     string strNums = Convert.ToString(rnd.Next(0, 9));
                     genNums = genNums + strNums;
@@ -21,9 +40,9 @@
             }            
         }
 
-        static public string UpperLetterGen(int qttUpperLetter) // Generate a string with upper letters.
+        public string UpperLetterGen(bool willGenerate) // Generate a string with upper letters.
         {
-            if (qttUpperLetter <= 0)
+            if (!willGenerate)
             {
                 return "";
             }
@@ -32,7 +51,7 @@
                 Random rnd = new Random();
                 string genLetters = "";
 
-                for (int i = 0; i < qttUpperLetter; i++)
+                for (int i = 0; i < individuallyCharQtt; i++)
                 {
                     genLetters += Convert.ToChar(rnd.Next(65, 91));
                 }
@@ -40,9 +59,9 @@
             }
         }
 
-        static public string LetterGen(int qttLetter) // Generate a string with letters.
+        public string LetterGen(bool willGenerate) // Generate a string with letters.
         {
-            if (qttLetter <= 0)
+            if (!willGenerate)
             {
                 return "";
             }
@@ -51,7 +70,7 @@
                 Random rnd = new Random();
                 string genLetters = "";
 
-                for (int i = 0; i < qttLetter; i++)
+                for (int i = 0; i < individuallyCharQtt; i++)
                 {
                     genLetters += Convert.ToChar(rnd.Next(97, 122));
                 }
@@ -59,9 +78,9 @@
             }            
         }
 
-        static public string SymbolsGen(int qttSymbols) // Generate a string with symbols.
+        public string SymbolsGen(bool willGenerate) // Generate a string with symbols.
         {
-            if (qttSymbols <= 0)
+            if (!willGenerate)
             {
                 return "";
             }
@@ -70,7 +89,7 @@
                 Random rnd = new Random();
                 string genSymbols = "";
 
-                for (int i = 0; i < qttSymbols; i++)
+                for (int i = 0; i < individuallyCharQtt; i++)
                 {
                     int symbolsCheck = rnd.Next(33, 64);                    
                     if (symbolsCheck > 48 && symbolsCheck < 57 || symbolsCheck == 34 || symbolsCheck == 39)
@@ -86,28 +105,24 @@
             }            
         }
         
-        static public string ShuflePassword(int charQtt, string letters, string nums, string upperLetters, string symbols) // Shuffle all chars and defines password lenght.
+        public string GeneratePassword()
         {
-            string finalPass = letters + nums + upperLetters + symbols;
-            string[] wordsList = new string[finalPass.Length];
+            return RandomizeString(NumGen(charsBool[0]) + LetterGen(charsBool[1]) + UpperLetterGen(charsBool[2]) + SymbolsGen(charsBool[3]));
+        }
 
-            for (int i = 0; i < finalPass.Length; i++) { wordsList[i] += finalPass[i]; }
-
+        public static string RandomizeString(string input)
+        {
+            char[] chars = input.ToCharArray();
             Random random = new Random();
-            for (int i = 0; i < (wordsList.Length - 1); i++)
+            char[] result = new char[chars.Length];
+            int remaining = chars.Length;
+            for (int i = 0; i < result.Length; i++)
             {
-                int x = random.Next(wordsList.Length);
-                string tempString = wordsList[i];
-                wordsList[i] = wordsList[x];
-                wordsList[x] = tempString;
+                int j = random.Next(0, remaining);
+                result[i] = chars[j];
+                chars[j] = chars[--remaining];
             }
-
-            finalPass = String.Empty;
-            for (int i = 0; i < charQtt; i++)
-            {
-                finalPass += wordsList[i];
-            }
-            return finalPass;
+            return new string(result);
         }
     }
 }
