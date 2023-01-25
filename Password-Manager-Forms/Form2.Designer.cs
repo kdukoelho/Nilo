@@ -103,7 +103,7 @@
             this.saveDatabaseButton.Name = "saveDatabaseButton";
             this.saveDatabaseButton.Size = new System.Drawing.Size(151, 25);
             this.saveDatabaseButton.TabIndex = 11;
-            this.saveDatabaseButton.Text = "Save database in >";
+            this.saveDatabaseButton.Text = "Save database at >";
             this.saveDatabaseButton.UseVisualStyleBackColor = false;
             this.saveDatabaseButton.Click += new System.EventHandler(this.saveDatabaseButton_Click);
             // 
