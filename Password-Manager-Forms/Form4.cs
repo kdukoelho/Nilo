@@ -156,19 +156,6 @@ namespace Password_Manager_Forms
             return buildedString;
         }
 
-        private int TurnFalseOnZero(int charQtt, bool checkBoxValue)
-        {
-            try
-            {
-                return checkBoxValue ? charQtt : 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Unexpected error at TurnFalseOnZero: {ex}");
-                return 0;
-            }
-        }
-
         private void GeneratePassword()
         {
             try
@@ -182,7 +169,7 @@ namespace Password_Manager_Forms
                     int charQtt = passwordSizeTrackBar.Value;
                     bool[] charsChecks = {numbersCheckBox.Checked, lettersCheckBox.Checked, upperLettersCheckBox.Checked, symbolsCheckBox.Checked};
                     Password_Manager.Password generatePassword = new Password_Manager.Password(charsChecks, charQtt);
-                    generatedPassword = generatePassword.GeneratePassword();                    
+                    generatedPassword = generatePassword.GeneratePassword();
                     passwordTextBox.Text = generatedPassword;
 
                 }
