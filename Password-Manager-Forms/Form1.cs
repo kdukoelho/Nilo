@@ -138,7 +138,7 @@ namespace Password_Manager_Forms
                             {
                                 this.Close();
                             }
-                            MessageBox.Show($"Wrong Password {this.loginAttempts}/3");
+                            wrongPasswordLabel.Text = $"Wrong Password {this.loginAttempts}/3";
                         }
                     }
                     else

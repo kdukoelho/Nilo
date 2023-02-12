@@ -37,6 +37,7 @@
             this.pathTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.wrongPasswordLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,12 +122,23 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // wrongPasswordLabel
+            // 
+            this.wrongPasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.wrongPasswordLabel.AutoSize = true;
+            this.wrongPasswordLabel.ForeColor = System.Drawing.Color.Red;
+            this.wrongPasswordLabel.Location = new System.Drawing.Point(222, 234);
+            this.wrongPasswordLabel.Name = "wrongPasswordLabel";
+            this.wrongPasswordLabel.Size = new System.Drawing.Size(0, 19);
+            this.wrongPasswordLabel.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(536, 269);
+            this.Controls.Add(this.wrongPasswordLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pathTextBox);
             this.Controls.Add(this.searchBT);
@@ -159,5 +171,6 @@
         private TextBox pathTextBox;
         private PictureBox pictureBox1;
         private OpenFileDialog openFileDialog1;
+        private Label wrongPasswordLabel;
     }
 }
