@@ -7,7 +7,7 @@ Nilo has its own encryption method, based on the Ceasar Cipher, and the change o
 
 Fun fact: The software design was inspired on my black cat called <a target="_blank" href="https://www.instagram.com/nilojorel/"> Nilo </a> :)
 
-# GUI's (Grapichal User Interface)
+# GUI's (Graphical User Interface)
 1. Login
 
 ![login form.png](https://www.dropbox.com/s/fr6wn0j6r3kqyim/login%20form.png?dl=0&raw=1)<br>
